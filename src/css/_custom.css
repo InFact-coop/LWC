@@ -13,6 +13,7 @@ button {
   font-family: var(--sans-serif);
 }
 
+
 .hands {
   background: url('./assets/hands.jpg');
   width: 100vw;
@@ -34,4 +35,12 @@ margin: 0 auto;
 
 .m0-auto{
   margin: 0 auto;
+}
+
+.burger {
+  background: url('./assets/burger.svg');
+  background-size: 90%;
+  background-repeat: no-repeat;
+  background-position: center;
+
 }
