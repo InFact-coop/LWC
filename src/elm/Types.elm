@@ -19,6 +19,7 @@ type Route
 type alias Model =
     { route : Route
     , userInput : String
+    , services : List ( Bool, String, String )
     }
 
 
@@ -29,3 +30,4 @@ type alias Model =
 type Msg
     = Change String
     | UrlChange Navigation.Location
+    | ToggleServiceListItem String

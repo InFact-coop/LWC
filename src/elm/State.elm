@@ -1,6 +1,7 @@
 module State exposing (..)
 
 import Types exposing (..)
+import Data.Services exposing (..)
 
 
 -- MODEL
@@ -8,8 +9,9 @@ import Types exposing (..)
 
 initModel : Model
 initModel =
-    { route = LandingRoute
+    { route = ServicesRoute
     , userInput = ""
+    , services = servicesList
     }
 
 
@@ -45,6 +47,14 @@ getRoute hash =
             LandingRoute
 
 
+toggleServiceListItem : String -> ( Bool, String, String ) -> ( Bool, String, String )
+toggleServiceListItem name ( isMappedVisible, mappedName, mappedDescription ) =
+    if name == mappedName then
+        ( not isMappedVisible, mappedName, mappedDescription )
+    else
+        ( False, mappedName, mappedDescription )
+
+
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
@@ -53,3 +63,6 @@ update msg model =
 
         UrlChange location ->
             ( { model | route = (getRoute location.hash) }, Cmd.none )
+
+        ToggleServiceListItem name ->
+            ( { model | services = List.map (\x -> toggleServiceListItem name x) model.services }, Cmd.none )
