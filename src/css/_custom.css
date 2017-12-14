@@ -13,9 +13,34 @@ button {
   font-family: var(--sans-serif);
 }
 
+
+.hands {
+  background: url('./assets/hands.jpg');
+  width: 100vw;
+  height: 100vh;
+  background-size: 400%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.purple-background{
+  background-color: rgba(112, 39, 125, 0.6);
+}
+
+.white-line{
+border-bottom: 4px solid #FFFFFF;
+width: 30vw;
+margin: 0 auto;
+}
+
+.m0-auto{
+  margin: 0 auto;
+}
+
 .burger {
   background: url('./assets/burger.svg');
   background-size: 90%;
   background-repeat: no-repeat;
   background-position: center;
+
 }
