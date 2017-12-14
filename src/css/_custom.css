@@ -12,3 +12,10 @@ body {
 button {
   font-family: var(--sans-serif);
 }
+
+.burger {
+  background: url('./assets/burger.svg');
+  background-size: 90%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
