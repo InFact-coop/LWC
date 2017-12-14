@@ -7,9 +7,13 @@ import Navigation
 
 
 type Route
-    = HomeRoute
-    | PageOneRoute
-    | PageTwoRoute
+    = LandingRoute
+    | QuotesRoute
+    | DetailedQuoteRoute
+    | ServicesRoute
+    | TalkToUsRoute
+    | FormRoute
+    | ThankYouRoute
 
 
 type alias Model =
