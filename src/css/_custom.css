@@ -42,5 +42,8 @@ margin: 0 auto;
   background-size: 90%;
   background-repeat: no-repeat;
   background-position: center;
+}
 
+.pa-25{
+  padding-top: 20vh;
 }
