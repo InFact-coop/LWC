@@ -13,6 +13,23 @@ button {
   font-family: var(--sans-serif);
 }
 
+.chevron-purple {
+  background-image: url('./assets/purple-chevron.svg');
+  background-size: 90%;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.chevron-white {
+  background-image: url('./assets/white-chevron.svg');
+  background-size: 90%;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 1.5rem;
+  width: 1.5rem;
+}
 
 .hands {
   background: url('./assets/hands.jpg');
@@ -23,17 +40,17 @@ button {
   background-repeat: no-repeat;
 }
 
-.purple-background{
+.purple-background {
   background-color: rgba(112, 39, 125, 0.6);
 }
 
-.white-line{
+.white-line {
 border-bottom: 4px solid #FFFFFF;
 width: 30vw;
 margin: 0 auto;
 }
 
-.m0-auto{
+.m0-auto {
   margin: 0 auto;
 }
 
@@ -44,7 +61,13 @@ margin: 0 auto;
   background-position: center;
 }
 
+
 .purple-line{
   border-bottom: 4px solid #70277D;
   width: 30vw;
+}
+
+.pa-25 {
+  padding-top: 20vh;
+
 }
