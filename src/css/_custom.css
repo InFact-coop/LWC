@@ -42,5 +42,9 @@ margin: 0 auto;
   background-size: 90%;
   background-repeat: no-repeat;
   background-position: center;
+}
 
+.purple-line{
+  border-bottom: 4px solid #70277D;
+  width: 30vw;
 }
