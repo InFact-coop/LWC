@@ -1,7 +1,7 @@
 module State exposing (..)
 
-import Types exposing (..)
 import Data.Services exposing (..)
+import Types exposing (..)
 
 
 -- MODEL
@@ -9,7 +9,7 @@ import Data.Services exposing (..)
 
 initModel : Model
 initModel =
-    { route = ServicesRoute
+    { route = LandingRoute
     , userInput = ""
     , services = servicesList
     }
@@ -62,7 +62,7 @@ update msg model =
             ( { model | userInput = newInput }, Cmd.none )
 
         UrlChange location ->
-            ( { model | route = (getRoute location.hash) }, Cmd.none )
+            ( { model | route = getRoute location.hash }, Cmd.none )
 
         ToggleServiceListItem name ->
             ( { model | services = List.map (\x -> toggleServiceListItem name x) model.services }, Cmd.none )
