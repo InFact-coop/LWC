@@ -1,6 +1,7 @@
 module Types exposing (..)
 
 import Navigation
+import Html exposing (..)
 
 
 -- Model
@@ -21,6 +22,17 @@ type alias Model =
     , userInput : String
     , services : List ( Bool, String, String )
     , quotes : List ( String, String )
+    , testimonials : List Testimonial
+    , currentTestimonial : String
+    }
+
+
+type alias Testimonial =
+    { name : String
+    , age : String
+    , imgsrc : String
+    , therapy : String
+    , description : Html Msg
     }
 
 

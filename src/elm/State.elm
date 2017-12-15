@@ -1,5 +1,6 @@
 module State exposing (..)
 
+import Data.Testimonials exposing (..)
 import Data.Quotes exposing (..)
 import Data.Services exposing (..)
 import Types exposing (..)
@@ -10,9 +11,11 @@ import Types exposing (..)
 
 initModel : Model
 initModel =
-    { route = LandingRoute
+    { route = DetailedQuoteRoute
     , userInput = ""
     , services = servicesList
+    , testimonials = testimonialsList
+    , currentTestimonial = ""
     , quotes = quotesList
     }
 
