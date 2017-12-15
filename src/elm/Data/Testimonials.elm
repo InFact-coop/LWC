@@ -5,6 +5,11 @@ import Html.Attributes exposing (..)
 import Types exposing (..)
 
 
+emphasis : String -> Html Msg
+emphasis content =
+    span [ class "purple b" ] [ text content ]
+
+
 defaultTestimonial : Testimonial
 defaultTestimonial =
     { id = 4
@@ -16,21 +21,17 @@ defaultTestimonial =
         section [ class "description ph3 pt0" ]
             [ p []
                 [ text "I came to LWC about three years ago after I was diagnosed with "
-                , span [ class "purple b" ]
-                    [ text "low mood" ]
+                , emphasis "low mood"
                 , text " and "
-                , span [ class "purple b" ]
-                    [ text "anxiety" ]
+                , emphasis "anxiety"
                 , text ". I was feeling really isolated in social situations and became a bit of a recluse."
                 ]
             , p []
                 [ text "I began by attending "
-                , span [ class "purple b" ]
-                    [ text "Living Well therapy sessions" ]
+                , emphasis "Living Well therapy sessions"
                 , text ", which really really helped me. Later on I went to "
-                , span [ class "purple b" ]
-                    [ text "Behavioural Activation" ]
-                , text "to address some of the negative thoughts I’d been having. "
+                , emphasis "Behavioural Activation"
+                , text " to address some of the negative thoughts I’d been having. "
                 ]
             ]
     }
@@ -47,21 +48,17 @@ testimonialsList =
             section [ class "description ph3 pt0" ]
                 [ p []
                     [ text "I came to LWC about three years ago after I was diagnosed with "
-                    , span [ class "purple b" ]
-                        [ text "low mood" ]
+                    , emphasis "low mood"
                     , text " and "
-                    , span [ class "purple b" ]
-                        [ text "anxiety" ]
+                    , emphasis "anxiety"
                     , text ". I was feeling really isolated in social situations and became a bit of a recluse."
                     ]
                 , p []
                     [ text "I began by attending "
-                    , span [ class "purple b" ]
-                        [ text "Living Well therapy sessions" ]
+                    , emphasis "Living Well therapy sessions"
                     , text ", which really really helped me. Later on I went to "
-                    , span [ class "purple b" ]
-                        [ text "Behavioural Activation" ]
-                    , text "to address some of the negative thoughts I’d been having. "
+                    , emphasis "Behavioural Activation"
+                    , text " to address some of the negative thoughts I’d been having. "
                     ]
                 ]
       }
@@ -74,21 +71,17 @@ testimonialsList =
             section [ class "description ph3 pt0" ]
                 [ p []
                     [ text "I came to LWC about three years ago after I was diagnosed with "
-                    , span [ class "purple b" ]
-                        [ text "low mood" ]
+                    , emphasis "low mood"
                     , text " and "
-                    , span [ class "purple b" ]
-                        [ text "anxiety" ]
+                    , emphasis "anxiety"
                     , text ". I was feeling really isolated in social situations and became a bit of a recluse."
                     ]
                 , p []
                     [ text "I began by attending "
-                    , span [ class "purple b" ]
-                        [ text "Living Well therapy sessions" ]
+                    , emphasis "Living Well therapy sessions"
                     , text ", which really really helped me. Later on I went to "
-                    , span [ class "purple b" ]
-                        [ text "Behavioural Activation" ]
-                    , text "to address some of the negative thoughts I’d been having. "
+                    , emphasis "Behavioural Activation"
+                    , text " to address some of the negative thoughts I’d been having. "
                     ]
                 ]
       }
@@ -101,21 +94,17 @@ testimonialsList =
             section [ class "description ph3 pt0" ]
                 [ p []
                     [ text "I came to LWC about three years ago after I was diagnosed with "
-                    , span [ class "purple b" ]
-                        [ text "low mood" ]
+                    , emphasis "low mood"
                     , text " and "
-                    , span [ class "purple b" ]
-                        [ text "anxiety" ]
+                    , emphasis "anxiety"
                     , text ". I was feeling really isolated in social situations and became a bit of a recluse."
                     ]
                 , p []
                     [ text "I began by attending "
-                    , span [ class "purple b" ]
-                        [ text "Living Well therapy sessions" ]
+                    , emphasis "Living Well therapy sessions"
                     , text ", which really really helped me. Later on I went to "
-                    , span [ class "purple b" ]
-                        [ text "Behavioural Activation" ]
-                    , text "to address some of the negative thoughts I’d been having. "
+                    , emphasis "Behavioural Activation"
+                    , text " to address some of the negative thoughts I’d been having. "
                     ]
                 ]
       }
@@ -128,21 +117,17 @@ testimonialsList =
             section [ class "description ph3 pt0" ]
                 [ p []
                     [ text "I came to LWC about three years ago after I was diagnosed with "
-                    , span [ class "purple b" ]
-                        [ text "low mood" ]
+                    , emphasis "low mood"
                     , text " and "
-                    , span [ class "purple b" ]
-                        [ text "anxiety" ]
+                    , emphasis "anxiety"
                     , text ". I was feeling really isolated in social situations and became a bit of a recluse."
                     ]
                 , p []
                     [ text "I began by attending "
-                    , span [ class "purple b" ]
-                        [ text "Living Well therapy sessions" ]
+                    , emphasis "Living Well therapy sessions"
                     , text ", which really really helped me. Later on I went to "
-                    , span [ class "purple b" ]
-                        [ text "Behavioural Activation" ]
-                    , text "to address some of the negative thoughts I’d been having. "
+                    , emphasis "Behavioural Activation"
+                    , text " to address some of the negative thoughts I’d been having. "
                     ]
                 ]
       }
@@ -155,21 +140,17 @@ testimonialsList =
             section [ class "description ph3 pt0" ]
                 [ p []
                     [ text "I came to LWC about three years ago after I was diagnosed with "
-                    , span [ class "purple b" ]
-                        [ text "low mood" ]
+                    , emphasis "low mood"
                     , text " and "
-                    , span [ class "purple b" ]
-                        [ text "anxiety" ]
+                    , emphasis "anxiety"
                     , text ". I was feeling really isolated in social situations and became a bit of a recluse."
                     ]
                 , p []
                     [ text "I began by attending "
-                    , span [ class "purple b" ]
-                        [ text "Living Well therapy sessions" ]
+                    , emphasis "Living Well therapy sessions"
                     , text ", which really really helped me. Later on I went to "
-                    , span [ class "purple b" ]
-                        [ text "Behavioural Activation" ]
-                    , text "to address some of the negative thoughts I’d been having. "
+                    , emphasis "Behavioural Activation"
+                    , text " to address some of the negative thoughts I’d been having. "
                     ]
                 ]
       }
@@ -182,21 +163,17 @@ testimonialsList =
             section [ class "description ph3 pt0" ]
                 [ p []
                     [ text "I came to LWC about three years ago after I was diagnosed with "
-                    , span [ class "purple b" ]
-                        [ text "low mood" ]
+                    , emphasis "low mood"
                     , text " and "
-                    , span [ class "purple b" ]
-                        [ text "anxiety" ]
+                    , emphasis "anxiety"
                     , text ". I was feeling really isolated in social situations and became a bit of a recluse."
                     ]
                 , p []
                     [ text "I began by attending "
-                    , span [ class "purple b" ]
-                        [ text "Living Well therapy sessions" ]
+                    , emphasis "Living Well therapy sessions"
                     , text ", which really really helped me. Later on I went to "
-                    , span [ class "purple b" ]
-                        [ text "Behavioural Activation" ]
-                    , text "to address some of the negative thoughts I’d been having. "
+                    , emphasis "Behavioural Activation"
+                    , text " to address some of the negative thoughts I’d been having. "
                     ]
                 ]
       }
@@ -209,21 +186,17 @@ testimonialsList =
             section [ class "description ph3 pt0" ]
                 [ p []
                     [ text "I came to LWC about three years ago after I was diagnosed with "
-                    , span [ class "purple b" ]
-                        [ text "low mood" ]
+                    , emphasis "low mood"
                     , text " and "
-                    , span [ class "purple b" ]
-                        [ text "anxiety" ]
+                    , emphasis "anxiety"
                     , text ". I was feeling really isolated in social situations and became a bit of a recluse."
                     ]
                 , p []
                     [ text "I began by attending "
-                    , span [ class "purple b" ]
-                        [ text "Living Well therapy sessions" ]
+                    , emphasis "Living Well therapy sessions"
                     , text ", which really really helped me. Later on I went to "
-                    , span [ class "purple b" ]
-                        [ text "Behavioural Activation" ]
-                    , text "to address some of the negative thoughts I’d been having. "
+                    , emphasis "Behavioural Activation"
+                    , text " to address some of the negative thoughts I’d been having. "
                     ]
                 ]
       }
