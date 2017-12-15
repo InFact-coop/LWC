@@ -6,12 +6,12 @@ import Html.Events exposing (..)
 import Types exposing (..)
 
 
-quotesListItem : ( String, String ) -> Html Msg
-quotesListItem ( photo, quote ) =
+quotesListItem : Quote -> Html Msg
+quotesListItem { id, imgsrc, quote } =
     div [ class "ba b--silver br1 pa3 mb3" ]
         [ div [ class "tc" ]
             [ div []
-                [ img [ src photo ] []
+                [ img [ src imgsrc ] []
                 ]
             , div
                 [ class "mb3 gray" ]
@@ -19,7 +19,7 @@ quotesListItem ( photo, quote ) =
                 , text quote
                 ]
             , div [ class "w-50 bg-purple br2 m0-auto pa2 mt3" ]
-                [ a [ class "white no-underline" ] [ text "Find out more" ]
+                [ a [ href "#detailed-quote", class "white no-underline", onClick (SelectTestimonial id) ] [ text "Find out more" ]
                 ]
             ]
         ]

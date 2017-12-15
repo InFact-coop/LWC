@@ -11,11 +11,11 @@ import Types exposing (..)
 
 initModel : Model
 initModel =
-    { route = DetailedQuoteRoute
+    { route = LandingRoute
     , userInput = ""
     , services = servicesList
     , testimonials = testimonialsList
-    , currentTestimonial = ""
+    , currentTestimonial = 4
     , quotes = quotesList
     }
 
@@ -71,3 +71,6 @@ update msg model =
 
         ToggleServiceListItem name ->
             ( { model | services = List.map (\x -> toggleServiceListItem name x) model.services }, Cmd.none )
+
+        SelectTestimonial id ->
+            ( { model | currentTestimonial = id }, Cmd.none )

@@ -5,31 +5,33 @@ import Html.Attributes exposing (..)
 import Types exposing (..)
 
 
+emphasis : String -> Html Msg
+emphasis content =
+    span [ class "purple b" ] [ text content ]
+
+
 defaultTestimonial : Testimonial
 defaultTestimonial =
-    { name = "Linda"
+    { id = 4
+    , name = "Linda"
     , age = "37"
     , imgsrc = "./assets/woman2.png"
     , therapy = "Living Well"
     , description =
-        section [ class "description" ]
+        section [ class "description ph3 pt0" ]
             [ p []
                 [ text "I came to LWC about three years ago after I was diagnosed with "
-                , span [ class "purple b" ]
-                    [ text "low mood" ]
+                , emphasis "low mood"
                 , text " and "
-                , span [ class "purple b" ]
-                    [ text "anxiety" ]
+                , emphasis "anxiety"
                 , text ". I was feeling really isolated in social situations and became a bit of a recluse."
                 ]
             , p []
                 [ text "I began by attending "
-                , span [ class "purple b" ]
-                    [ text "Living Well therapy sessions" ]
+                , emphasis "Living Well therapy sessions"
                 , text ", which really really helped me. Later on I went to "
-                , span [ class "purple b" ]
-                    [ text "Behavioural Activation" ]
-                , text "to address some of the negative thoughts I’d been having. "
+                , emphasis "Behavioural Activation"
+                , text " to address some of the negative thoughts I’d been having. "
                 ]
             ]
     }
@@ -37,55 +39,164 @@ defaultTestimonial =
 
 testimonialsList : List Testimonial
 testimonialsList =
-    [ { name = "Linda"
+    [ { id = 4
+      , name = "Linda"
       , age = "37"
       , imgsrc = "./assets/woman2.png"
       , therapy = "Living Well"
       , description =
-            section [ class "description" ]
+            section [ class "description ph3 pt0" ]
                 [ p []
                     [ text "I came to LWC about three years ago after I was diagnosed with "
-                    , span [ class "purple b" ]
-                        [ text "low mood" ]
+                    , emphasis "low mood"
                     , text " and "
-                    , span [ class "purple b" ]
-                        [ text "anxiety" ]
+                    , emphasis "anxiety"
                     , text ". I was feeling really isolated in social situations and became a bit of a recluse."
                     ]
                 , p []
                     [ text "I began by attending "
-                    , span [ class "purple b" ]
-                        [ text "Living Well therapy sessions" ]
+                    , emphasis "Living Well therapy sessions"
                     , text ", which really really helped me. Later on I went to "
-                    , span [ class "purple b" ]
-                        [ text "Behavioural Activation" ]
-                    , text "to address some of the negative thoughts I’d been having. "
+                    , emphasis "Behavioural Activation"
+                    , text " to address some of the negative thoughts I’d been having. "
                     ]
                 ]
       }
-    , { name = "Marticia"
+    , { id = 3
+      , name = "Marticia"
       , age = "37"
       , imgsrc = "./assets/woman1.png"
       , therapy = "Living Dandy"
       , description =
-            section [ class "description" ]
+            section [ class "description ph3 pt0" ]
                 [ p []
                     [ text "I came to LWC about three years ago after I was diagnosed with "
-                    , span [ class "purple b" ]
-                        [ text "low mood" ]
+                    , emphasis "low mood"
                     , text " and "
-                    , span [ class "purple b" ]
-                        [ text "anxiety" ]
+                    , emphasis "anxiety"
                     , text ". I was feeling really isolated in social situations and became a bit of a recluse."
                     ]
                 , p []
                     [ text "I began by attending "
-                    , span [ class "purple b" ]
-                        [ text "Living Well therapy sessions" ]
+                    , emphasis "Living Well therapy sessions"
                     , text ", which really really helped me. Later on I went to "
-                    , span [ class "purple b" ]
-                        [ text "Behavioural Activation" ]
-                    , text "to address some of the negative thoughts I’d been having. "
+                    , emphasis "Behavioural Activation"
+                    , text " to address some of the negative thoughts I’d been having. "
+                    ]
+                ]
+      }
+    , { id = 2
+      , name = "Lola"
+      , age = "37"
+      , imgsrc = "./assets/woman1.png"
+      , therapy = "Living a life"
+      , description =
+            section [ class "description ph3 pt0" ]
+                [ p []
+                    [ text "I came to LWC about three years ago after I was diagnosed with "
+                    , emphasis "low mood"
+                    , text " and "
+                    , emphasis "anxiety"
+                    , text ". I was feeling really isolated in social situations and became a bit of a recluse."
+                    ]
+                , p []
+                    [ text "I began by attending "
+                    , emphasis "Living Well therapy sessions"
+                    , text ", which really really helped me. Later on I went to "
+                    , emphasis "Behavioural Activation"
+                    , text " to address some of the negative thoughts I’d been having. "
+                    ]
+                ]
+      }
+    , { id = 1
+      , name = "Rivka"
+      , age = "27"
+      , imgsrc = "./assets/woman1.png"
+      , therapy = "Living...just about"
+      , description =
+            section [ class "description ph3 pt0" ]
+                [ p []
+                    [ text "I came to LWC about three years ago after I was diagnosed with "
+                    , emphasis "low mood"
+                    , text " and "
+                    , emphasis "anxiety"
+                    , text ". I was feeling really isolated in social situations and became a bit of a recluse."
+                    ]
+                , p []
+                    [ text "I began by attending "
+                    , emphasis "Living Well therapy sessions"
+                    , text ", which really really helped me. Later on I went to "
+                    , emphasis "Behavioural Activation"
+                    , text " to address some of the negative thoughts I’d been having. "
+                    ]
+                ]
+      }
+    , { id = 5
+      , name = "Mariama"
+      , age = "23"
+      , imgsrc = "./assets/woman1.png"
+      , therapy = "Meh"
+      , description =
+            section [ class "description ph3 pt0" ]
+                [ p []
+                    [ text "I came to LWC about three years ago after I was diagnosed with "
+                    , emphasis "low mood"
+                    , text " and "
+                    , emphasis "anxiety"
+                    , text ". I was feeling really isolated in social situations and became a bit of a recluse."
+                    ]
+                , p []
+                    [ text "I began by attending "
+                    , emphasis "Living Well therapy sessions"
+                    , text ", which really really helped me. Later on I went to "
+                    , emphasis "Behavioural Activation"
+                    , text " to address some of the negative thoughts I’d been having. "
+                    ]
+                ]
+      }
+    , { id = 5
+      , name = "Marticia"
+      , age = "37"
+      , imgsrc = "./assets/woman1.png"
+      , therapy = "Living Dandy"
+      , description =
+            section [ class "description ph3 pt0" ]
+                [ p []
+                    [ text "I came to LWC about three years ago after I was diagnosed with "
+                    , emphasis "low mood"
+                    , text " and "
+                    , emphasis "anxiety"
+                    , text ". I was feeling really isolated in social situations and became a bit of a recluse."
+                    ]
+                , p []
+                    [ text "I began by attending "
+                    , emphasis "Living Well therapy sessions"
+                    , text ", which really really helped me. Later on I went to "
+                    , emphasis "Behavioural Activation"
+                    , text " to address some of the negative thoughts I’d been having. "
+                    ]
+                ]
+      }
+    , { id = 6
+      , name = "Marticia"
+      , age = "37"
+      , imgsrc = "./assets/woman1.png"
+      , therapy = "Living Dandy"
+      , description =
+            section [ class "description ph3 pt0" ]
+                [ p []
+                    [ text "I came to LWC about three years ago after I was diagnosed with "
+                    , emphasis "low mood"
+                    , text " and "
+                    , emphasis "anxiety"
+                    , text ". I was feeling really isolated in social situations and became a bit of a recluse."
+                    ]
+                , p []
+                    [ text "I began by attending "
+                    , emphasis "Living Well therapy sessions"
+                    , text ", which really really helped me. Later on I went to "
+                    , emphasis "Behavioural Activation"
+                    , text " to address some of the negative thoughts I’d been having. "
                     ]
                 ]
       }
