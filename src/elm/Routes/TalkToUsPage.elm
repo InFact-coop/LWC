@@ -40,6 +40,6 @@ talkToUsPage model =
             , img [ src "./assets/person.png" ] []
             ]
         , div [ class "bg-white ba b--purple tc pa3 mt4" ]
-            [ a [ href "#services", class "purple no-underline" ] [ text "Back" ]
+            [ a [ href "#services", class "purple no-underline" ] [ text "Back to services" ]
             ]
         ]

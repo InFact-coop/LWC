@@ -1,9 +1,9 @@
 module Routes.DetailedQuotePage exposing (..)
 
+import Components.TestimonialSection exposing (..)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Types exposing (..)
-import Components.TestimonialSection exposing (..)
 
 
 detailedQuotePage : Model -> Html Msg
@@ -19,14 +19,12 @@ detailedQuotePage model =
 
 actionButtons : Html Msg
 actionButtons =
-    section [ class "action-buttons center w-90" ]
+    section [ class "action-buttons center w-90 mt4" ]
         [ div []
-            [ h3 [ class "db mv3" ] [ text "Sounds like you?" ]
-            , a [ class "db bg-purple br2 pa3 tc m0 dim white" ] [ text "Talk to us" ]
+            [ div []
+                [ a [ class "db bg-purple br2 pa3 tc ma0 mt2 dim white no-underline mb3", href "#services" ] [ text "See full list of services" ]
+                , a [ class "db bg-light-purple br2 pa3 tc m0 dim white no-underline mb3", href "#talk-to-us" ] [ text "Talk to us" ]
+                ]
+            , a [ class "db relative ba b--purple br2 pa3 tc ma0 dim purple no-underline mb4", href "#quotes" ] [ text "Back to stories" ]
             ]
-        , div []
-            [ h3 [ class "db mb3 mt4" ] [ text "Still not sure?" ]
-            , a [ class "db relative bg-purple br2 pa3 tc ma0 dim white" ] [ text "See more stories" ]
-            ]
-        , a [ class "db bg-light-purple br2 pa3 tc ma0 mt2 dim white" ] [ text "See full list of services" ]
         ]
