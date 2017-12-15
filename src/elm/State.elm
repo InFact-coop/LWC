@@ -9,7 +9,7 @@ import Types exposing (..)
 
 initModel : Model
 initModel =
-    { route = LandingRoute
+    { route = TalkToUsRoute
     , userInput = ""
     , services = servicesList
     }
@@ -63,9 +63,6 @@ update msg model =
 
         UrlChange location ->
             ( { model | route = getRoute location.hash }, Cmd.none )
-<<<<<<< HEAD
-=======
 
         ToggleServiceListItem name ->
             ( { model | services = List.map (\x -> toggleServiceListItem name x) model.services }, Cmd.none )
->>>>>>> master
