@@ -13,4 +13,20 @@ detailedQuotePage model =
             [ h1 [ class "tl f3 fw7 gray mb1" ] [ text "Women like you" ]
             ]
         , retrieveTestimonial model
+        , actionButtons
+        ]
+
+
+actionButtons : Html Msg
+actionButtons =
+    section [ class "action-buttons center w-90" ]
+        [ div []
+            [ h3 [ class "db" ] [ text "Sounds like you?" ]
+            , a [ class "db bg-purple br2 pa3 tc m0 dim white" ] [ text "Talk to us" ]
+            ]
+        , div []
+            [ h3 [ class "db" ] [ text "Still not sure?" ]
+            , a [ class "db relative bg-purple br2 pa3 tc ma0 dim white" ] [ text "See more stories" ]
+            ]
+        , a [ class "db bg-light-purple br2 pa3 tc ma0 mt2 dim white" ] [ text "see full list of services" ]
         ]
