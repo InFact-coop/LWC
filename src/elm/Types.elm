@@ -21,14 +21,22 @@ type alias Model =
     { route : Route
     , userInput : String
     , services : List ( Bool, String, String )
-    , quotes : List ( String, String )
+    , quotes : List Quote
     , testimonials : List Testimonial
-    , currentTestimonial : String
+    , currentTestimonial : Int
+    }
+
+
+type alias Quote =
+    { id : Int
+    , imgsrc : String
+    , quote : String
     }
 
 
 type alias Testimonial =
-    { name : String
+    { id : Int
+    , name : String
     , age : String
     , imgsrc : String
     , therapy : String
@@ -44,3 +52,4 @@ type Msg
     = Change String
     | UrlChange Navigation.Location
     | ToggleServiceListItem String
+    | SelectTestimonial Int
