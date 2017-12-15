@@ -61,6 +61,13 @@ margin: 0 auto;
   background-position: center;
 }
 
+
+.purple-line{
+  border-bottom: 4px solid #70277D;
+  width: 30vw;
+}
+
 .pa-25 {
   padding-top: 20vh;
+
 }
