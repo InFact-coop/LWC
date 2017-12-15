@@ -44,7 +44,7 @@ formPage model =
                 [ a [ class "no-underline white", href "#thank-you" ] [ text "Submit" ]
                 ]
             , div [ class "ba br1 w-100 pa3 tc ba b--purple mt3 br1 dim" ]
-                [ a [ class "no-underline", href "#thank-you" ] [ text "Back" ]
+                [ a [ class "no-underline", href "#services" ] [ text "Back" ]
                 ]
             ]
         ]
