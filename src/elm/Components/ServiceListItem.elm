@@ -16,9 +16,9 @@ serviceListItem ( isVisible, title, description ) =
 
 serviceListItemHidden : String -> Html Msg
 serviceListItemHidden title =
-    li [ class "container db" ]
-        [ div [ class "ba b--solid b--purple br2 pa3 bg-white mb2", onClick (ToggleServiceListItem title) ]
-            [ span [ class "purple v-mid" ]
+    li [ class "container db mb3" ]
+        [ div [ class "ba b--solid b--purple br3 pa3 bg-white", onClick (ToggleServiceListItem title) ]
+            [ span [ class "b purple v-mid" ]
                 [ text title ]
             , div [ class "dib chevron-purple v-mid absolute right-2" ] []
             ]
@@ -27,10 +27,11 @@ serviceListItemHidden title =
 
 serviceListItemVisible : String -> String -> Html Msg
 serviceListItemVisible title description =
-    li [ class "container db" ]
-        [ div [ class "ba b--solid b--purple pa3 br2 bg-purple mb2", onClick (ToggleServiceListItem title) ]
-            [ span [ class "v-mid white" ]
+    li [ class "container db ba b--solid b--purple br3 mb3" ]
+        [ div [ class "ba b--solid br--top b--purple pa3 br2 bg-purple", onClick (ToggleServiceListItem title) ]
+            [ span [ class "b v-mid white" ]
                 [ text title ]
             , div [ class "dib v-mid absolute right-2 chevron-white" ] []
             ]
+        , div [ class "pa3 gray" ] [ text description ]
         ]
