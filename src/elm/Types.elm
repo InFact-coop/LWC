@@ -20,6 +20,7 @@ type alias Model =
     { route : Route
     , userInput : String
     , services : List ( Bool, String, String )
+    , quotes : List ( String, String )
     }
 
 
