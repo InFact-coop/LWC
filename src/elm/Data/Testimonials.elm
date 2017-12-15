@@ -9,6 +9,7 @@ defaultTestimonial : Testimonial
 defaultTestimonial =
     { name = "Linda"
     , age = "37"
+    , imgsrc = "./assets/woman2.png"
     , therapy = "Living Well"
     , description =
         section [ class "description" ]
@@ -38,6 +39,7 @@ testimonialsList : List Testimonial
 testimonialsList =
     [ { name = "Linda"
       , age = "37"
+      , imgsrc = "./assets/woman2.png"
       , therapy = "Living Well"
       , description =
             section [ class "description" ]
@@ -63,6 +65,7 @@ testimonialsList =
       }
     , { name = "Marticia"
       , age = "37"
+      , imgsrc = "./assets/woman1.png"
       , therapy = "Living Dandy"
       , description =
             section [ class "description" ]

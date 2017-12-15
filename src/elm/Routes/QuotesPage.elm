@@ -1,5 +1,7 @@
 module Routes.QuotesPage exposing (..)
 
+import Components.QuotesListItem exposing (..)
+import Components.Rule exposing (..)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
@@ -9,5 +11,24 @@ import Types exposing (..)
 quotesPage : Model -> Html Msg
 quotesPage model =
     div [ class "" ]
-        [ h1 [ class "tc f1" ] [ text "Quotes" ]
+        [ div [ class "f2 gray b ma4" ] [ text "Women like you" ]
+        , div [ class "gray fw1 ma4" ]
+            [ text "Knowing where to start can feel overwhelming sometimes. We want to help find the best service for you. Below are some examples of women who we’ve recently helped. To see what services they used click on find out more. " ]
+        , div
+            [ class "purple-line ma4" ]
+            []
+        , ul [ class "pa3" ]
+            (List.map
+                quotesListItem
+                model.quotes
+            )
+        , div [ class "bg-purple w-90 br2 pa3 m0-auto tc dim" ]
+            [ a [ href "#services", class "tc white no-underline" ] [ text "See full list of services" ]
+            ]
+        , div
+            [ class "mt3 mb5" ]
+            [ div [ class "bg-light-purple w-90 br2 pa3 tc m0-auto dim" ]
+                [ a [ href "#talk-to-us", class "tc white no-underline" ] [ text "Talk to us" ]
+                ]
+            ]
         ]

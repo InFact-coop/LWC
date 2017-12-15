@@ -21,6 +21,7 @@ type alias Model =
     { route : Route
     , userInput : String
     , services : List ( Bool, String, String )
+    , quotes : List ( String, String )
     , testimonials : List Testimonial
     , currentTestimonial : String
     }
@@ -28,8 +29,9 @@ type alias Model =
 
 type alias Testimonial =
     { name : String
-    , therapy : String
     , age : String
+    , imgsrc : String
+    , therapy : String
     , description : Html Msg
     }
 

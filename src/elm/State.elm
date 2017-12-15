@@ -1,6 +1,7 @@
 module State exposing (..)
 
 import Data.Testimonials exposing (..)
+import Data.Quotes exposing (..)
 import Data.Services exposing (..)
 import Types exposing (..)
 
@@ -15,6 +16,7 @@ initModel =
     , services = servicesList
     , testimonials = testimonialsList
     , currentTestimonial = ""
+    , quotes = quotesList
     }
 
 
