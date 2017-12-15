@@ -9,7 +9,7 @@ import Data.Services exposing (..)
 
 initModel : Model
 initModel =
-    { route = ServicesRoute
+    { route = LandingRoute
     , userInput = ""
     , services = servicesList
     }
