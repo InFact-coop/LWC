@@ -3,59 +3,59 @@ module Data.Services exposing (..)
 
 servicesList : List ( Bool, String, String )
 servicesList =
-    [ ( True
+    [ ( False
       , "Talking Therapies"
       , "Lorem ipsum"
       )
-    , ( True
+    , ( False
       , "Personal Development"
       , "Lorem ipsum"
       )
-    , ( True
+    , ( False
       , "Employment Support"
       , "Lorem ipsum"
       )
-    , ( True
+    , ( False
       , "Money & Benefits Advice"
       , "Lorem ipsum"
       )
-    , ( True
+    , ( False
       , "STEP"
       , "Lorem ipsum"
       )
-    , ( True
+    , ( False
       , "Peer Support Groups"
       , "Lorem ipsum"
       )
-    , ( True
+    , ( False
       , "Bodyfit"
       , "Lorem ipsum"
       )
-    , ( True
+    , ( False
       , "Digital Support"
       , "Lorem ipsum"
       )
-    , ( True
+    , ( False
       , "Legal Clinic"
       , "Lorem ipsum"
       )
-    , ( True
+    , ( False
       , "Workplace training"
       , "Lorem ipsum"
       )
-    , ( True
+    , ( False
       , "Volunteering"
       , "Lorem ipsum"
       )
-    , ( True
+    , ( False
       , "Mentoring"
       , "Lorem ipsum"
       )
-    , ( True
+    , ( False
       , "Family Work"
       , "Lorem ipsum"
       )
-    , ( True
+    , ( False
       , "Breaking the cycle"
       , "Lorem ipsum"
       )
