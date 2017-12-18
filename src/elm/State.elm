@@ -68,11 +68,8 @@ update msg model =
         Change newInput ->
             ( { model | userInput = newInput }, Cmd.none )
 
-        GoToTop ->
-            ( model, Task.attempt (always NoOp) (toTop "container") )
-
         UrlChange location ->
-            ( { model | route = getRoute location.hash }, Cmd.none )
+            ( { model | route = getRoute location.hash }, Task.attempt (always NoOp) (toTop "container") )
 
         ToggleServiceListItem name ->
             ( { model | services = List.map (\x -> toggleServiceListItem name x) model.services }, Cmd.none )
