@@ -1,5 +1,7 @@
 module State exposing (..)
 
+import Task exposing (..)
+import Dom.Scroll exposing (..)
 import Data.Quotes exposing (..)
 import Data.Services exposing (..)
 import Data.Testimonials exposing (..)
@@ -15,7 +17,7 @@ initModel =
     , userInput = ""
     , services = servicesList
     , testimonials = testimonialsList
-    , currentTestimonial = 4
+    , currentTestimonial = 1
     , quotes = quotesList
     }
 
@@ -67,10 +69,13 @@ update msg model =
             ( { model | userInput = newInput }, Cmd.none )
 
         UrlChange location ->
-            ( { model | route = getRoute location.hash }, Cmd.none )
+            ( { model | route = getRoute location.hash }, Task.attempt (always NoOp) (toTop "container") )
 
         ToggleServiceListItem name ->
             ( { model | services = List.map (\x -> toggleServiceListItem name x) model.services }, Cmd.none )
 
         SelectTestimonial id ->
             ( { model | currentTestimonial = id }, Cmd.none )
+
+        NoOp ->
+            ( model, Cmd.none )

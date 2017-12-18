@@ -49,7 +49,8 @@ type alias Testimonial =
 
 
 type Msg
-    = Change String
+    = NoOp
+    | Change String
     | UrlChange Navigation.Location
     | ToggleServiceListItem String
     | SelectTestimonial Int
