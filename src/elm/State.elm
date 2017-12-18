@@ -17,7 +17,7 @@ initModel =
     , userInput = ""
     , services = servicesList
     , testimonials = testimonialsList
-    , currentTestimonial = 4
+    , currentTestimonial = 1
     , quotes = quotesList
     }
 
@@ -69,7 +69,7 @@ update msg model =
             ( { model | userInput = newInput }, Cmd.none )
 
         GoToTop ->
-            ( model, Task.attempt (always NoOp) (toTop "page-body") )
+            ( model, Task.attempt (always NoOp) (toTop "container") )
 
         UrlChange location ->
             ( { model | route = getRoute location.hash }, Cmd.none )

@@ -1,6 +1,7 @@
 module View exposing (..)
 
 import Html exposing (..)
+import Html.Attributes exposing (..)
 
 
 -- My Elm Files
@@ -42,7 +43,7 @@ view model =
                 ThankYouRoute ->
                     thankYouPage model
     in
-        div []
+        div [ class "w-100 fixed overflow-y-scroll top-0 bottom-0", id "container" ]
             [ navBar model
             , page
             ]

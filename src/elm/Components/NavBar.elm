@@ -7,7 +7,7 @@ import Types exposing (..)
 
 navBar : Model -> Html Msg
 navBar model =
-    ul [ id "navBar", class "flex ma0 bg-white w-100 pa1 justify-between items-center" ]
+    ul [ class "flex ma0 bg-white w-100 pa1 justify-between items-center" ]
         [ li [ class "dib" ]
             [ img [ src "./assets/logo.jpg", class "ml1 h3 w3 v-mid" ] []
             ]
