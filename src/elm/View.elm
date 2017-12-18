@@ -43,7 +43,7 @@ view model =
                 ThankYouRoute ->
                     thankYouPage model
     in
-        div [ class "w-100 fixed overflow-y-scroll top-0 bottom-0", id "container" ]
+        div [ class "w-100 vh-100 fixed overflow-y-scroll top-0 bottom-0", id "container" ]
             [ navBar model
             , page
             ]
