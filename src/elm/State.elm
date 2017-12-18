@@ -1,5 +1,7 @@
 module State exposing (..)
 
+import Task exposing (..)
+import Dom.Scroll exposing (..)
 import Data.Quotes exposing (..)
 import Data.Services exposing (..)
 import Data.Testimonials exposing (..)
@@ -66,6 +68,9 @@ update msg model =
         Change newInput ->
             ( { model | userInput = newInput }, Cmd.none )
 
+        GoToTop ->
+            ( model, Task.attempt (always NoOp) (toTop "page-body") )
+
         UrlChange location ->
             ( { model | route = getRoute location.hash }, Cmd.none )
 
@@ -74,3 +79,6 @@ update msg model =
 
         SelectTestimonial id ->
             ( { model | currentTestimonial = id }, Cmd.none )
+
+        NoOp ->
+            ( model, Cmd.none )
