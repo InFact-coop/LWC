@@ -23,7 +23,7 @@ quotesList =
       }
     , { id = 5
       , imgsrc = "./assets/woman5.png"
-      , quote = "I suffer from sciatica pain and a rotator cuff injury, which made me feel miserable. Attending living well sessions helped make me feel more motivated."
+      , quote = "I suffer from sciatica pain and a rotator cuff injury, which made me feel miserable. Attending Living Well sessions helped make me feel more motivated."
       }
     , { id = 6
       , imgsrc = "./assets/woman6.png"
