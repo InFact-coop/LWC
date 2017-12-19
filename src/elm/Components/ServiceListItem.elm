@@ -6,32 +6,32 @@ import Html.Events exposing (..)
 import Types exposing (..)
 
 
-serviceListItem : ( Bool, String, String ) -> Html Msg
-serviceListItem ( isVisible, title, description ) =
+serviceListItem : Service -> Html Msg
+serviceListItem { id, name, isVisible, description } =
     if isVisible == True then
-        serviceListItemVisible title description
+        serviceListItemVisible id name description
     else
-        serviceListItemHidden title
+        serviceListItemHidden id name
 
 
-serviceListItemHidden : String -> Html Msg
-serviceListItemHidden title =
+serviceListItemHidden : Int -> String -> Html Msg
+serviceListItemHidden id name =
     li [ class "container db mb3" ]
-        [ div [ class "ba b--solid b--purple br3 pa3 bg-white", onClick (ToggleServiceListItem title) ]
+        [ div [ class "ba b--solid b--purple br3 pa3 bg-white", onClick (ToggleServiceListItem id) ]
             [ span [ class "b purple v-mid" ]
-                [ text title ]
+                [ text name ]
             , div [ class "dib chevron-purple v-mid absolute right-2" ] []
             ]
         ]
 
 
-serviceListItemVisible : String -> String -> Html Msg
-serviceListItemVisible title description =
+serviceListItemVisible : Int -> String -> Html Msg -> Html Msg
+serviceListItemVisible id name description =
     li [ class "container db ba b--solid b--purple br3 mb3" ]
-        [ div [ class "ba b--solid br--top b--purple pa3 br2 bg-purple", onClick (ToggleServiceListItem title) ]
+        [ div [ class "ba b--solid br--top b--purple pa3 br2 bg-purple", onClick (ToggleServiceListItem id) ]
             [ span [ class "b v-mid white" ]
-                [ text title ]
+                [ text name ]
             , div [ class "dib v-mid absolute right-2 chevron-white" ] []
             ]
-        , div [ class "pa3 gray" ] [ text description ]
+        , description
         ]

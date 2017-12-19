@@ -54,12 +54,16 @@ getRoute hash =
             LandingRoute
 
 
-toggleServiceListItem : String -> ( Bool, String, String ) -> ( Bool, String, String )
-toggleServiceListItem name ( isMappedVisible, mappedName, mappedDescription ) =
-    if name == mappedName then
-        ( not isMappedVisible, mappedName, mappedDescription )
-    else
-        ( False, mappedName, mappedDescription )
+toggleServiceListItem : Int -> Service -> Service
+toggleServiceListItem serviceId service =
+    let
+        mappedId =
+            service.id
+    in
+        if serviceId == mappedId then
+            { service | isVisible = not service.isVisible }
+        else
+            { service | isVisible = False }
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -71,8 +75,8 @@ update msg model =
         UrlChange location ->
             ( { model | route = getRoute location.hash }, Task.attempt (always NoOp) (toTop "container") )
 
-        ToggleServiceListItem name ->
-            ( { model | services = List.map (\x -> toggleServiceListItem name x) model.services }, Cmd.none )
+        ToggleServiceListItem int ->
+            ( { model | services = List.map (\x -> toggleServiceListItem int x) model.services }, Cmd.none )
 
         SelectTestimonial id ->
             ( { model | currentTestimonial = id }, Cmd.none )
