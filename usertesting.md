@@ -98,7 +98,7 @@ _*(Note: If they __have__ gone through LWC servies then they can use their own e
 > ..
 > 
 ---
-__*Task 2*__: Imagine you have been referred to LWC's services from a friend. She said that you could really benefit from their employment support service. Please use the app to learn more about the service and arrange for LWC to get in touch with you.  
+__*Task 2*__: Imagine you have been referred to LWC's services from a friend. She said that you could really benefit from some of their emotional wellbeing services. Please use the app to learn more about the services they offer and arrange for LWC to get in touch with you.  
 
 
 _*(Note: If they ever go silent gently remind them to carry on thinking out loud!)*_
