@@ -20,10 +20,18 @@ type Route
 type alias Model =
     { route : Route
     , userInput : String
-    , services : List ( Bool, String, String )
+    , services : List Service
     , quotes : List Quote
     , testimonials : List Testimonial
     , currentTestimonial : Int
+    }
+
+
+type alias Service =
+    { id : Int
+    , name : String
+    , isVisible : Bool
+    , description : Html Msg
     }
 
 
@@ -52,5 +60,5 @@ type Msg
     = NoOp
     | Change String
     | UrlChange Navigation.Location
-    | ToggleServiceListItem String
+    | ToggleServiceListItem Int
     | SelectTestimonial Int
