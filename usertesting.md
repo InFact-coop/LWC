@@ -6,7 +6,7 @@ Remember, you only need to test __5__ users to get enough feedback. Doesn't feel
 
 
 ## Before you begin :vertical_traffic_light: 
-* Recruit some users to test with - ideally this will be people who have never used the Blue Cross website but may be interested in giving up a pet, or someone who has given up a pet recently (possibly through Gumtree or preloved).
+* Recruit some users to test with - ideally this will be people who have never used the LWC website but may be interested in using the LWC services
 * Make sure you have a pad and pen to make notes, or you can also record the session with the candidate’s permission
 * Pay particular attention to any strong emotional words, and any usage challenges/unexpected uses of the app (don’t show them how to use it, just watch what they do) - make sure you capture _*everything*_!
 * __Any__ user is better than no users, even if they aren't perfect! 
