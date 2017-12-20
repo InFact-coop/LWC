@@ -160,3 +160,25 @@
   --washed-yellow:  #fffceb;
   --washed-red:  #ffdfdf;
 }
+
+/* Prefetching Images */
+
+:root:before {
+  content: url('./assets/hands.jpg')
+           url('./assets/burger.svg')
+           url('./assets/logo.jpg')
+           url('./assets/person.png')
+           url('./assets/phone.png')
+           url('./assets/purple-chevron.svg')
+           url('./assets/quote.svg')
+           url('./assets/white-chevron.svg')
+           url('./assets/woman1.png')
+           url('./assets/woman2.png')
+           url('./assets/woman3.png')
+           url('./assets/woman4.png')
+           url('./assets/woman5.png')
+           url('./assets/woman6.png');
+  visibility: hidden;
+  position: absolute;
+  left: -999em;
+}
