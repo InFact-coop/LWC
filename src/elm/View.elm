@@ -3,6 +3,7 @@ module View exposing (..)
 -- My Elm Files
 
 import Components.NavBar exposing (..)
+import Components.PurpleButton exposing (..)
 import Components.WhiteButton exposing (..)
 import Html exposing (..)
 import Html.Attributes exposing (..)

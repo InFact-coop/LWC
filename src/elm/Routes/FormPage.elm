@@ -1,5 +1,7 @@
 module Routes.FormPage exposing (..)
 
+import Components.ClearWhiteButton exposing (..)
+import Components.PurpleButton exposing (..)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
@@ -39,12 +41,6 @@ formPage model =
                 , input [ type_ "text", class "w-100 f4 gray fw1 bn" ] []
                 ]
             ]
-        , div [ class "mt3" ]
-            [ div [ class "ba br1 w-100 pa3 tc bg-purple white mt3 br1 dim" ]
-                [ a [ class "no-underline white", href "#thank-you" ] [ text "Submit" ]
-                ]
-            , div [ class "ba br1 w-100 pa3 tc ba b--purple mt3 br1 dim" ]
-                [ a [ class "no-underline", href "#talk-to-us" ] [ text "Back" ]
-                ]
-            ]
+        , purpleButton ( "Submit", "thank-you" )
+        , clearWhiteButton ( "Back", "talk-to-us" )
         ]

@@ -1,5 +1,6 @@
 module Routes.TalkToUsPage exposing (..)
 
+import Components.ClearWhiteButton exposing (..)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
@@ -23,7 +24,7 @@ talkToUsPage model =
             , img [ src "./assets/centre.png" ] []
             ]
         , div [ class "tc mt3 bb b--silver pb3" ]
-            [ div [ class " purple f3" ] [ text "Call us" ]
+            [ div [ class " purple f3" ] [ text "Call us on freephone" ]
             , div [ class "mt3 mb3" ]
                 [ text "0808 280 3160" ]
             , img [ src "./assets/phone.png" ] []
@@ -39,10 +40,5 @@ talkToUsPage model =
                 ]
             , img [ src "./assets/person.png" ] []
             ]
-        , div [ class "bg-white ba b--purple bg-purple tc pa3 mt4" ]
-            [ a [ href "#services", class "dim white no-underline" ] [ text "Back to services" ]
-            ]
-        , div [ class "bg-white ba b--purple tc pa3 mt3" ]
-            [ a [ class "dim purple no-underline", href "#quotes" ] [ text "Back to stories" ]
-            ]
+        , clearWhiteButton ( "Home", "landing" )
         ]

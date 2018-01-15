@@ -1,5 +1,6 @@
 module Routes.QuotesPage exposing (..)
 
+import Components.PurpleButton exposing (..)
 import Components.QuotesListItem exposing (..)
 import Components.Rule exposing (..)
 import Html exposing (..)
@@ -22,13 +23,6 @@ quotesPage model =
                 quotesListItem
                 model.quotes
             )
-        , div [ class "bg-purple w-90 br2 pa3 m0-auto tc dim" ]
-            [ a [ href "#services", class "tc white no-underline" ] [ text "See full list of services" ]
-            ]
-        , div
-            [ class "mt3 mb5" ]
-            [ div [ class "bg-light-purple w-90 br2 pa3 tc m0-auto dim" ]
-                [ a [ href "#talk-to-us", class "tc white no-underline" ] [ text "Talk to us" ]
-                ]
-            ]
+        , purpleButton ( "See our services", "services" )
+        , purpleButton ( "Contact us", "talk-to-us" )
         ]
