@@ -1,7 +1,7 @@
 module Types exposing (..)
 
-import Navigation
 import Html exposing (..)
+import Navigation
 
 
 -- Model
@@ -49,6 +49,12 @@ type alias Testimonial =
     , imgsrc : String
     , therapy : String
     , description : Html Msg
+    }
+
+
+type alias Button =
+    { name : String
+    , route : String
     }
 
 
