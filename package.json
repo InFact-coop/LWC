@@ -1,15 +1,22 @@
 {
-  "name": "LWC",
+  "name": "lwc",
   "version": "1.0.0",
   "description": "Find the help that speaks to you",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "devbug": "elm-live src/elm/Main.elm --output=public/elm.js --dir=public --open --debug --pushstate & npm run css-watch",
-    "dev": "elm-live src/elm/Main.elm --output=public/elm.js --dir=public --open  --pushstate & npm run css-watch",
-    "build": "npm run css-build; elm-make src/elm/Main.elm --output=public/elm.js",
-    "css-watch": "postcss ./src/css/index.css --output ./public/style.min.css --watch --config ./postcss.config.js",
-    "css-build": "postcss ./src/css/index.css --output ./public/style.min.css --config ./postcss.config.js"
+    "test": "mocha ./tests/*  ",
+    "devbug":
+      "elm-live src/elm/Main.elm --output=public/elm.js --dir=public --open --debug --pushstate & npm run css-watch",
+    "dev":
+      "elm-live src/elm/Main.elm --output=public/elm.js --dir=public --open  --pushstate & npm run css-watch",
+    "build":
+      "npm run css-build; elm-make src/elm/Main.elm --output=public/elm.js",
+    "css-watch":
+      "postcss ./src/css/index.css --output ./public/style.min.css --watch --config ./postcss.config.js",
+    "css-build":
+      "postcss ./src/css/index.css --output ./public/style.min.css --config ./postcss.config.js",
+    "dev-server": "nodemon ./src/server/start",
+    "start": "node ./src/server/start"
   },
   "repository": {
     "type": "git",
@@ -22,15 +29,21 @@
   },
   "homepage": "https://github.com/InFact-coop/LWC#readme",
   "devDependencies": {
-    "elm-live": "^2.7.5",
     "autoprefixer": "^7.1.6",
+    "chai": "^4.1.2",
+    "elm-live": "^2.7.5",
+    "mocha": "^4.1.0",
+    "nodemon": "^1.14.11",
     "postcss-clean": "^1.1.0",
     "postcss-cli": "^4.1.1",
     "postcss-custom-media": "^6.0.0",
     "postcss-custom-properties": "^6.2.0",
-    "postcss-import": "^11.0.0"
+    "postcss-import": "^11.0.0",
+    "supertest": "^3.0.0"
   },
   "dependencies": {
-    "tachyons-custom": "^4.9.0"
+    "tachyons-custom": "^4.9.0",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2"
   }
 }
