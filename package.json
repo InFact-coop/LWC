@@ -9,7 +9,8 @@
       "elm-live src/elm/Main.elm --output=public/elm.js --dir=public --open --debug --pushstate & npm run css-watch",
     "dev":
       "elm-live src/elm/Main.elm --output=public/elm.js --dir=public --open  --pushstate & npm run css-watch",
-    "build": "elm-make src/elm/Main.elm --output=public/elm.js --yes",
+    "build":
+      "npm run css-build; elm-make src/elm/Main.elm --output=public/elm.js --yes",
     "css-watch":
       "postcss ./src/css/index.css --output ./public/style.min.css --watch --config ./postcss.config.js",
     "css-build":
