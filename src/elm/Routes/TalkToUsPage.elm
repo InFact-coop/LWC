@@ -23,7 +23,7 @@ talkToUsPage model =
             , img [ src "./assets/centre.png" ] []
             ]
         , div [ class "tc mt3 bb b--silver pb3" ]
-            [ div [ class " purple f3" ] [ text "Call us" ]
+            [ div [ class " purple f3" ] [ text "Call us on freephone" ]
             , div [ class "mt3 mb3" ]
                 [ text "0808 280 3160" ]
             , img [ src "./assets/phone.png" ] []

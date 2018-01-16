@@ -1,10 +1,10 @@
 module State exposing (..)
 
-import Task exposing (..)
-import Dom.Scroll exposing (..)
 import Data.Quotes exposing (..)
 import Data.Services exposing (..)
 import Data.Testimonials exposing (..)
+import Dom.Scroll exposing (..)
+import Task exposing (..)
 import Types exposing (..)
 
 
@@ -60,10 +60,10 @@ toggleServiceListItem serviceId service =
         mappedId =
             service.id
     in
-        if serviceId == mappedId then
-            { service | isVisible = not service.isVisible }
-        else
-            { service | isVisible = False }
+    if serviceId == mappedId then
+        { service | isVisible = not service.isVisible }
+    else
+        { service | isVisible = False }
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
