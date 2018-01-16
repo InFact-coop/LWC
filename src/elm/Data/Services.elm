@@ -33,6 +33,9 @@ servicesList =
                     , emphasis "Talking Therapies: "
                     , text "enable you to improve your mood, build confidence and self esteem and feel better about your emotional and physical health and have better relationships with others. "
                     ]
+                , a [ href "#talk-to-us", class "no-underline tc flex justify-center" ]
+                    [ p [ class "tc no-underline w-50 pt2 pb2 pl3 pr3 bg-purple br1 white dim" ] [ text "Contact us" ]
+                    ]
                 ]
       }
     , { id = 2
@@ -60,6 +63,9 @@ servicesList =
                     , br [] []
                     , emphasis "The Prize: "
                     , text "which adds the final touches and polishes new skills to achieve lasting positive changes."
+                    ]
+                , a [ href "#talk-to-us", class "no-underline tc flex justify-center" ]
+                    [ p [ class "tc no-underline w-50 pt2 pb2 pl3 pr3 bg-purple br1 white dim" ] [ text "Contact us" ]
                     ]
                 ]
       }
@@ -103,6 +109,9 @@ servicesList =
                     , emphasis "Legal Clinics. "
                     , text "We work with a number of local solicitors who provide free legal clinics at our centres."
                     ]
+                , a [ href "#talk-to-us", class "no-underline tc flex justify-center" ]
+                    [ p [ class "tc no-underline w-50 pt2 pb2 pl3 pr3 bg-purple br1 white dim" ] [ text "Contact us" ]
+                    ]
                 ]
       }
     , { id = 4
@@ -135,6 +144,9 @@ servicesList =
                     , emphasis "support and impartial advice"
                     , text " to those in need."
                     ]
+                , a [ href "#talk-to-us", class "no-underline tc flex justify-center" ]
+                    [ p [ class "tc no-underline w-50 pt2 pb2 pl3 pr3 bg-purple br1 white dim" ] [ text "Contact us" ]
+                    ]
                 ]
       }
     , { id = 5
@@ -151,7 +163,10 @@ servicesList =
                     , emphasis "Spare Time"
                     , text " to "
                     , emphasis "Support Others"
-                    , text ". Volunteers are at the heart of our centres. If you want to get involved, meet new people, learn new skills or rediscover old ones then please get in touch with your local centre. We have "
+                    , text "."
+                    ]
+                , p []
+                    [ text "Volunteers are at the heart of our centres. If you want to get involved, meet new people, learn new skills or rediscover old ones then please get in touch with your local centre. We have "
                     , emphasis "lots of projects"
                     , text " and work streams where we are dependent on Volunteers and Mentors, just as we also need general volunteers and mentors as there are times in all our lives when we could really benefit from the "
                     , emphasis "help of another person"
@@ -159,7 +174,10 @@ servicesList =
                     , emphasis "discuss options with"
                     , text ", someone to talk through "
                     , emphasis "ideas for the future"
-                    , text " or support with forms and appointments or advice on the internal services we can offer. Mentoring offers you the opportunity to develop a "
+                    , text " or support with forms and appointments or advice on the internal services we can offer."
+                    ]
+                , p []
+                    [ text " Mentoring offers you the opportunity to develop a "
                     , emphasis "relationship that is based on trust"
                     , text ", confidentiality and mutual involvement to set goals and decide achievements. Your sessions will involve "
                     , emphasis "setting personal goals, guidance"
@@ -167,27 +185,12 @@ servicesList =
                     , emphasis "action planning"
                     , text " to help a successful outcome."
                     ]
-                ]
-      }
-    , { id = 6
-      , name = "Women in Crisis"
-      , isVisible = False
-      , description =
-            section [ class "description-service pa3 gray" ]
-                [ p []
-                    [ text " We continue to build upon the recommendations of Baroness Corston’s 2007 report into "
-                    , emphasis "women in the criminal justice system"
-                    , text " and have developed a package of services which provide a gendered considered response to the issues of "
-                    , emphasis "female offending behaviour"
-                    , text ". Using this approach, we support a number of localised multi agency programmes where we are able to use our expertise in the provision of gender specific interventions to "
-                    , emphasis "improve outcomes for women"
-                    , text ". We now offer a package of services which work with women at all points in the criminal justice system, as well as "
-                    , emphasis "women at risk of offending"
-                    , text ", placing staff within police custody and prison settings to support engagement as well as further extending our community provision."
+                , a [ href "http://womenscentre.org/how-you-can-help/volunteer", class "no-underline tc flex justify-center" ]
+                    [ p [ class "tc no-underline w-50 pt2 pb2 pl3 pr3 bg-purple br1 white dim" ] [ text "Find out more" ]
                     ]
                 ]
       }
-    , { id = 7
+    , { id = 6
       , name = "Meeting Others"
       , isVisible = False
       , description =
@@ -200,6 +203,9 @@ servicesList =
                     , text ". Come along to this informal, friendly "
                     , emphasis "Peer Support group"
                     , text " for a brew & chat"
+                    ]
+                , a [ href "#talk-to-us", class "no-underline tc flex justify-center" ]
+                    [ p [ class "tc no-underline w-50 pt2 pb2 pl3 pr3 bg-purple br1 white dim" ] [ text "Contact us" ]
                     ]
                 ]
       }
