@@ -25,7 +25,6 @@ describe("Static files", () => {
       .end((err, res) => {
         expect(res.statusCode).to.equal(200);
         expect(res.type).to.equal("text/css");
-
         done();
       });
   });
