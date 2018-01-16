@@ -1,3 +1,5 @@
+require("../../config.js");
+
 const should = require("chai").should();
 const expect = require("chai").expect;
 const supertest = require("supertest");
@@ -36,5 +38,44 @@ describe("Static files", () => {
         expect(res.type).to.equal("application/javascript");
         done();
       });
+  });
+});
+
+describe("API testing", () => {
+  describe("POST :/api/v1/user_form", () => {
+    it("Should get JSON back", done => {
+      supertest(app)
+        .post("/api/v1/help_form")
+        .end((err, res) => {
+          expect(res.statusCode).to.equal(200);
+          expect(res.type).to.equal("application/json");
+          done();
+        });
+    });
+    it("Should get success:true back", () => {
+      supertest(app)
+        .post("/api/v1/help_form")
+        .then(res => {
+          expect(res.statusCode).to.equal(200);
+          expect(res.body.success).to.equal(true);
+        })
+        .catch(err => console.log(err));
+    });
+    it("Should get success:true back", () => {
+      supertest(app)
+        .post("/api/v1/help_form")
+        .send({
+          Name: "Matt",
+          DOB: "2018-01-24",
+          "Contact Number": "056789998",
+          Email: "m@m.m",
+          Postcode: "m34 3hr"
+        })
+        .then(res => {
+          expect(res.statusCode).to.equal(200);
+          expect(res.body.success).to.equal(true);
+        })
+        .catch(err => console.log(err));
+    });
   });
 });

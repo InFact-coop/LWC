@@ -4,18 +4,14 @@
   "description": "Find the help that speaks to you",
   "main": "index.js",
   "scripts": {
-    "test": "mocha ./tests/*  ",
-    "devbug":
-      "elm-live src/elm/Main.elm --output=public/elm.js --dir=public --open --debug --pushstate & npm run css-watch",
-    "dev":
-      "elm-live src/elm/Main.elm --output=public/elm.js --dir=public --open  --pushstate & npm run css-watch",
-    "build":
-      "npm run css-build; elm-make src/elm/Main.elm --output=public/elm.js --yes",
-    "css-watch":
-      "postcss ./src/css/index.css --output ./public/style.min.css --watch --config ./postcss.config.js",
-    "css-build":
-      "postcss ./src/css/index.css --output ./public/style.min.css --config ./postcss.config.js",
-    "dev-server": "nodemon ./src/server/start",
+    "test": "NODE_ENV=test mocha ./tests/*  ",
+    "test:watch": "NODE_ENV=test mocha ./tests/* --watch",
+    "devbug": "elm-live src/elm/Main.elm --output=public/elm.js --dir=public --open --debug --pushstate & npm run css-watch",
+    "dev": "elm-live src/elm/Main.elm --output=public/elm.js --dir=public --open  --pushstate & npm run css-watch",
+    "build": "npm run css-build; elm-make src/elm/Main.elm --output=public/elm.js --yes",
+    "css-watch": "postcss ./src/css/index.css --output ./public/style.min.css --watch --config ./postcss.config.js",
+    "css-build": "postcss ./src/css/index.css --output ./public/style.min.css --config ./postcss.config.js",
+    "dev-server": "NODE_ENV=development nodemon ./src/server/start",
     "heroku-postbuild": "npm run build",
     "start": "node ./src/server/start"
   },
@@ -31,12 +27,15 @@
   "homepage": "https://github.com/InFact-coop/LWC#readme",
   "devDependencies": {
     "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
+    "dotenv": "^4.0.0",
+    "elm-live": "^2.7.5",
     "mocha": "^4.1.0",
     "nodemon": "^1.14.11",
-    "elm-live": "^2.7.5",
     "supertest": "^3.0.0"
   },
   "dependencies": {
+    "airtable": "^0.5.2",
     "autoprefixer": "^7.1.6",
     "body-parser": "^1.18.2",
     "elm": "^0.18.0",
