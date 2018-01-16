@@ -32,16 +32,16 @@
   "devDependencies": {
     "autoprefixer": "^7.1.6",
     "chai": "^4.1.2",
-    "elm-live": "^2.7.5",
     "mocha": "^4.1.0",
     "nodemon": "^1.14.11",
+    "supertest": "^3.0.0"
+  },
+  "dependencies": {
+    "elm-live": "^2.7.5",
     "postcss-clean": "^1.1.0",
     "postcss-custom-media": "^6.0.0",
     "postcss-custom-properties": "^6.2.0",
     "postcss-import": "^11.0.0",
-    "supertest": "^3.0.0"
-  },
-  "dependencies": {
     "postcss-cli": "^4.1.1",
     "tachyons-custom": "^4.9.0",
     "body-parser": "^1.18.2",
