@@ -16,6 +16,7 @@
     "css-build":
       "postcss ./src/css/index.css --output ./public/style.min.css --config ./postcss.config.js",
     "dev-server": "nodemon ./src/server/start",
+    "heroku-postbuild": "npm run build",
     "start": "node ./src/server/start"
   },
   "repository": {
