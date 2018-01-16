@@ -1,6 +1,6 @@
 module Routes.TalkToUsPage exposing (..)
 
-import Components.ClearWhiteButton exposing (..)
+import Components.Buttons exposing (..)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)

@@ -1,6 +1,6 @@
 module Routes.LandingPage exposing (..)
 
-import Components.WhiteButton exposing (..)
+import Components.Buttons exposing (..)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Types exposing (..)

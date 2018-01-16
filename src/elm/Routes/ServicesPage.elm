@@ -2,8 +2,7 @@ module Routes.ServicesPage exposing (..)
 
 -- import Html.Events exposing (..)
 
-import Components.ClearWhiteButton exposing (..)
-import Components.PurpleButton exposing (..)
+import Components.Buttons exposing (..)
 import Components.Rule exposing (..)
 import Components.ServiceListItem exposing (..)
 import Html exposing (..)

@@ -1,6 +1,6 @@
 module Routes.QuotesPage exposing (..)
 
-import Components.PurpleButton exposing (..)
+import Components.Buttons exposing (..)
 import Components.QuotesListItem exposing (..)
 import Components.Rule exposing (..)
 import Html exposing (..)

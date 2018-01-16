@@ -1,7 +1,6 @@
 module Routes.DetailedQuotePage exposing (..)
 
-import Components.ClearWhiteButton exposing (..)
-import Components.PurpleButton exposing (..)
+import Components.Buttons exposing (..)
 import Components.TestimonialSection exposing (..)
 import Html exposing (..)
 import Html.Attributes exposing (..)
