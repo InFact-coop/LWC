@@ -27,8 +27,8 @@ helpFormEncoder helpForm =
     Encode.object attributes
 
 
-basePlayersUrl : String
-basePlayersUrl =
+baseUrl : String
+baseUrl =
     "http://localhost:4000/api/v1/help_form"
 
 
@@ -47,7 +47,7 @@ methodRequest method url encodedBody decoder =
 
 postFormRequest : HelpForm -> Http.Request FormResponse
 postFormRequest helpForm =
-    methodRequest "POST" basePlayersUrl (helpFormEncoder helpForm) formResponseDecoder
+    methodRequest "POST" baseUrl (helpFormEncoder helpForm) formResponseDecoder
 
 
 sendFormCmd : HelpForm -> Cmd Msg
