@@ -8,7 +8,8 @@ Airtable.configure({
 });
 
 router.route("/help_form").post((req, res, next) => {
-  base(process.env.AIRTABLE_TABLE).create(req.body, (err, record) => {
+  const newRow = Object.assign(req.body, { DOB: new Date(req.body.DOB) });
+  base(process.env.AIRTABLE_TABLE).create(newRow, (err, record) => {
     if (err) {
       return res.json({ success: false });
     }
