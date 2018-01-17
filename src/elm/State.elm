@@ -14,7 +14,7 @@ import Types exposing (..)
 
 initModel : Model
 initModel =
-    { route = FormRoute
+    { route = LandingRoute
     , formSent = Nothing
     , services = servicesList
     , testimonials = testimonialsList
