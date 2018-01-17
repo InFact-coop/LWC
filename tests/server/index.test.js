@@ -16,6 +16,9 @@ describe("Static files", () => {
     supertest(app)
       .get("/")
       .end((err, res) => {
+        if (err) {
+          done(err);
+        }
         expect(res.statusCode).to.equal(200);
         expect(res.type).to.equal("text/html");
         done();
@@ -25,6 +28,9 @@ describe("Static files", () => {
     supertest(app)
       .get("/style.min.css")
       .end((err, res) => {
+        if (err) {
+          done(err);
+        }
         expect(res.statusCode).to.equal(200);
         expect(res.type).to.equal("text/css");
         done();
@@ -34,6 +40,9 @@ describe("Static files", () => {
     supertest(app)
       .get("/elm.js")
       .end((err, res) => {
+        if (err) {
+          done(err);
+        }
         expect(res.statusCode).to.equal(200);
         expect(res.type).to.equal("application/javascript");
         done();
@@ -47,21 +56,27 @@ describe("API testing", () => {
       supertest(app)
         .post("/api/v1/help_form")
         .end((err, res) => {
+          if (err) {
+            done(err);
+          }
           expect(res.statusCode).to.equal(200);
           expect(res.type).to.equal("application/json");
           done();
         });
     });
-    it("Should get success:true back", () => {
+    it("Should get success:true back when sending empty", done => {
       supertest(app)
         .post("/api/v1/help_form")
-        .then(res => {
+        .end((err, res) => {
+          if (err) {
+            done(err);
+          }
           expect(res.statusCode).to.equal(200);
           expect(res.body.success).to.equal(true);
-        })
-        .catch(err => console.log(err));
+          done();
+        });
     });
-    it("Should get success:true back", () => {
+    it("Should get success:true back when sending info", done => {
       supertest(app)
         .post("/api/v1/help_form")
         .send({
@@ -71,11 +86,14 @@ describe("API testing", () => {
           Email: "m@m.m",
           Postcode: "m34 3hr"
         })
-        .then(res => {
+        .end((err, res) => {
+          if (err) {
+            done(err);
+          }
           expect(res.statusCode).to.equal(200);
           expect(res.body.success).to.equal(true);
-        })
-        .catch(err => console.log(err));
+          done();
+        });
     });
   });
 });
