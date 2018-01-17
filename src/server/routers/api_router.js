@@ -11,6 +11,7 @@ router.route("/help_form").post((req, res, next) => {
   const newRow = Object.assign(req.body, { DOB: new Date(req.body.DOB) });
   base(process.env.AIRTABLE_TABLE).create(newRow, (err, record) => {
     if (err) {
+      console.log(err);
       return res.json({ success: false });
     }
     return res.json({ success: true });
