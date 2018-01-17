@@ -10,7 +10,7 @@ AIRTABLE_BASE_TEST=
 AIRTABLE_TABLE=
 ```
 
-To fill these out either create your own airtable bases, or contact the developers.
+To fill these out [check the airtable api docs](https://airtable.com/api) selecting the base you want to work with.
 
 run the following commands:
 
