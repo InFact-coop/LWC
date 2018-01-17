@@ -19,6 +19,7 @@ initModel =
     , testimonials = testimonialsList
     , currentTestimonial = 1
     , quotes = quotesList
+    , newHelpForm = HelpForm "" "" "" "" ""
     }
 
 
@@ -83,3 +84,37 @@ update msg model =
 
         NoOp ->
             ( model, Cmd.none )
+        ChangeFormName helpForm name ->
+            let
+                newHelpForm =
+                    { helpForm | name = name }
+            in
+            ( { model | newHelpForm = newHelpForm }, Cmd.none )
+
+        ChangeFormDOB helpForm dob ->
+            let
+                newHelpForm =
+                    { helpForm | dob = dob }
+            in
+            ( { model | newHelpForm = newHelpForm }, Cmd.none )
+
+        ChangeFormNumber helpForm number ->
+            let
+                newHelpForm =
+                    { helpForm | contactNumber = number }
+            in
+            ( { model | newHelpForm = newHelpForm }, Cmd.none )
+
+        ChangeFormEmail helpForm email ->
+            let
+                newHelpForm =
+                    { helpForm | email = email }
+            in
+            ( { model | newHelpForm = newHelpForm }, Cmd.none )
+
+        ChangeFormPostcode helpForm postcode ->
+            let
+                newHelpForm =
+                    { helpForm | postcode = postcode }
+            in
+            ( { model | newHelpForm = newHelpForm }, Cmd.none )
