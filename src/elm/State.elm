@@ -1,5 +1,6 @@
 module State exposing (..)
 
+import Commands exposing (..)
 import Data.Quotes exposing (..)
 import Data.Services exposing (..)
 import Data.Testimonials exposing (..)
@@ -13,8 +14,8 @@ import Types exposing (..)
 
 initModel : Model
 initModel =
-    { route = LandingRoute
-    , userInput = ""
+    { route = FormRoute
+    , formSent = Nothing
     , services = servicesList
     , testimonials = testimonialsList
     , currentTestimonial = 1
@@ -70,9 +71,6 @@ toggleServiceListItem serviceId service =
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
-        Change newInput ->
-            ( { model | userInput = newInput }, Cmd.none )
-
         UrlChange location ->
             ( { model | route = getRoute location.hash }, Task.attempt (always NoOp) (toTop "container") )
 
@@ -84,6 +82,7 @@ update msg model =
 
         NoOp ->
             ( model, Cmd.none )
+
         ChangeFormName helpForm name ->
             let
                 newHelpForm =
@@ -118,3 +117,17 @@ update msg model =
                     { helpForm | postcode = postcode }
             in
             ( { model | newHelpForm = newHelpForm }, Cmd.none )
+
+        SendHelpForm ->
+            ( { model | newHelpForm = HelpForm "" "" "" "" "", formSent = Just Pending }, sendFormCmd model.newHelpForm )
+
+        OnFormSent (Ok result) ->
+            case result.success of
+                True ->
+                    ( { model | formSent = Just Success }, Cmd.none )
+
+                False ->
+                    ( { model | formSent = Just Failure }, Cmd.none )
+
+        OnFormSent (Err result) ->
+            ( { model | formSent = Just Failure }, Cmd.none )
