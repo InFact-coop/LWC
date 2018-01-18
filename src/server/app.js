@@ -12,4 +12,9 @@ app.use(express.static("public"));
 
 app.use("/api/v1/", api_router);
 
+app.use((err, req, res, next) => {
+  console.log(err.errors[0].messages[0]);
+  res.status(400).json(err);
+});
+
 module.exports = app;

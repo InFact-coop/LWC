@@ -1,6 +1,8 @@
 const router = require("express").Router();
+const validate = require("express-validation");
 const Airtable = require("airtable");
 const base = Airtable.base(process.env.AIRTABLE_BASE);
+const formValidator = require("../validation/form");
 
 Airtable.configure({
   endpointUrl: "https://api.airtable.com",
@@ -18,6 +20,6 @@ const postController = (req, res, next) => {
   });
 };
 
-router.route("/help_form").post(postController);
+router.route("/help_form").post(validate(formValidator), postController);
 
 module.exports = router;

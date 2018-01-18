@@ -52,19 +52,7 @@ describe("Static files", () => {
 
 describe("API testing", () => {
   describe("POST :/api/v1/user_form", () => {
-    it("Should get JSON back", done => {
-      supertest(app)
-        .post("/api/v1/help_form")
-        .end((err, res) => {
-          if (err) {
-            done(err);
-          }
-          expect(res.statusCode).to.equal(200);
-          expect(res.type).to.equal("application/json");
-          done();
-        });
-    });
-    it("Should get success:true back when sending empty", done => {
+    it("Should get 5 errors back when sending empty", done => {
       supertest(app)
         .post("/api/v1/help_form")
         .end((err, res) => {
@@ -73,11 +61,17 @@ describe("API testing", () => {
           }
           expect(res.statusCode).to.equal(400);
           const response = JSON.parse(res.text);
-          response.errors.length.should.equal(1);
-          response.errors[0].messages.length.should.equal(2);
+          const errors = response.errors;
+          errors.length.should.equal(5);
+          errors[0].messages[0].should.equal('"Name" is required');
+          errors[1].messages[0].should.equal('"DOB" is required');
+          errors[2].messages[0].should.equal('"Contact Number" is required');
+          errors[3].messages[0].should.equal('"Email" is required');
+          errors[4].messages[0].should.equal('"Postcode" is required');
           done();
         });
     });
+
     it("Should get success:true back when sending info", done => {
       supertest(app)
         .post("/api/v1/help_form")
@@ -92,6 +86,7 @@ describe("API testing", () => {
           if (err) {
             done(err);
           }
+          expect(res.type).to.equal("application/json");
           expect(res.statusCode).to.equal(200);
           expect(res.body.success).to.equal(true);
           done();
