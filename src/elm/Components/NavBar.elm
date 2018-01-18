@@ -10,16 +10,16 @@ navbar : Model -> Html Msg
 navbar model =
     let
         navImg =
-            [ a [ href "/#", class "ml5 dn db-ns" ] [ img [ src "./assets/logo.jpg", class "h4" ] [] ] ]
+            [ a [ href "/#", class "ml5 dn db-l" ] [ img [ src "./assets/logo.jpg", class "h4" ] [] ] ]
     in
-    ul [ class "black dib-ns ma0 navbar w-100 pa2-ns flex justify-between dn" ] <|
+    ul [ class "black dib-l ma0 navbar w-100 pa2-l flex justify-between dn" ] <|
         navImg
             ++ [ div [] <| navbarContent model ]
 
 
 navbarLink : ( String, String, Bool ) -> Html Msg
 navbarLink ( linkStr, name, onPage ) =
-    li [ class "list dib-ns ma3 v-top mt4 mr5 mb4 f4 dn" ]
+    li [ class "list dib-l ma3 v-top mt4 mr5 mb4 f4 dn" ]
         [ a
             [ class "b--purple no-underline black wide-spacing pb2"
             , classList [ ( "bb", onPage ) ]

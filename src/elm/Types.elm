@@ -24,6 +24,7 @@ type alias Model =
     , quotes : List Quote
     , testimonials : List Testimonial
     , currentTestimonial : Int
+    , burgerVisible : Bool
     }
 
 
@@ -68,3 +69,4 @@ type Msg
     | UrlChange Navigation.Location
     | ToggleServiceListItem Int
     | SelectTestimonial Int
+    | ToggleBurgerMenu

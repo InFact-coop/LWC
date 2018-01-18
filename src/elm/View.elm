@@ -2,6 +2,7 @@ module View exposing (..)
 
 -- My Elm Files
 
+import Components.BurgerNavBar exposing (..)
 import Components.NavBar exposing (..)
 import Html exposing (..)
 import Html.Attributes exposing (..)
@@ -43,5 +44,6 @@ view model =
     in
     div [ class "w-100 fixed overflow-y-scroll top-0 bottom-0", id "container" ]
         [ navbar model
+        , burgerNavBar model
         , page
         ]

@@ -19,6 +19,7 @@ initModel =
     , testimonials = testimonialsList
     , currentTestimonial = 1
     , quotes = quotesList
+    , burgerVisible = True
     }
 
 
@@ -83,3 +84,6 @@ update msg model =
 
         NoOp ->
             ( model, Cmd.none )
+
+        ToggleBurgerMenu ->
+            ( { model | burgerVisible = not model.burgerVisible }, Cmd.none )
