@@ -71,8 +71,10 @@ describe("API testing", () => {
           if (err) {
             done(err);
           }
-          expect(res.statusCode).to.equal(200);
-          expect(res.body.success).to.equal(true);
+          expect(res.statusCode).to.equal(400);
+          const response = JSON.parse(res.text);
+          response.errors.length.should.equal(1);
+          response.errors[0].messages.length.should.equal(2);
           done();
         });
     });
