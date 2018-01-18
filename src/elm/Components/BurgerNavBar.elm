@@ -17,7 +17,7 @@ burgerNavBar model =
 
 burgerNavBarVisible : Html Msg
 burgerNavBarVisible =
-    div [ class "dn-l" ]
+    div [ class "dn-l " ]
         [ a [ href "/#", class "ml4" ] [ img [ src "./assets/logo.jpg", class "h3" ] [] ]
         , img [ src "./assets/burger.png", class "fr ma3", onClick ToggleBurgerMenu ] []
         ]
@@ -25,7 +25,7 @@ burgerNavBarVisible =
 
 burgerNavBarHidden : Html Msg
 burgerNavBarHidden =
-    div [ class "dn-l" ] <|
+    div [ class "dn-l bb b--purple" ] <|
         [ a [ href "/#", class "ml4" ] [ img [ src "./assets/logo.jpg", class "h3" ] [] ]
         , img [ src "./assets/purplecross.png", class "fr ma3", onClick ToggleBurgerMenu ] []
         ]
@@ -49,12 +49,3 @@ navbarContent =
         , ( "Our Services", "services" )
         , ( "Contact Us", "talk-to-us" )
         ]
-
-
-
---         [ ( "#home", "Home", isActivePage model "#landing" )
---         , ( "#quotes", "Real Stories", isActivePage model "#quotes" )
---         , ( "#services", "Our Services", isActivePage model "#services" )
---         , ( "#talk-to-us", "Contact Us", isActivePage model "#talk-to-us" )
---         ]
--- --

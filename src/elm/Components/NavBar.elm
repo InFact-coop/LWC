@@ -12,7 +12,7 @@ navbar model =
         navImg =
             [ a [ href "/#", class "ml5 dn db-l" ] [ img [ src "./assets/logo.jpg", class "h4" ] [] ] ]
     in
-    ul [ class "black dib-l ma0 navbar w-100 pa2-l flex justify-between dn" ] <|
+    ul [ class "black dib-l ma0 navbar w-100 pa2-l flex justify-between dn " ] <|
         navImg
             ++ [ div [] <| navbarContent model ]
 
