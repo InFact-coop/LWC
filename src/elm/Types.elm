@@ -1,6 +1,7 @@
 module Types exposing (..)
 
 import Html exposing (..)
+import Http
 import Navigation
 
 
@@ -19,12 +20,22 @@ type Route
 
 type alias Model =
     { route : Route
-    , userInput : String
+    , formSent : FormSent
     , services : List Service
     , quotes : List Quote
     , testimonials : List Testimonial
     , currentTestimonial : Int
     , burgerVisible : Bool
+    , newHelpForm : HelpForm
+    }
+
+
+type alias HelpForm =
+    { name : String
+    , dob : String
+    , contactNumber : String
+    , email : String
+    , postcode : String
     }
 
 
@@ -53,6 +64,18 @@ type alias Testimonial =
     }
 
 
+type alias FormResponse =
+    { success : Bool
+    }
+
+
+type FormSent
+    = Success
+    | Failure
+    | Pending
+    | NotSent
+
+
 type alias Button =
     { name : String
     , route : String
@@ -65,8 +88,15 @@ type alias Button =
 
 type Msg
     = NoOp
-    | Change String
     | UrlChange Navigation.Location
     | ToggleServiceListItem Int
     | SelectTestimonial Int
     | ToggleBurgerMenu
+    | ChangeFormName HelpForm String
+    | ChangeFormDOB HelpForm String
+    | ChangeFormNumber HelpForm String
+    | ChangeFormEmail HelpForm String
+    | ChangeFormPostcode HelpForm String
+    | SendHelpForm
+    | OnFormSent (Result Http.Error FormResponse)
+
