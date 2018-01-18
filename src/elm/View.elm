@@ -42,6 +42,6 @@ view model =
                     thankYouPage model
     in
     div [ class "w-100 fixed overflow-y-scroll top-0 bottom-0", id "container" ]
-        [ navBar model
+        [ navbar model
         , page
         ]
