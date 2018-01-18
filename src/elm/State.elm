@@ -1,5 +1,6 @@
 module State exposing (..)
 
+import Commands exposing (..)
 import Data.Quotes exposing (..)
 import Data.Services exposing (..)
 import Data.Testimonials exposing (..)
@@ -14,11 +15,12 @@ import Types exposing (..)
 initModel : Model
 initModel =
     { route = LandingRoute
-    , userInput = ""
+    , formSent = NotSent
     , services = servicesList
     , testimonials = testimonialsList
     , currentTestimonial = 1
     , quotes = quotesList
+    , newHelpForm = HelpForm "" "" "" "" ""
     }
 
 
@@ -69,9 +71,6 @@ toggleServiceListItem serviceId service =
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
-        Change newInput ->
-            ( { model | userInput = newInput }, Cmd.none )
-
         UrlChange location ->
             ( { model | route = getRoute location.hash }, Task.attempt (always NoOp) (toTop "container") )
 
@@ -83,3 +82,52 @@ update msg model =
 
         NoOp ->
             ( model, Cmd.none )
+
+        ChangeFormName helpForm name ->
+            let
+                newHelpForm =
+                    { helpForm | name = name }
+            in
+            ( { model | newHelpForm = newHelpForm }, Cmd.none )
+
+        ChangeFormDOB helpForm dob ->
+            let
+                newHelpForm =
+                    { helpForm | dob = dob }
+            in
+            ( { model | newHelpForm = newHelpForm }, Cmd.none )
+
+        ChangeFormNumber helpForm number ->
+            let
+                newHelpForm =
+                    { helpForm | contactNumber = number }
+            in
+            ( { model | newHelpForm = newHelpForm }, Cmd.none )
+
+        ChangeFormEmail helpForm email ->
+            let
+                newHelpForm =
+                    { helpForm | email = email }
+            in
+            ( { model | newHelpForm = newHelpForm }, Cmd.none )
+
+        ChangeFormPostcode helpForm postcode ->
+            let
+                newHelpForm =
+                    { helpForm | postcode = postcode }
+            in
+            ( { model | newHelpForm = newHelpForm }, Cmd.none )
+
+        SendHelpForm ->
+            ( { model | newHelpForm = HelpForm "" "" "" "" "", formSent = Pending }, sendFormCmd model.newHelpForm )
+
+        OnFormSent (Ok result) ->
+            case result.success of
+                True ->
+                    ( { model | formSent = Success }, Cmd.none )
+
+                False ->
+                    ( { model | formSent = Failure }, Cmd.none )
+
+        OnFormSent (Err result) ->
+            ( { model | formSent = Failure }, Cmd.none )
