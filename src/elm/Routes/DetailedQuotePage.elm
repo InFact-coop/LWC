@@ -14,7 +14,7 @@ detailedQuotePage model =
             [ h1 [ class "tl f3 fw7 gray mb1" ] [ text "Women like you" ]
             ]
         , retrieveTestimonial model
-        , purpleButton ( "See full list of services", "services" )
-        , purpleButton ( "Contact us", "talk-to-us" )
-        , clearWhiteButton ( "Back to stories", "quotes" )
+        , purpleButton "See full list of services" "services"
+        , purpleButton "Contact us" "talk-to-us"
+        , clearWhiteButton "Back to stories" "quotes"
         ]

@@ -23,6 +23,6 @@ quotesPage model =
                 quotesListItem
                 model.quotes
             )
-        , purpleButton ( "See our services", "services" )
-        , purpleButton ( "Contact us", "talk-to-us" )
+        , purpleButton "See our services" "services"
+        , purpleButton "Contact us" "talk-to-us"
         ]

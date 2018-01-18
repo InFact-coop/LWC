@@ -40,6 +40,6 @@ formPage model =
                 , input [ type_ "text", class "w-100 f4 gray fw1 bn" ] []
                 ]
             ]
-        , purpleButton ( "Submit", "thank-you" )
-        , clearWhiteButton ( "Back", "talk-to-us" )
+        , purpleButton "Submit" "thank-you"
+        , clearWhiteButton "Back" "talk-to-us"
         ]

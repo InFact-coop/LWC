@@ -13,8 +13,8 @@ landingPage model =
             [ div [ class "white b f2 tc pl3 pr3 pt5 tracked" ]
                 [ text "We are here to help." ]
             , div [ class "white-line pb4" ] []
-            , whiteButton ( "SEE REAL STORIES", "quotes" )
-            , whiteButton ( "SEE OUR SERVICES", "services" )
-            , whiteButton ( "CONTACT US", "talk-to-us" )
+            , whiteButton "SEE REAL STORIES" "quotes"
+            , whiteButton "SEE OUR SERVICES" "services"
+            , whiteButton "CONTACT US" "talk-to-us"
             ]
         ]
