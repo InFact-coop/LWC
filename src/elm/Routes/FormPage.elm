@@ -1,5 +1,6 @@
 module Routes.FormPage exposing (..)
 
+import Components.Buttons exposing (..)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
@@ -43,11 +44,7 @@ formPage model =
                 ]
             , sendingMsg model.formSent
             ]
-        , div [ class "mt3" ]
-            [ div [ class "ba br1 w-100 pa3 tc ba b--purple mt3 br1 dim" ]
-                [ a [ class "no-underline purple", href "#talk-to-us" ] [ text "Back" ]
-                ]
-            ]
+        , clearWhiteButton "Back" "talk-to-us"
         ]
 
 

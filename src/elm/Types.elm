@@ -74,6 +74,12 @@ type FormSent
     | Pending
 
 
+type alias Button =
+    { name : String
+    , route : String
+    }
+
+
 
 -- Update
 
