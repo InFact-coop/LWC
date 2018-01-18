@@ -7,7 +7,7 @@ Airtable.configure({
   apiKey: process.env.AIRTABLE_API_KEY
 });
 
-router.route("/help_form").post((req, res, next) => {
+const postController = (req, res, next) => {
   const newRow = Object.assign(req.body, { DOB: new Date(req.body.DOB) });
   base(process.env.AIRTABLE_TABLE).create(newRow, (err, record) => {
     if (err) {
@@ -16,6 +16,8 @@ router.route("/help_form").post((req, res, next) => {
     }
     return res.json({ success: true });
   });
-});
+};
+
+router.route("/help_form").post(postController);
 
 module.exports = router;
