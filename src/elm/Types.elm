@@ -20,7 +20,7 @@ type Route
 
 type alias Model =
     { route : Route
-    , formSent : Maybe FormSent
+    , formSent : FormSent
     , services : List Service
     , quotes : List Quote
     , testimonials : List Testimonial
@@ -72,6 +72,7 @@ type FormSent
     = Success
     | Failure
     | Pending
+    | NotSent
 
 
 type alias Button =

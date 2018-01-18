@@ -48,17 +48,17 @@ formPage model =
         ]
 
 
-sendingMsg : Maybe FormSent -> Html Msg
+sendingMsg : FormSent -> Html Msg
 sendingMsg status =
     case status of
-        Just Success ->
+        Success ->
             div [ class "tc pt2 w-100 green" ] [ text "Your data was sent successfully" ]
 
-        Just Pending ->
+        Pending ->
             div [ class "tc pt2 w-100 grey" ] [ text "Sending Data..." ]
 
-        Just Failure ->
+        Failure ->
             div [ class "tc pt2 w-100 red" ] [ text "Your data failed to send" ]
 
-        Nothing ->
+        NotSent ->
             div [] []

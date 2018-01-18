@@ -15,7 +15,7 @@ import Types exposing (..)
 initModel : Model
 initModel =
     { route = LandingRoute
-    , formSent = Nothing
+    , formSent = NotSent
     , services = servicesList
     , testimonials = testimonialsList
     , currentTestimonial = 1
@@ -119,15 +119,15 @@ update msg model =
             ( { model | newHelpForm = newHelpForm }, Cmd.none )
 
         SendHelpForm ->
-            ( { model | newHelpForm = HelpForm "" "" "" "" "", formSent = Just Pending }, sendFormCmd model.newHelpForm )
+            ( { model | newHelpForm = HelpForm "" "" "" "" "", formSent = Pending }, sendFormCmd model.newHelpForm )
 
         OnFormSent (Ok result) ->
             case result.success of
                 True ->
-                    ( { model | formSent = Just Success }, Cmd.none )
+                    ( { model | formSent = Success }, Cmd.none )
 
                 False ->
-                    ( { model | formSent = Just Failure }, Cmd.none )
+                    ( { model | formSent = Failure }, Cmd.none )
 
         OnFormSent (Err result) ->
-            ( { model | formSent = Just Failure }, Cmd.none )
+            ( { model | formSent = Failure }, Cmd.none )
