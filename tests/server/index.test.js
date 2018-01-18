@@ -72,7 +72,8 @@ describe("API testing", () => {
         });
     });
 
-    it("Should get success:true back when sending info", done => {
+    it("Should get success:true back when sending info", function(done) {
+      this.timeout(15000);
       supertest(app)
         .post("/api/v1/help_form")
         .send({
