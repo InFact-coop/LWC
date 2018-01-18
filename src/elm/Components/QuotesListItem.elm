@@ -8,7 +8,7 @@ import Types exposing (..)
 
 quotesListItem : Quote -> Html Msg
 quotesListItem { id, imgsrc, quote } =
-    div [ class "mb3" ]
+    div [ class "mb3 " ]
         [ div [ class "ba b--silver br1 pa3 pa4-m mb3-ns mw7-m mw8-l db m0-l m0-auto" ]
             [ div [ class "tc" ]
                 [ div []
