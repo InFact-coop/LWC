@@ -7,7 +7,7 @@ import Types exposing (..)
 
 clearWhiteButton : String -> String -> Html Msg
 clearWhiteButton name route =
-    genericButton "ma3" "ba b--purple w-90 br2 pa3 tc dim mb3 m0-auto" "tc purple no-underline" name route
+    genericButton "ma3 " "ba b--purple w-90 br2 pa3 tc dim mb3 m0-auto" "tc purple no-underline" name route
 
 
 whiteButton : String -> String -> Html Msg
