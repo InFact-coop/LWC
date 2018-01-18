@@ -2,6 +2,7 @@ module Routes.ServicesPage exposing (..)
 
 -- import Html.Events exposing (..)
 
+import Components.Buttons exposing (..)
 import Components.Rule exposing (..)
 import Components.ServiceListItem exposing (..)
 import Html exposing (..)
@@ -22,17 +23,6 @@ servicesPage model =
                 serviceListItem
                 model.services
             )
-        , actionButtons
-        ]
-
-
-actionButtons : Html Msg
-actionButtons =
-    section [ class "action-buttons center w-90 mt3" ]
-        [ div []
-            [ div []
-                [ a [ class "db bg-light-purple br2 pa3 tc m0 dim white no-underline mb3", href "#talk-to-us" ] [ text "Talk to us" ]
-                ]
-            , a [ class "db relative ba b--purple br2 pa3 tc ma0 dim purple no-underline mb4", href "#quotes" ] [ text "Back to stories" ]
-            ]
+        , purpleButton ( "Contact us", "talk-to-us" )
+        , clearWhiteButton ( "Back to stories", "quotes" )
         ]
