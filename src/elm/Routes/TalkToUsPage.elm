@@ -40,5 +40,5 @@ talkToUsPage model =
                 ]
             , img [ src "./assets/person.png" ] []
             ]
-        , clearWhiteButton ( "Home", "landing" )
+        , clearWhiteButton "Home" "landing"
         ]

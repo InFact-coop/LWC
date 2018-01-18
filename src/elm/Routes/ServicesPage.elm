@@ -23,6 +23,6 @@ servicesPage model =
                 serviceListItem
                 model.services
             )
-        , purpleButton ( "Contact us", "talk-to-us" )
-        , clearWhiteButton ( "Back to stories", "quotes" )
+        , purpleButton "Contact us" "talk-to-us"
+        , clearWhiteButton "Back to stories" "quotes"
         ]
