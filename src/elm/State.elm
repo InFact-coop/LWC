@@ -4,7 +4,9 @@ import Commands exposing (..)
 import Data.Quotes exposing (..)
 import Data.Services exposing (..)
 import Data.Testimonials exposing (..)
+import Debug
 import Dom.Scroll exposing (..)
+import Http exposing (..)
 import Task exposing (..)
 import Types exposing (..)
 
@@ -129,5 +131,12 @@ update msg model =
                 False ->
                     ( { model | formSent = Failure }, Cmd.none )
 
-        OnFormSent (Err result) ->
+        OnFormSent (Err (BadStatus response)) ->
+            let
+                error =
+                    Debug.log "response" response
+            in
+            ( { model | formSent = Failure }, Cmd.none )
+
+        OnFormSent (Err _) ->
             ( { model | formSent = Failure }, Cmd.none )

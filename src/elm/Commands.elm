@@ -29,11 +29,8 @@ helpFormEncoder helpForm =
 
 baseUrl : String
 baseUrl =
-    "https://lwcapp.herokuapp.com/api/v1/help_form"
-
-
-
--- "http://localhost:4000/api/v1/help_form"
+    -- "https://lwcapp.herokuapp.com/api/v1/help_form"
+    "http://localhost:4000/api/v1/help_form"
 
 
 methodRequest : String -> String -> Encode.Value -> Decode.Decoder a -> Http.Request a
