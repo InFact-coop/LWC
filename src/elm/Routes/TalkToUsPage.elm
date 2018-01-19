@@ -31,7 +31,7 @@ talkToUsPage model =
                 ]
             ]
         , div [ class "tc mt3 bb b--silver pb3 dn-l" ] []
-        , a [ class "tc db  black mb3-l" ]
+        , a [ href "tel:08082803160", class "tc db  black mb3-l" ]
             [ div [ class "tc mt3 ba b--purple w-50-l w-100 dib pt3 pb3" ]
                 [ div [ class " purple f3" ] [ text "Call us" ]
                 , div [ class "mt3 mb3" ]
