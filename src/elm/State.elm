@@ -14,7 +14,7 @@ import Types exposing (..)
 
 initModel : Model
 initModel =
-    { route = TalkToUsRoute
+    { route = LandingeRoute
     , formSent = NotSent
     , services = servicesList
     , testimonials = testimonialsList
@@ -84,7 +84,6 @@ update msg model =
         NoOp ->
             ( model, Cmd.none )
 
-
         ToggleBurgerMenu ->
             ( { model | burgerVisible = not model.burgerVisible }, Cmd.none )
 
@@ -136,4 +135,3 @@ update msg model =
 
         OnFormSent (Err result) ->
             ( { model | formSent = Failure }, Cmd.none )
-
