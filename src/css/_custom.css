@@ -35,6 +35,7 @@ button {
   background-repeat: no-repeat;
   height: 1.5rem;
   width: 1.5rem;
+  float: right;
 }
 
 .chevron-white {
@@ -44,16 +45,27 @@ button {
   background-repeat: no-repeat;
   height: 1.5rem;
   width: 1.5rem;
+  float: right;
+
 }
 
 .hands {
   background: url('./assets/hands.jpg');
   width: 100vw;
   height: 100vh;
-  background-size: 400%;
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
+@media (--breakpoint-large) {
+.group {
+  background: url('./assets/lwcGroup.png');
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+   background-position: center;
+  background-repeat: no-repeat;
+}}
 
 .purple-background {
   background-color: rgba(112, 39, 125, 0.6);
