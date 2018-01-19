@@ -1,9 +1,9 @@
 module Data.Testimonials exposing (..)
 
+import Components.Emphasis exposing (..)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Types exposing (..)
-import Components.Emphasis exposing (..)
 
 
 defaultTestimonial : Testimonial
