@@ -47,16 +47,16 @@ formPage model =
             , div [ class "ba br1 flex w-100 flex-wrap pa1 b--silver  pb3 pt1" ]
                 [ h4 [ class "purple fw1 mt1 w-100" ] [ text "Which services are you interested in?" ]
                 , section [ class "pl3" ]
-                    [ -- emotional wellbeing
+                    [ -- Therapy
                       div [ class "w-100 mb1" ]
-                        [ input [ type_ "checkbox", class "w-100 f4 gray fw1 bn w-auto", id "emotionalWellbeing", name "services" ] []
-                        , label [ for "emotionalWellbeing", class "" ] [ text "Emotional Wellbeing" ]
+                        [ input [ type_ "checkbox", class "w-100 f4 gray fw1 bn w-auto", id "therapy", name "services" ] []
+                        , label [ for "therapy", class "" ] [ text "Therapy e.g. Conselling" ]
                         ]
 
-                    -- Personal Development
+                    -- Courses & training
                     , div [ class "w-100 mb1" ]
-                        [ input [ type_ "checkbox", class "w-100 f4 gray fw1 bn w-auto", id "personalDevelopment", name "development" ] []
-                        , label [ for "personalDevelopment", class "" ] [ text "Personal Development" ]
+                        [ input [ type_ "checkbox", class "w-100 f4 gray fw1 bn w-auto", id "coursesTraining", name "development" ] []
+                        , label [ for "coursesTraining", class "" ] [ text "Courses & Training" ]
                         ]
 
                     -- Employment Support
