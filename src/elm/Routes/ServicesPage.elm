@@ -12,7 +12,7 @@ import Types exposing (..)
 
 servicesPage : Model -> Html Msg
 servicesPage model =
-    div [ class "" ]
+    div [ class "mw7-l mh5-l" ]
         [ header [ class "header pl3" ]
             [ h1 [ class "tl f3 fw7 gray mb1" ] [ text "Our Services" ]
             , p [ class "mt1" ] [ text "A list of our most used services" ]
@@ -23,6 +23,6 @@ servicesPage model =
                 serviceListItem
                 model.services
             )
-        , purpleButton "Contact us" "talk-to-us"
-        , clearWhiteButton "Back to stories" "quotes"
+        , div [ class "dn-l" ] [ purpleButton "Contact us" "talk-to-us" ]
+        , div [ class "dn-l" ] [ clearWhiteButton "Back to stories" "quotes" ]
         ]
