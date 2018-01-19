@@ -136,11 +136,25 @@ update msg model =
                     ( { model | formSent = Failure }, Cmd.none )
 
         OnFormSent (Err (BadStatus response)) ->
+            handleBadStatusResponse response model
+
+        OnFormSent (Err _) ->
+            ( { model | formSent = Failure }, Cmd.none )
+
+
+handleBadStatusResponse : Response String -> Model -> ( Model, Cmd Msg )
+handleBadStatusResponse response model =
+    case response.status.code of
+        400 ->
             let
                 error =
-                    Debug.log "response" response
+                    Debug.log "body: " response.body
             in
             ( { model | formSent = Failure }, Cmd.none )
 
-        OnFormSent (Err _) ->
+        _ ->
+            let
+                error =
+                    Debug.log "something else: " response
+            in
             ( { model | formSent = Failure }, Cmd.none )
