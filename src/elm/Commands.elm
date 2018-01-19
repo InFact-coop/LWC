@@ -55,3 +55,15 @@ sendFormCmd : HelpForm -> Cmd Msg
 sendFormCmd helpForm =
     postFormRequest helpForm
         |> Http.send OnFormSent
+
+
+validationResponseDecoder : Decode.Decoder (List ValError)
+validationResponseDecoder =
+    Decode.at [ "errors" ] (Decode.list valErrorDecoder)
+
+
+valErrorDecoder : Decode.Decoder ValError
+valErrorDecoder =
+    decode ValError
+        |> required "field" (Decode.list Decode.string)
+        |> required "messages" (Decode.list Decode.string)

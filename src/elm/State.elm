@@ -7,6 +7,7 @@ import Data.Testimonials exposing (..)
 import Debug
 import Dom.Scroll exposing (..)
 import Http exposing (..)
+import Json.Decode as Decode
 import Task exposing (..)
 import Types exposing (..)
 
@@ -16,7 +17,7 @@ import Types exposing (..)
 
 initModel : Model
 initModel =
-    { route = LandingRoute
+    { route = FormRoute
     , formSent = NotSent
     , services = servicesList
     , testimonials = testimonialsList
@@ -24,6 +25,7 @@ initModel =
     , quotes = quotesList
     , burgerVisible = True
     , newHelpForm = HelpForm "" "" "" "" ""
+    , validationErrors = []
     }
 
 
@@ -146,15 +148,29 @@ handleBadStatusResponse : Response String -> Model -> ( Model, Cmd Msg )
 handleBadStatusResponse response model =
     case response.status.code of
         400 ->
-            let
-                error =
-                    Debug.log "body: " response.body
-            in
-            ( { model | formSent = Failure }, Cmd.none )
+            getValErrors response.body model
 
         _ ->
             let
                 error =
                     Debug.log "something else: " response
+            in
+            ( { model | formSent = Failure }, Cmd.none )
+
+
+getValErrors : String -> Model -> ( Model, Cmd Msg )
+getValErrors body model =
+    let
+        decodedResponse =
+            Decode.decodeString validationResponseDecoder body
+    in
+    case decodedResponse of
+        Ok errorList ->
+            ( { model | formSent = Failure, validationErrors = errorList }, Cmd.none )
+
+        _ ->
+            let
+                error =
+                    Debug.log "something else went wrong "
             in
             ( { model | formSent = Failure }, Cmd.none )

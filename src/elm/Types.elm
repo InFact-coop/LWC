@@ -27,6 +27,7 @@ type alias Model =
     , currentTestimonial : Int
     , burgerVisible : Bool
     , newHelpForm : HelpForm
+    , validationErrors : List ValError
     }
 
 
@@ -82,6 +83,12 @@ type alias Button =
     }
 
 
+type alias ValError =
+    { field : List String
+    , messages : List String
+    }
+
+
 
 -- Update
 
@@ -99,4 +106,3 @@ type Msg
     | ChangeFormPostcode HelpForm String
     | SendHelpForm
     | OnFormSent (Result Http.Error FormResponse)
-
