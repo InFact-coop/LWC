@@ -25,6 +25,7 @@ type alias Model =
     , quotes : List Quote
     , testimonials : List Testimonial
     , currentTestimonial : Int
+    , burgerVisible : Bool
     , newHelpForm : HelpForm
     }
 
@@ -90,6 +91,7 @@ type Msg
     | UrlChange Navigation.Location
     | ToggleServiceListItem Int
     | SelectTestimonial Int
+    | ToggleBurgerMenu
     | ChangeFormName HelpForm String
     | ChangeFormDOB HelpForm String
     | ChangeFormNumber HelpForm String
@@ -97,3 +99,4 @@ type Msg
     | ChangeFormPostcode HelpForm String
     | SendHelpForm
     | OnFormSent (Result Http.Error FormResponse)
+
