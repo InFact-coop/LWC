@@ -22,6 +22,7 @@ initModel =
     , testimonials = testimonialsList
     , currentTestimonial = 1
     , quotes = quotesList
+    , burgerVisible = True
     , newHelpForm = HelpForm "" "" "" "" ""
     }
 
@@ -84,6 +85,9 @@ update msg model =
 
         NoOp ->
             ( model, Cmd.none )
+
+        ToggleBurgerMenu ->
+            ( { model | burgerVisible = not model.burgerVisible }, Cmd.none )
 
         ChangeFormName helpForm name ->
             let
