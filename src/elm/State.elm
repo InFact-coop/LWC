@@ -184,7 +184,7 @@ update msg model =
             ( { model | newHelpForm = newHelpForm }, Cmd.none )
 
         SendHelpForm ->
-            ( { model | formSent = Pending }, sendFormCmd model.newHelpForm )
+            ( { model | formSent = Pending }, sendFormCmd model )
 
         OnFormSent (Ok result) ->
             case result.success of
