@@ -14,15 +14,19 @@ import Types exposing (..)
 
 initModel : Model
 initModel =
-    { route = LandingRoute
+    { route = FormRoute
     , formSent = NotSent
     , services = servicesList
     , testimonials = testimonialsList
     , currentTestimonial = 1
     , quotes = quotesList
     , burgerVisible = True
-    , newHelpForm = HelpForm "" "" "" "" ""
+    , newHelpForm = resetHelpForm
     }
+
+
+resetHelpForm =
+    HelpForm "" "" "" "" "" False False False False False False
 
 
 
@@ -122,13 +126,60 @@ update msg model =
             in
             ( { model | newHelpForm = newHelpForm }, Cmd.none )
 
+        CheckboxEmotion helpForm ->
+            let
+                newHelpForm =
+                    { helpForm | emotionalWellbeing = not helpForm.emotionalWellbeing }
+            in
+            ( { model | newHelpForm = newHelpForm }, Cmd.none )
+
+        CheckboxPersonal helpForm ->
+            let
+                newHelpForm =
+                    { helpForm | personal = not helpForm.personal }
+            in
+            ( { model | newHelpForm = newHelpForm }, Cmd.none )
+
+        CheckboxEmployment helpForm ->
+            let
+                newHelpForm =
+                    { helpForm | employment = not helpForm.employment }
+            in
+            ( { model | newHelpForm = newHelpForm }, Cmd.none )
+
+        CheckboxMoney helpForm ->
+            let
+                newHelpForm =
+                    { helpForm | money = not helpForm.money }
+            in
+            ( { model | newHelpForm = newHelpForm }, Cmd.none )
+
+        CheckboxVolunteering helpForm ->
+            let
+                newHelpForm =
+                    { helpForm | volunteering = not helpForm.volunteering }
+            in
+            ( { model | newHelpForm = newHelpForm }, Cmd.none )
+
+        CheckboxMeeting helpForm ->
+            let
+                newHelpForm =
+                    { helpForm | meeting = not helpForm.meeting }
+            in
+            ( { model | newHelpForm = newHelpForm }, Cmd.none )
+
         SendHelpForm ->
-            ( { model | newHelpForm = HelpForm "" "" "" "" "", formSent = Pending }, sendFormCmd model.newHelpForm )
+            ( { model | formSent = Pending }, sendFormCmd model.newHelpForm )
 
         OnFormSent (Ok result) ->
             case result.success of
                 True ->
-                    ( { model | formSent = Success }, Cmd.none )
+                    ( { model
+                        | newHelpForm = resetHelpForm
+                        , formSent = Success
+                      }
+                    , Cmd.none
+                    )
 
                 False ->
                     ( { model | formSent = Failure }, Cmd.none )

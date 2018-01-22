@@ -36,6 +36,12 @@ type alias HelpForm =
     , contactNumber : String
     , email : String
     , postcode : String
+    , emotionalWellbeing : Bool
+    , personal : Bool
+    , employment : Bool
+    , money : Bool
+    , volunteering : Bool
+    , meeting : Bool
     }
 
 
@@ -99,4 +105,9 @@ type Msg
     | ChangeFormPostcode HelpForm String
     | SendHelpForm
     | OnFormSent (Result Http.Error FormResponse)
-
+    | CheckboxEmotion HelpForm
+    | CheckboxPersonal HelpForm
+    | CheckboxEmployment HelpForm
+    | CheckboxMoney HelpForm
+    | CheckboxVolunteering HelpForm
+    | CheckboxMeeting HelpForm
