@@ -26,7 +26,7 @@ initModel =
 
 
 resetHelpForm =
-    HelpForm "" "" "" "" "" False False False False False False
+    HelpForm "" "" "" "" "" False False False False False False ""
 
 
 
@@ -123,6 +123,13 @@ update msg model =
             let
                 newHelpForm =
                     { helpForm | postcode = postcode }
+            in
+            ( { model | newHelpForm = newHelpForm }, Cmd.none )
+
+        ChangeFormMore helpForm moreInfo ->
+            let
+                newHelpForm =
+                    { helpForm | moreInfo = moreInfo }
             in
             ( { model | newHelpForm = newHelpForm }, Cmd.none )
 

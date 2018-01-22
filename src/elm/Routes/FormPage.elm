@@ -71,8 +71,16 @@ formPage model =
 
             -- Additional information
             , div [ class "ba br1 flex w-100 flex-wrap pa1 b--silver mt3" ]
-                [ div [ class "purple fw1" ] [ text "Is there anything else you would like to tell us?" ]
-                , textarea [ class "w-100 mh3 h4 f4 gray fw1 bn", name "additionalInfo", attribute "rows" "5", placeholder "Please let us know here" ] []
+                [ div [ class "purple fw1 pb2" ] [ text "Is there anything else you would like to tell us?" ]
+                , textarea
+                    [ class "sans-serif w-100 mh3 h4 f5 gray fw1 bn"
+                    , name "additionalInfo"
+                    , attribute "rows" "5"
+                    , placeholder "Please let us know here"
+                    , value model.newHelpForm.moreInfo
+                    , onInput (ChangeFormMore model.newHelpForm)
+                    ]
+                    []
                 ]
 
             -- same as before
