@@ -25,8 +25,9 @@ initModel =
     }
 
 
+resetHelpForm : HelpForm
 resetHelpForm =
-    HelpForm "" "" "" "" "" False False False False False False ""
+    HelpForm "" "" "" "" "" False False False False False False "" False
 
 
 
@@ -172,6 +173,13 @@ update msg model =
             let
                 newHelpForm =
                     { helpForm | meeting = not helpForm.meeting }
+            in
+            ( { model | newHelpForm = newHelpForm }, Cmd.none )
+
+        CheckboxGDPR helpForm ->
+            let
+                newHelpForm =
+                    { helpForm | gdpr = not helpForm.gdpr }
             in
             ( { model | newHelpForm = newHelpForm }, Cmd.none )
 

@@ -43,6 +43,7 @@ type alias HelpForm =
     , volunteering : Bool
     , meeting : Bool
     , moreInfo : String
+    , gdpr : Bool
     }
 
 
@@ -113,3 +114,4 @@ type Msg
     | CheckboxMoney HelpForm
     | CheckboxVolunteering HelpForm
     | CheckboxMeeting HelpForm
+    | CheckboxGDPR HelpForm

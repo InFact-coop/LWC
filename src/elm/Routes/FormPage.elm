@@ -82,10 +82,17 @@ formPage model =
                     ]
                     []
                 ]
+            , buttonItem model.newHelpForm.gdpr (CheckboxGDPR model.newHelpForm) "Please check here to consent to LOREM IPSUM"
 
             -- same as before
             , div [ class "tc" ]
-                [ button [ type_ "submit", class "pointer f5 ba br1 w-80 w-40-l br2 pa3 tc bg-purple white mt3 br1 dim" ] [ text "Submit" ]
+                [ button
+                    [ type_ "submit"
+                    , class "pointer f5 ba br1 w-80 w-40-l br2 pa3 tc bg-purple white mt3 br1 dim"
+                    , classList [ ( "bg-light-purple", not model.newHelpForm.gdpr ) ]
+                    , disabled <| not model.newHelpForm.gdpr
+                    ]
+                    [ text "Submit" ]
                 ]
             , sendingMsg model.formSent
             ]
