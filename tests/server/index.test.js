@@ -11,6 +11,17 @@ describe("Dummy test", () => {
   });
 });
 
+const goodData = {
+  Name: "Matthew Davis",
+  DOB: "2018-01-06",
+  "Contact Number": "34567890",
+  Email: "email@gmail.com",
+  Postcode: "SN13 9SY",
+  "Areas of Interest": ["Personal Development", "Employment Support"],
+  "More Info": "Some things",
+  GDPR: true
+};
+
 describe("Static files", () => {
   it("GET / returns our app", done => {
     supertest(app)
@@ -76,13 +87,7 @@ describe("API testing", () => {
       this.timeout(15000);
       supertest(app)
         .post("/api/v1/help_form")
-        .send({
-          Name: "Matt",
-          DOB: "2018-01-24",
-          "Contact Number": "056789998",
-          Email: "m@m.m",
-          Postcode: "m34 3hr"
-        })
+        .send(goodData)
         .end((err, res) => {
           if (err) {
             done(err);

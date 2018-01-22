@@ -10,11 +10,19 @@ Airtable.configure({
 });
 
 const postController = (req, res, next) => {
-  const newRow = Object.assign(req.body, { DOB: new Date(req.body.DOB) });
-  base(process.env.AIRTABLE_TABLE).create(newRow, (err, record) => {
+  const { GDPR, ...filteredData } = Object.assign(req.body, {
+    DOB: new Date(req.body.DOB)
+  });
+
+  if (!GDPR) {
+    const GDPRError = new Error("Not GDPR compliant");
+    return next(GDPRError);
+  }
+
+  base(process.env.AIRTABLE_TABLE).create(filteredData, (err, record) => {
     if (err) {
       console.log("Error with Airtable: ", err);
-      return res.json({ success: false });
+      return next(err);
     }
     return res.json({ success: true });
   });
