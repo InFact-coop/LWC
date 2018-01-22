@@ -53,6 +53,7 @@ helpFormEncoder model =
             , ( "Email", Encode.string model.newHelpForm.email )
             , ( "Postcode", Encode.string model.newHelpForm.postcode )
             , ( "Areas of Interest", Encode.list areasList )
+            , ( "More Info", Encode.string model.newHelpForm.moreInfo )
             , ( "GDPR", Encode.bool model.newHelpForm.gdpr )
             ]
 
