@@ -16,15 +16,18 @@ app.use("/api/v1/", api_router);
 
 // 404 route
 app.use((req, res, next) => {
+  console.log("404 error");
+
   res.status(404).send("404 Page Not Found");
 });
 
 // Validation Error Handler
 app.use((err, req, res, next) => {
+  console.log("val error");
   if (err.message === "validation error") {
     return res.status(400).json(err);
   }
-  return next();
+  return next(err);
 });
 
 // Generic Error Handler
@@ -33,7 +36,7 @@ app.use((err, req, res, next) => {
     "Server Error: ",
     util.inspect(err, { showHidden: false, depth: null })
   );
-  return res.status(500).send("500 Internal Server Error");
+  return res.status(500).send(`500 Internal Server Error: ${err.message}`);
 });
 
 module.exports = app;
