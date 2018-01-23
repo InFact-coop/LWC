@@ -97,97 +97,6 @@ update msg model =
         ToggleBurgerMenu ->
             ( { model | burgerVisible = not model.burgerVisible }, Cmd.none )
 
-        ChangeFormName helpForm name ->
-            let
-                newHelpForm =
-                    { helpForm | name = name }
-            in
-            ( { model | newHelpForm = newHelpForm }, Cmd.none )
-
-        ChangeFormDOB helpForm dob ->
-            let
-                newHelpForm =
-                    { helpForm | dob = dob }
-            in
-            ( { model | newHelpForm = newHelpForm }, Cmd.none )
-
-        ChangeFormNumber helpForm number ->
-            let
-                newHelpForm =
-                    { helpForm | contactNumber = number }
-            in
-            ( { model | newHelpForm = newHelpForm }, Cmd.none )
-
-        ChangeFormEmail helpForm email ->
-            let
-                newHelpForm =
-                    { helpForm | email = email }
-            in
-            ( { model | newHelpForm = newHelpForm }, Cmd.none )
-
-        ChangeFormPostcode helpForm postcode ->
-            let
-                newHelpForm =
-                    { helpForm | postcode = postcode }
-            in
-            ( { model | newHelpForm = newHelpForm }, Cmd.none )
-
-        ChangeFormMore helpForm moreInfo ->
-            let
-                newHelpForm =
-                    { helpForm | moreInfo = moreInfo }
-            in
-            ( { model | newHelpForm = newHelpForm }, Cmd.none )
-
-        CheckboxEmotion helpForm ->
-            let
-                newHelpForm =
-                    { helpForm | emotionalWellbeing = not helpForm.emotionalWellbeing }
-            in
-            ( { model | newHelpForm = newHelpForm }, Cmd.none )
-
-        CheckboxPersonal helpForm ->
-            let
-                newHelpForm =
-                    { helpForm | personal = not helpForm.personal }
-            in
-            ( { model | newHelpForm = newHelpForm }, Cmd.none )
-
-        CheckboxEmployment helpForm ->
-            let
-                newHelpForm =
-                    { helpForm | employment = not helpForm.employment }
-            in
-            ( { model | newHelpForm = newHelpForm }, Cmd.none )
-
-        CheckboxMoney helpForm ->
-            let
-                newHelpForm =
-                    { helpForm | money = not helpForm.money }
-            in
-            ( { model | newHelpForm = newHelpForm }, Cmd.none )
-
-        CheckboxVolunteering helpForm ->
-            let
-                newHelpForm =
-                    { helpForm | volunteering = not helpForm.volunteering }
-            in
-            ( { model | newHelpForm = newHelpForm }, Cmd.none )
-
-        CheckboxMeeting helpForm ->
-            let
-                newHelpForm =
-                    { helpForm | meeting = not helpForm.meeting }
-            in
-            ( { model | newHelpForm = newHelpForm }, Cmd.none )
-
-        CheckboxGDPR helpForm ->
-            let
-                newHelpForm =
-                    { helpForm | gdpr = not helpForm.gdpr }
-            in
-            ( { model | newHelpForm = newHelpForm }, Cmd.none )
-
         SendHelpForm ->
             case validate model.newHelpForm of
                 [] ->
@@ -214,6 +123,9 @@ update msg model =
 
         OnFormSent (Err _) ->
             ( { model | formSent = Failure }, Cmd.none )
+
+        SetField field value ->
+            ( setField model model.newHelpForm field value, Cmd.none )
 
 
 handleBadStatusResponse : Response String -> Model -> ( Model, Cmd Msg )
@@ -265,3 +177,50 @@ validate form =
             >> Validate.ifBlank { field = "Postcode", messages = [ "Please enter a Postcode" ] }
         ]
         form
+
+
+setField : Model -> HelpForm -> FormField -> String -> Model
+setField model oldForm field value =
+    let
+        newForm =
+            case field of
+                Name ->
+                    { oldForm | name = value }
+
+                Dob ->
+                    { oldForm | dob = value }
+
+                ContactNumber ->
+                    { oldForm | contactNumber = value }
+
+                Email ->
+                    { oldForm | email = value }
+
+                Postcode ->
+                    { oldForm | postcode = value }
+
+                EmotionalWellbeing ->
+                    { oldForm | emotionalWellbeing = not oldForm.emotionalWellbeing }
+
+                Personal ->
+                    { oldForm | personal = not oldForm.personal }
+
+                Employment ->
+                    { oldForm | employment = not oldForm.employment }
+
+                Money ->
+                    { oldForm | money = not oldForm.money }
+
+                Volunteering ->
+                    { oldForm | volunteering = not oldForm.volunteering }
+
+                Meeting ->
+                    { oldForm | meeting = not oldForm.meeting }
+
+                MoreInfo ->
+                    { oldForm | moreInfo = value }
+
+                Gdpr ->
+                    { oldForm | gdpr = not oldForm.gdpr }
+    in
+    { model | newHelpForm = newForm }

@@ -26,11 +26,11 @@ formPage model =
 detailsForm : Model -> Html Msg
 detailsForm model =
     Html.form [ onSubmit SendHelpForm, class " w-50-l m0-auto" ]
-        [ formInput model "Name" "text" model.newHelpForm.name ChangeFormName wrapperClass_text_top errClass_text titleClass_text inputClass_text
-        , formInput model "Date Of Birth" "date" model.newHelpForm.dob ChangeFormDOB wrapperClass_text errClass_text titleClass_text inputClass_text
-        , formInput model "Contact Number" "text" model.newHelpForm.contactNumber ChangeFormNumber wrapperClass_text errClass_text titleClass_text inputClass_text
-        , formInput model "Email" "text" model.newHelpForm.email ChangeFormEmail wrapperClass_text errClass_text titleClass_text inputClass_text
-        , formInput model "Postcode" "text" model.newHelpForm.postcode ChangeFormPostcode wrapperClass_text errClass_text titleClass_text inputClass_text
+        [ formBuilder model Name
+        , formBuilder model Dob
+        , formBuilder model ContactNumber
+        , formBuilder model Email
+        , formBuilder model Postcode
 
         -- New input fields
         , div [ class "pt4 pb3" ] [ text "The following questions are optional, but they are really helpful for us to put you in touch with the right person." ]
@@ -39,42 +39,18 @@ detailsForm model =
         , div [ class "ba br1 flex w-100 flex-wrap pa1 b--silver  pb3 pt1" ]
             [ h4 [ class "purple fw1 mt1 w-100" ] [ text "Which services are you interested in?" ]
             , section [ class "pl3 w-100" ]
-                [ -- emotional wellbeing
-                  buttonItem model.newHelpForm.emotionalWellbeing
-                    (CheckboxEmotion model.newHelpForm)
-                    "Emotional Wellbeing"
-                , buttonItem model.newHelpForm.personal
-                    (CheckboxPersonal model.newHelpForm)
-                    "Personal Development"
-                , buttonItem model.newHelpForm.employment
-                    (CheckboxEmployment model.newHelpForm)
-                    "Employment Support"
-                , buttonItem model.newHelpForm.money
-                    (CheckboxMoney model.newHelpForm)
-                    "Money, Debt and Benefit Advice"
-                , buttonItem model.newHelpForm.volunteering
-                    (CheckboxVolunteering model.newHelpForm)
-                    "Volunteering and Mentoring"
-                , buttonItem model.newHelpForm.meeting
-                    (CheckboxMeeting model.newHelpForm)
-                    "Meeting Others"
+                [ formBuilder model EmotionalWellbeing
+                , formBuilder model Personal
+                , formBuilder model Employment
+                , formBuilder model Money
+                , formBuilder model Volunteering
+                , formBuilder model Meeting
                 ]
             ]
 
         -- Additional information
-        , div [ class "ba br1 flex w-100 flex-wrap pa1 b--silver mt3" ]
-            [ div [ class "purple fw1 pb2" ] [ text "Is there anything else you would like to tell us?" ]
-            , textarea
-                [ class "sans-serif w-100 mh3 h4 f5 gray fw1 bn"
-                , name "additionalInfo"
-                , attribute "rows" "5"
-                , placeholder "Please let us know here"
-                , value model.newHelpForm.moreInfo
-                , onInput (ChangeFormMore model.newHelpForm)
-                ]
-                []
-            ]
-        , buttonItem model.newHelpForm.gdpr (CheckboxGDPR model.newHelpForm) "Please check here to consent to LOREM IPSUM"
+        , formBuilder model MoreInfo
+        , formBuilder model Gdpr
 
         -- same as before
         , div [ class "tc" ]
@@ -90,10 +66,54 @@ detailsForm model =
         ]
 
 
-formInput model fieldName fieldType fieldValue msg wrapperClass errClass titleClass inputClass =
+formBuilder : Model -> FormField -> Html Msg
+formBuilder model field =
+    case field of
+        Name ->
+            formInput field "Name" "text" model.newHelpForm.name model.validationErrors wrapperClass_text_top errClass_text titleClass_text inputClass_text
+
+        Dob ->
+            formInput field "Date Of Birth" "date" model.newHelpForm.dob model.validationErrors wrapperClass_text errClass_text titleClass_text inputClass_text
+
+        ContactNumber ->
+            formInput field "Contact Number" "text" model.newHelpForm.contactNumber model.validationErrors wrapperClass_text errClass_text titleClass_text inputClass_text
+
+        Email ->
+            formInput field "Email" "text" model.newHelpForm.email model.validationErrors wrapperClass_text errClass_text titleClass_text inputClass_text
+
+        Postcode ->
+            formInput field "Postcode" "text" model.newHelpForm.postcode model.validationErrors wrapperClass_text errClass_text titleClass_text inputClass_text
+
+        EmotionalWellbeing ->
+            buttonItem model.newHelpForm.emotionalWellbeing field "Emotional Wellbeing"
+
+        Personal ->
+            buttonItem model.newHelpForm.personal field "Personal Development"
+
+        Employment ->
+            buttonItem model.newHelpForm.employment field "Employment Support"
+
+        Money ->
+            buttonItem model.newHelpForm.money field "Money, Debt and Benefit Advice"
+
+        Volunteering ->
+            buttonItem model.newHelpForm.volunteering field "Volunteering and Mentoring"
+
+        Meeting ->
+            buttonItem model.newHelpForm.meeting field "Meeting Others"
+
+        MoreInfo ->
+            textAreaInput model.newHelpForm.moreInfo field
+
+        Gdpr ->
+            buttonItem model.newHelpForm.gdpr field "Please check here to consent to LOREM IPSUM"
+
+
+formInput : FormField -> String -> String -> String -> List ValError -> String -> String -> String -> String -> Html Msg
+formInput field fieldName fieldType fieldValue errors wrapperClass errClass titleClass inputClass =
     let
         ( errHtml, errExists ) =
-            formErrors fieldName model.validationErrors
+            formErrors fieldName errors
     in
     div []
         [ div [ class wrapperClass, classList [ ( errClass, errExists ) ] ]
@@ -104,7 +124,7 @@ formInput model fieldName fieldType fieldValue msg wrapperClass errClass titleCl
                 [ value fieldValue
                 , type_ fieldType
                 , class inputClass
-                , onInput (msg model.newHelpForm)
+                , onInput <| SetField field
                 , name fieldName
                 ]
                 []
@@ -129,21 +149,17 @@ sendingMsg status =
             div [] []
 
 
-buttonItem : Bool -> Types.Msg -> String -> Html Types.Msg
-buttonItem state msg textValue =
+buttonItem : Bool -> FormField -> String -> Html Types.Msg
+buttonItem state field textValue =
     div [ class "pa2 flex" ]
-        [ button [ type_ "button", class " tr bn bg-white items-start", onClick msg ]
+        [ button [ type_ "button", class " tr bn bg-white items-start", onClick <| SetField field "" ]
             [ div [ class "ma0 pa0 h1 w1 ba bw1 b--purple br1 dib v-mid", classList [ ( "bg-purple", state ) ] ] []
             , p [ class "ma0 pa0 purple f5  lh-copy ph2 v-mid dib" ] [ text textValue ]
             ]
         ]
 
 
-type alias FormField =
-    String
-
-
-formErrors : FormField -> List ValError -> ( Html msg, Bool )
+formErrors : String -> List ValError -> ( Html msg, Bool )
 formErrors field errors =
     ( errors
         |> List.filter (\error -> error.field == field)
@@ -154,6 +170,23 @@ formErrors field errors =
         |> List.isEmpty
         |> not
     )
+
+
+textAreaInput val field =
+    div []
+        [ div [ class "ba br1 flex w-100 flex-wrap pa1 b--silver mt3" ]
+            [ div [ class "purple fw1 pb2" ] [ text "Is there anything else you would like to tell us?" ]
+            , textarea
+                [ class "sans-serif w-100 mh3 h4 f5 gray fw1 bn"
+                , name "additionalInfo"
+                , attribute "rows" "5"
+                , placeholder "Please let us know here"
+                , value val
+                , onInput <| SetField field
+                ]
+                []
+            ]
+        ]
 
 
 wrapperClass_text_top =
