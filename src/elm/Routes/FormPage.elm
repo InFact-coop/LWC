@@ -31,14 +31,22 @@ formPage model =
                 [ div [ class "purple fw1" ] [ text "Contact Number" ]
                 , input [ value model.newHelpForm.contactNumber, type_ "text", class "w-100 f4 gray fw1 bn", onInput (ChangeFormNumber model.newHelpForm) ] []
                 ]
-            , div [ class "ba br1 flex w-100 flex-wrap pa1 b--silver mt3" ]
-                [ div [ class "purple fw1" ] [ text "Email" ]
-                , input [ value model.newHelpForm.email, type_ "text", class "w-100 f4 gray fw1 bn", onInput (ChangeFormEmail model.newHelpForm) ] []
-                ]
-            , div [ class "ba br1 flex w-100 flex-wrap pa1 b--silver mt3" ]
-                [ div [ class "purple fw1" ] [ text "Postcode" ]
-                , input [ value model.newHelpForm.postcode, type_ "text", class "w-100 f4 gray fw1 bn", onInput (ChangeFormPostcode model.newHelpForm) ] []
-                ]
+type alias FormField =
+    String
+
+
+formErrors : FormField -> List ValError -> ( Html msg, Bool )
+formErrors field errors =
+    ( errors
+        |> List.filter (\error -> error.field == field)
+        |> List.map (\error -> div [] (List.map (\errMess -> div [ class "purple f5" ] [ text errMess ]) error.messages))
+        |> div []
+    , errors
+        |> List.filter (\error -> error.field == field)
+        |> List.isEmpty
+        |> not
+    )
+
 
             -- New input fields
             , div [ class "pt4 pb3" ] [ text "The following questions are optional, but they are really helpful for us to put you in touch with the right person." ]
