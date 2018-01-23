@@ -92,7 +92,7 @@ type alias Button =
 
 
 type alias ValError =
-    { field : List String
+    { field : String
     , messages : List String
     }
 
