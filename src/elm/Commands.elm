@@ -65,8 +65,11 @@ helpFormEncoder model =
 
 baseUrl : String
 baseUrl =
-    -- "https://lwcapp.herokuapp.com/api/v1/help_form"
-    "http://localhost:4000/api/v1/help_form"
+    "https://lwcapp.herokuapp.com/api/v1/help_form"
+
+
+
+-- "http://localhost:4000/api/v1/help_form"
 
 
 methodRequest : String -> String -> Encode.Value -> Decode.Decoder a -> Http.Request a
@@ -95,11 +98,7 @@ sendFormCmd model =
 
 validationResponseDecoder : Decode.Decoder (List ValError)
 validationResponseDecoder =
-    Decode.at [ "errors" ] (Decode.list valErrorDecoder)
-
-
-valErrorDecoder : Decode.Decoder ValError
-valErrorDecoder =
     decode ValError
-        |> required "field" (Decode.list Decode.string)
+        |> required "field" Decode.string
         |> required "messages" (Decode.list Decode.string)
+        |> Decode.list
