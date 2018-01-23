@@ -10,6 +10,7 @@ import Http exposing (..)
 import Json.Decode as Decode
 import Task exposing (..)
 import Types exposing (..)
+import Validate exposing (..)
 
 
 -- MODEL
@@ -188,7 +189,12 @@ update msg model =
             ( { model | newHelpForm = newHelpForm }, Cmd.none )
 
         SendHelpForm ->
-            ( { model | formSent = Pending }, sendFormCmd model )
+            case validate model.newHelpForm of
+                [] ->
+                    ( { model | validationErrors = [], formSent = Pending }, sendFormCmd model )
+
+                errors ->
+                    ( { model | validationErrors = errors }, Task.attempt (always NoOp) (toTop "container") )
 
         OnFormSent (Ok result) ->
             case result.success of
@@ -240,3 +246,22 @@ getValErrors body model =
                     Debug.log "something else went wrong "
             in
             ( { model | formSent = Failure }, Cmd.none )
+
+
+validate : HelpForm -> List ValError
+validate form =
+    Validate.all
+        [ .name
+            >> Validate.ifBlank { field = "Name", messages = [ "Please enter a name" ] }
+        , .dob
+            >> Validate.ifBlank { field = "Date Of Birth", messages = [ "Please enter a date of birth" ] }
+        , .email
+            >> Validate.ifBlank { field = "Email", messages = [ "Please enter an email address" ] }
+        , .email
+            >> Validate.ifInvalidEmail { field = "Email", messages = [ "Please enter a valid email address" ] }
+        , .contactNumber
+            >> Validate.ifBlank { field = "Contact Number", messages = [ "Please enter a Contact number" ] }
+        , .postcode
+            >> Validate.ifBlank { field = "Postcode", messages = [ "Please enter a Postcode" ] }
+        ]
+        form
