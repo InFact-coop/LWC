@@ -4,6 +4,7 @@ const should = require("chai").should();
 const expect = require("chai").expect;
 const supertest = require("supertest");
 const app = require("../../src/server/app");
+const { goodData, nonGDPRData, badAreasOfInterestData } = require("./fixtures");
 
 describe("Dummy test", () => {
   it("1+1 should return 2", () => {
@@ -72,17 +73,48 @@ describe("API testing", () => {
         });
     });
 
+    it("Should get 400 error back when GDPR = false ", done => {
+      supertest(app)
+        .post("/api/v1/help_form")
+        .send(nonGDPRData)
+        .end((err, res) => {
+          if (err) {
+            done(err);
+          }
+          expect(res.statusCode).to.equal(400);
+          const response = JSON.parse(res.text);
+          response.errors[0].messages[0].should.equal(
+            '"GDPR" must be one of [true]'
+          );
+          done();
+        });
+    });
+
+    it("Should get 400 error back when Areas of Interest are wrong ", function(done) {
+      this.timeout(15000);
+
+      supertest(app)
+        .post("/api/v1/help_form")
+        .send(badAreasOfInterestData)
+        .end((err, res) => {
+          if (err) {
+            done(err);
+          }
+          expect(res.statusCode).to.equal(400);
+          const response = JSON.parse(res.text);
+          response.errors[0].field.should.deep.equal(["Areas of Interest", 0]);
+          response.errors[0].messages[0].should.equal(
+            '"0" must be one of [Emotional Wellbeing, Personal Development, Employment Support, Money, Debt and Benefit Advice, Volunteering and Mentoring, Meeting Others]'
+          );
+          done();
+        });
+    });
+
     it("Should get success:true back when sending info", function(done) {
       this.timeout(15000);
       supertest(app)
         .post("/api/v1/help_form")
-        .send({
-          Name: "Matt",
-          DOB: "2018-01-24",
-          "Contact Number": "056789998",
-          Email: "m@m.m",
-          Postcode: "m34 3hr"
-        })
+        .send(goodData)
         .end((err, res) => {
           if (err) {
             done(err);
