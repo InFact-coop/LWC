@@ -24,16 +24,18 @@ app.use((err, req, res, next) => {
   if (err.message === "validation error") {
     return res.status(400).json(err);
   }
-  return next();
+  return next(err);
 });
 
 // Generic Error Handler
 app.use((err, req, res, next) => {
-  console.log(
-    "Server Error: ",
-    util.inspect(err, { showHidden: false, depth: null })
-  );
-  return res.status(500).send("500 Internal Server Error");
+  if (process.env.NODE_ENV !== "test") {
+    console.log(
+      "Server Error: ",
+      util.inspect(err, { showHidden: false, depth: null })
+    );
+  }
+  return res.status(500).json({ message: err.message });
 });
 
 module.exports = app;

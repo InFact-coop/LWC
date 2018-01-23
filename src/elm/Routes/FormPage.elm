@@ -46,54 +46,53 @@ formPage model =
             -- choice of services
             , div [ class "ba br1 flex w-100 flex-wrap pa1 b--silver  pb3 pt1" ]
                 [ h4 [ class "purple fw1 mt1 w-100" ] [ text "Which services are you interested in?" ]
-                , section [ class "pl3" ]
+                , section [ class "pl3 w-100" ]
                     [ -- emotional wellbeing
-                      div [ class "w-100 mb1" ]
-                        [ input [ type_ "checkbox", class "w-100 f4 gray fw1 bn w-auto", id "emotionalWellbeing", name "services" ] []
-                        , label [ for "emotionalWellbeing", class "" ] [ text "Emotional Wellbeing" ]
-                        ]
-
-                    -- Personal Development
-                    , div [ class "w-100 mb1" ]
-                        [ input [ type_ "checkbox", class "w-100 f4 gray fw1 bn w-auto", id "personalDevelopment", name "development" ] []
-                        , label [ for "personalDevelopment", class "" ] [ text "Personal Development" ]
-                        ]
-
-                    -- Employment Support
-                    , div [ class "w-100 mb1" ]
-                        [ input [ type_ "checkbox", class "w-100 f4 gray fw1 bn w-auto", id "employmentSupport", name "employment" ] []
-                        , label [ for "employmentSupport", class "" ] [ text "Employment Support" ]
-                        ]
-
-                    -- Money Debt and benefit
-                    , div [ class "w-100 mb1" ]
-                        [ input [ type_ "checkbox", class "w-100 f4 gray fw1 bn w-auto", id "moneyDebtBenefit", name "money" ] []
-                        , label [ for "moneyDebtBenefit", class "" ] [ text "Money, Debt and Benefit Advice" ]
-                        ]
-
-                    -- Volunteering and mentoring
-                    , div [ class "w-100 mb1" ]
-                        [ input [ type_ "checkbox", class "w-100 f4 gray fw1 bn w-auto", id "volunteeringMentoring", name "volunteering" ] []
-                        , label [ for "volunteeringMentoring", class "" ] [ text "Volunteering and Mentoring" ]
-                        ]
-
-                    -- Meeting Others
-                    , div [ class "w-100 mb1" ]
-                        [ input [ type_ "checkbox", class "w-100 f4 gray fw1 bn w-auto", id "meetingOthers", name "meeting" ] []
-                        , label [ for "meetingOthers", class "" ] [ text "Meeting Others" ]
-                        ]
+                      buttonItem model.newHelpForm.emotionalWellbeing
+                        (CheckboxEmotion model.newHelpForm)
+                        "Emotional Wellbeing"
+                    , buttonItem model.newHelpForm.personal
+                        (CheckboxPersonal model.newHelpForm)
+                        "Personal Development"
+                    , buttonItem model.newHelpForm.employment
+                        (CheckboxEmployment model.newHelpForm)
+                        "Employment Support"
+                    , buttonItem model.newHelpForm.money
+                        (CheckboxMoney model.newHelpForm)
+                        "Money, Debt and Benefit Advice"
+                    , buttonItem model.newHelpForm.volunteering
+                        (CheckboxVolunteering model.newHelpForm)
+                        "Volunteering and Mentoring"
+                    , buttonItem model.newHelpForm.meeting
+                        (CheckboxMeeting model.newHelpForm)
+                        "Meeting Others"
                     ]
                 ]
 
             -- Additional information
             , div [ class "ba br1 flex w-100 flex-wrap pa1 b--silver mt3" ]
-                [ div [ class "purple fw1" ] [ text "Is there anything else you would like to tell us?" ]
-                , textarea [ class "w-100 mh3 h4 f4 gray fw1 bn", name "additionalInfo", attribute "rows" "5", placeholder "Please let us know here" ] []
+                [ div [ class "purple fw1 pb2" ] [ text "Is there anything else you would like to tell us?" ]
+                , textarea
+                    [ class "sans-serif w-100 mh3 h4 f5 gray fw1 bn"
+                    , name "additionalInfo"
+                    , attribute "rows" "5"
+                    , placeholder "Please let us know here"
+                    , value model.newHelpForm.moreInfo
+                    , onInput (ChangeFormMore model.newHelpForm)
+                    ]
+                    []
                 ]
+            , buttonItem model.newHelpForm.gdpr (CheckboxGDPR model.newHelpForm) "Please check here to consent to LOREM IPSUM"
 
             -- same as before
             , div [ class "tc" ]
-                [ button [ type_ "submit", class "pointer f5 ba br1 w-80 w-40-l br2 pa3 tc bg-purple white mt3 br1 dim" ] [ text "Submit" ]
+                [ button
+                    [ type_ "submit"
+                    , class "pointer f5 ba br1 w-80 w-40-l br2 pa3 tc bg-purple white mt3 br1 dim"
+                    , classList [ ( "bg-light-purple", not model.newHelpForm.gdpr ) ]
+                    , disabled <| not model.newHelpForm.gdpr
+                    ]
+                    [ text "Submit" ]
                 ]
             , sendingMsg model.formSent
             ]
@@ -115,3 +114,13 @@ sendingMsg status =
 
         NotSent ->
             div [] []
+
+
+buttonItem : Bool -> Types.Msg -> String -> Html Types.Msg
+buttonItem state msg textValue =
+    div [ class "pa2 flex" ]
+        [ button [ type_ "button", class " tr bn bg-white items-start", onClick msg ]
+            [ div [ class "ma0 pa0 h1 w1 ba bw1 b--purple br1 dib v-mid", classList [ ( "bg-purple", state ) ] ] []
+            , p [ class "ma0 pa0 purple f5  lh-copy ph2 v-mid dib" ] [ text textValue ]
+            ]
+        ]
