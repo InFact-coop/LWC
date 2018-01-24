@@ -28,6 +28,28 @@ const postController = (req, res, next) => {
   });
 };
 
+const getTestimonials = (req, res, next) => {
+  let testimonials = [];
+  base(process.env.AIRTABLE_TABLE_TESTIMONIALS)
+    .select({ view: "Grid view" })
+    .eachPage(
+      (records, fetchNextPage) => {
+        const newTestimonial = records.map(record => {
+          return Object.assign(record.fields, { id: record.id });
+        });
+        testimonials = [...testimonials, newTestimonial];
+        fetchNextPage();
+      },
+      err => {
+        if (err) {
+          return next(err);
+        }
+        return res.json(testimonials);
+      }
+    );
+};
+
 router.route("/help_form").post(validate(formValidator), postController);
+router.route("/testimonials").get(getTestimonials);
 
 module.exports = router;
