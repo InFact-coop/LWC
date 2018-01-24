@@ -80,7 +80,8 @@ type alias FormResponse =
 
 type FormSent
     = Success
-    | Failure
+    | FailureValidation
+    | FailureServer
     | Pending
     | NotSent
 
@@ -126,3 +127,4 @@ type Msg
     | SendHelpForm
     | OnFormSent (Result Http.Error FormResponse)
     | SetField FormField String
+    | GoHome

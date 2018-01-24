@@ -187,16 +187,16 @@ textAreaInput val field =
 sendingMsg : FormSent -> Html Msg
 sendingMsg status =
     case status of
-        Success ->
-            div [ class "tc pt2 w-100 green" ] [ text "Your data was sent successfully" ]
-
         Pending ->
             div [ class "tc pt2 w-100 grey" ] [ text "Sending Data..." ]
 
-        Failure ->
-            div [ class "tc pt2 w-100 red" ] [ text "Your data failed to send" ]
+        FailureValidation ->
+            div [ class "tc pt2 w-100 purple" ] [ text "Sorry, some of the data you've sent isn't quite right, see above" ]
 
-        NotSent ->
+        FailureServer ->
+            div [ class "tc pt2 w-100 red" ] [ text "Sorry, something went wrong with our server. You might have to call us, or try again later." ]
+
+        _ ->
             div [] []
 
 

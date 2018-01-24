@@ -5,10 +5,13 @@ import Data.Quotes exposing (..)
 import Data.Services exposing (..)
 import Data.Testimonials exposing (..)
 import Debug
+import Delay
 import Dom.Scroll exposing (..)
 import Http exposing (..)
 import Json.Decode as Decode
+import Navigation exposing (..)
 import Task exposing (..)
+import Time
 import Types exposing (..)
 import Validate exposing (..)
 
@@ -18,7 +21,7 @@ import Validate exposing (..)
 
 initModel : Model
 initModel =
-    { route = LandingRoute
+    { route = FormRoute
     , formSent = NotSent
     , services = servicesList
     , testimonials = testimonialsList
@@ -32,7 +35,7 @@ initModel =
 
 resetHelpForm : HelpForm
 resetHelpForm =
-    HelpForm "" "" "" "" "" False False False False False False "" False
+    HelpForm "Me" "2018-01-16" "678" "m@m.m" "tyu" False False False False False False "" True
 
 
 
@@ -103,7 +106,7 @@ update msg model =
                     ( { model | validationErrors = [], formSent = Pending }, sendFormCmd model )
 
                 errors ->
-                    ( { model | validationErrors = errors }, Task.attempt (always NoOp) (toTop "container") )
+                    ( { model | validationErrors = errors, formSent = FailureValidation }, Task.attempt (always NoOp) (toTop "container") )
 
         OnFormSent (Ok result) ->
             case result.success of
@@ -111,21 +114,27 @@ update msg model =
                     ( { model
                         | newHelpForm = resetHelpForm
                         , formSent = Success
+                        , route = ThankYouRoute
                       }
-                    , Cmd.none
+                    , Cmd.batch [ Delay.after 3000 Time.millisecond GoHome, Task.attempt (always NoOp) (toTop "container") ]
                     )
 
                 False ->
-                    ( { model | formSent = Failure }, Cmd.none )
+                    ( { model | formSent = FailureServer }, Cmd.none )
 
         OnFormSent (Err (BadStatus response)) ->
             handleBadStatusResponse response model
 
         OnFormSent (Err _) ->
-            ( { model | formSent = Failure }, Cmd.none )
+            ( { model | formSent = FailureServer }, Cmd.none )
 
         SetField field value ->
             ( setField model model.newHelpForm field value, Cmd.none )
+
+        GoHome ->
+            { model | route = LandingRoute }
+                ! [ Navigation.newUrl "#home"
+                  ]
 
 
 handleBadStatusResponse : Response String -> Model -> ( Model, Cmd Msg )
@@ -135,11 +144,7 @@ handleBadStatusResponse response model =
             getValErrors response.body model
 
         _ ->
-            let
-                error =
-                    Debug.log "something else: " response
-            in
-            ( { model | formSent = Failure }, Cmd.none )
+            ( { model | formSent = FailureServer }, Cmd.none )
 
 
 getValErrors : String -> Model -> ( Model, Cmd Msg )
@@ -150,14 +155,10 @@ getValErrors body model =
     in
     case decodedResponse of
         Ok errorList ->
-            ( { model | formSent = Failure, validationErrors = errorList }, Cmd.none )
+            ( { model | formSent = FailureValidation, validationErrors = errorList }, Cmd.none )
 
         _ ->
-            let
-                error =
-                    Debug.log "something else went wrong "
-            in
-            ( { model | formSent = Failure }, Cmd.none )
+            ( { model | formSent = FailureValidation }, Cmd.none )
 
 
 validate : HelpForm -> List ValError
@@ -188,7 +189,7 @@ setField model oldForm field value =
                     { oldForm | name = value }
 
                 Dob ->
-                    { oldForm | dob = value }
+                    { oldForm | dob = Debug.log "date" value }
 
                 ContactNumber ->
                     { oldForm | contactNumber = value }
