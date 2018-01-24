@@ -72,6 +72,18 @@ type alias Testimonial =
     }
 
 
+type alias TestimonialQuote =
+    { id : String
+    , name : String
+    , age : String
+    , imgsrc : String
+    , therapy : String
+    , quote : String
+    , long1 : String
+    , long2 : String
+    }
+
+
 type alias FormResponse =
     { success : Bool
     }
@@ -115,3 +127,4 @@ type Msg
     | CheckboxVolunteering HelpForm
     | CheckboxMeeting HelpForm
     | CheckboxGDPR HelpForm
+    | OnFetchTestimonials (Result Http.Error (List TestimonialQuote))

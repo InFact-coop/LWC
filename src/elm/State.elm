@@ -201,3 +201,17 @@ update msg model =
 
         OnFormSent (Err result) ->
             ( { model | formSent = Failure }, Cmd.none )
+
+        OnFetchTestimonials (Ok result) ->
+            let
+                testqs =
+                    Debug.log "testimonials" result
+            in
+            ( model, Cmd.none )
+
+        OnFetchTestimonials (Err result) ->
+            let
+                testqs =
+                    Debug.log "testimonials" result
+            in
+            ( model, Cmd.none )
