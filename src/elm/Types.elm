@@ -27,6 +27,7 @@ type alias Model =
     , currentTestimonial : Int
     , burgerVisible : Bool
     , newHelpForm : HelpForm
+    , validationErrors : List ValError
     }
 
 
@@ -102,6 +103,28 @@ type alias Button =
     }
 
 
+type alias ValError =
+    { field : String
+    , messages : List String
+    }
+
+
+type FormField
+    = Name
+    | Dob
+    | ContactNumber
+    | Email
+    | Postcode
+    | EmotionalWellbeing
+    | Personal
+    | Employment
+    | Money
+    | Volunteering
+    | Meeting
+    | MoreInfo
+    | Gdpr
+
+
 
 -- Update
 
@@ -112,19 +135,7 @@ type Msg
     | ToggleServiceListItem Int
     | SelectTestimonial Int
     | ToggleBurgerMenu
-    | ChangeFormName HelpForm String
-    | ChangeFormDOB HelpForm String
-    | ChangeFormNumber HelpForm String
-    | ChangeFormEmail HelpForm String
-    | ChangeFormPostcode HelpForm String
-    | ChangeFormMore HelpForm String
     | SendHelpForm
     | OnFormSent (Result Http.Error FormResponse)
-    | CheckboxEmotion HelpForm
-    | CheckboxPersonal HelpForm
-    | CheckboxEmployment HelpForm
-    | CheckboxMoney HelpForm
-    | CheckboxVolunteering HelpForm
-    | CheckboxMeeting HelpForm
-    | CheckboxGDPR HelpForm
     | OnFetchTestimonials (Result Http.Error (List TestimonialQuote))
+    | SetField FormField String

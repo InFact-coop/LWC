@@ -95,6 +95,7 @@ sendFormCmd model =
     postFormRequest model
         |> Http.send OnFormSent
 
+
 testimonialQuotesDecoder : Decode.Decoder (List TestimonialQuote)
 testimonialQuotesDecoder =
     Decode.list testimonialQuoteDecoder
@@ -121,3 +122,11 @@ fetchTestimonialQuotes : Cmd Msg
 fetchTestimonialQuotes =
     Http.get testimonialsUrl testimonialQuotesDecoder
         |> Http.send OnFetchTestimonials
+
+
+validationResponseDecoder : Decode.Decoder (List ValError)
+validationResponseDecoder =
+    decode ValError
+        |> required "field" Decode.string
+        |> required "messages" (Decode.list Decode.string)
+        |> Decode.list
