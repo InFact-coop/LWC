@@ -22,7 +22,12 @@ app.use((req, res, next) => {
 // Validation Error Handler
 app.use((err, req, res, next) => {
   if (err.message === "validation error") {
-    return res.status(400).json(err);
+    return res.status(400).json(
+      err.errors.map(error => ({
+        field: error.field[0],
+        messages: error.messages
+      }))
+    );
   }
   return next(err);
 });

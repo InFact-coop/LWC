@@ -20,6 +20,6 @@ module.exports = {
         "Meeting Others"
       ])
     ),
-    "More Info": Joi.string()
+    "More Info": Joi.string().allow("")
   }
 };
