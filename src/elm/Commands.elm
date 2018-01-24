@@ -94,6 +94,8 @@ sendFormCmd : Model -> Cmd Msg
 sendFormCmd model =
     postFormRequest model
         |> Http.send OnFormSent
+
+testimonialQuotesDecoder : Decode.Decoder (List TestimonialQuote)
 testimonialQuotesDecoder =
     Decode.list testimonialQuoteDecoder
 
