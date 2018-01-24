@@ -94,3 +94,28 @@ sendFormCmd : Model -> Cmd Msg
 sendFormCmd model =
     postFormRequest model
         |> Http.send OnFormSent
+testimonialQuotesDecoder =
+    Decode.list testimonialQuoteDecoder
+
+
+testimonialQuoteDecoder : Decode.Decoder TestimonialQuote
+testimonialQuoteDecoder =
+    decode TestimonialQuote
+        |> required "id" Decode.string
+        |> required "Name" Decode.string
+        |> required "Age" Decode.string
+        |> required "Image source" Decode.string
+        |> required "Therapy" Decode.string
+        |> required "Short Quote" Decode.string
+        |> required "Long Quote Part One" Decode.string
+        |> required "Long Quote Part Two" Decode.string
+
+
+testimonialsUrl =
+    "http://localhost:4000/api/v1/testimonials"
+
+
+fetchTestimonialQuotes : Cmd Msg
+fetchTestimonialQuotes =
+    Http.get testimonialsUrl testimonialQuotesDecoder
+        |> Http.send OnFetchTestimonials
