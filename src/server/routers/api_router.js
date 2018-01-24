@@ -44,7 +44,7 @@ const getTestimonials = (req, res, next) => {
         if (err) {
           return next(err);
         }
-        return res.json(testimonials);
+        return res.json(testimonials[0]);
       }
     );
 };
