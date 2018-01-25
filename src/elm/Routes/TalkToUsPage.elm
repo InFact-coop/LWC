@@ -9,10 +9,10 @@ import Types exposing (..)
 
 talkToUsPage : Model -> Html Msg
 talkToUsPage model =
-    div [ class "ma4 ml5-ns" ]
-        [ div [ class "gray f3 b" ] [ text "Talk to us" ]
-        , div [ class "gray fw1 mt3 mb3 mb4-ns w-50-l" ] [ text "Whether you know what you service you need and want to book an appointment or need more advice there are a three ways to get in touch. " ]
-        , div [ class "purple-line mb3" ] []
+    div [ class "ma4 mh5-ns" ]
+        [ div [ class "gray f2 b ma4" ] [ text "Talk to us" ]
+        , div [ class "gray fw1 mt3 mb3 mb4-ns w-50-l ma4" ] [ text "Whether you know what you service you need and want to book an appointment or need more advice there are a three ways to get in touch. " ]
+        , div [ class "purple-line mb3 ma4" ] []
         , a [ href "http://womenscentre.org/who-we-are/our-centres", class "tc db black mb3-l" ]
             [ div [ class "tc mt3 ba b--purple w-50-l w-100 dib pt3 pb3" ]
                 [ div [ class " purple f3" ] [ text "Come to a centre" ]

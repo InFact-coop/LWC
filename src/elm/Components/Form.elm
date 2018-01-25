@@ -36,14 +36,30 @@ detailsForm model =
 
         -- Additional information
         , formBuilder model MoreInfo
+
+        -- Legal Stuff
+        , div []
+            [ div []
+                [ text "Lancashire Women's Centres (LWC) want you to understand how our service works and how we store your data. Please state that you have read and agree to these terms before you continue"
+                ]
+            , a
+                [ href "https://womenscentre.org/terms-conditions"
+                ]
+                [ text "https://womenscentre.org/terms-conditions" ]
+            ]
         , formBuilder model Gdpr
+        , div [] [ div [] [ text "LWC like to keep in touch with people to tell you about the vital work we do, our fundraising events and opportunities to support or work for us." ] ]
+        , formBuilder model ContactMe
 
         -- same as before
         , div [ class "tc" ]
             [ button
                 [ type_ "submit"
-                , class "pointer f5 ba br1 w-80 w-40-l br2 pa3 tc bg-purple white mt3 br1 dim"
-                , classList [ ( "bg-light-purple", not model.newHelpForm.gdpr ) ]
+                , class "f5 ba br1 w-80 w-40-l br2 pa3 tc bg-purple white mt3 br1"
+                , classList
+                    [ ( "bg-light-purple", not model.newHelpForm.gdpr )
+                    , ( "pointer", model.newHelpForm.gdpr )
+                    ]
                 , disabled <| not model.newHelpForm.gdpr
                 ]
                 [ text "Submit" ]
@@ -96,10 +112,10 @@ formBuilder model field =
             textAreaInput model.newHelpForm.moreInfo field
 
         Gdpr ->
-            buttonItemGDPR model.newHelpForm.gdpr
-                field
-                "Lancashire Women's Centres (LWC) want you to understand how our service works and how we store your data. Please state that you have read and agree to these terms before you continue"
-                "https://womenscentre.org/terms-conditions"
+            buttonItem model.newHelpForm.gdpr field "I agree to the data storage terms"
+
+        ContactMe ->
+            buttonItem model.newHelpForm.contactMe field "Please indicate if you would like to go on our mailing list."
 
 
 
@@ -138,19 +154,6 @@ buttonItem : Bool -> FormField -> String -> Html Types.Msg
 buttonItem state field textValue =
     div [ class "pa2 flex" ]
         [ button [ type_ "button", class " tr bn bg-white items-start", onClick <| SetField field "" ]
-            [ div [ class "ma0 pa0 h1 w1 ba bw1 b--purple br1 dib v-mid", classList [ ( "bg-purple", state ) ] ] []
-            , p [ class "ma0 pa0 purple f5  lh-copy ph2 v-mid dib" ] [ text textValue ]
-            ]
-        ]
-
-
-buttonItemGDPR : Bool -> FormField -> String -> String -> Html Types.Msg
-buttonItemGDPR state field textValue url =
-    div [ class "pa2 flex" ]
-        [ a
-            [ href url ]
-            [ text url ]
-        , button [ type_ "button", class " tr bn bg-white", onClick <| SetField field "" ]
             [ div [ class "ma0 pa0 h1 w1 ba bw1 b--purple br1 dib v-mid", classList [ ( "bg-purple", state ) ] ] []
             , p [ class "ma0 pa0 purple f5  lh-copy ph2 v-mid dib" ] [ text textValue ]
             ]
@@ -203,16 +206,16 @@ textAreaInput val field =
 sendingMsg : FormSent -> Html Msg
 sendingMsg status =
     case status of
-        Success ->
-            div [ class "tc pt2 w-100 green" ] [ text "Your data was sent successfully" ]
-
         Pending ->
             div [ class "tc pt2 w-100 grey" ] [ text "Sending Data..." ]
 
-        Failure ->
-            div [ class "tc pt2 w-100 red" ] [ text "Your data failed to send" ]
+        FailureValidation ->
+            div [ class "tc pt2 w-100 purple" ] [ text "Sorry, some of the data you've sent isn't quite right, see above" ]
 
-        NotSent ->
+        FailureServer ->
+            div [ class "tc pt2 w-100 red" ] [ text "Sorry, something went wrong with our server. You might have to call us, or try again later." ]
+
+        _ ->
             div [] []
 
 
