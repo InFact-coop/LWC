@@ -45,6 +45,7 @@ type alias HelpForm =
     , meeting : Bool
     , moreInfo : String
     , gdpr : Bool
+    , contactMe : Bool
     }
 
 
@@ -112,6 +113,7 @@ type FormField
     | Meeting
     | MoreInfo
     | Gdpr
+    | ContactMe
 
 
 

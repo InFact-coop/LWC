@@ -34,7 +34,7 @@ initModel =
 
 resetHelpForm : HelpForm
 resetHelpForm =
-    HelpForm "Me" "2018-01-16" "678" "m@m.m" "tyu" False False False False False False "" True
+    HelpForm "" "" "" "" "" False False False False False False "" False False
 
 
 
@@ -222,5 +222,8 @@ setField model oldForm field value =
 
                 Gdpr ->
                     { oldForm | gdpr = not oldForm.gdpr }
+
+                ContactMe ->
+                    { oldForm | contactMe = not oldForm.contactMe }
     in
     { model | newHelpForm = newForm }

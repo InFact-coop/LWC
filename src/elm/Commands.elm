@@ -55,6 +55,7 @@ helpFormEncoder model =
             , ( "Areas of Interest", Encode.list areasList )
             , ( "More Info", Encode.string model.newHelpForm.moreInfo )
             , ( "GDPR", Encode.bool model.newHelpForm.gdpr )
+            , ( "Add To Mailing List", Encode.bool model.newHelpForm.contactMe )
             ]
 
         areasList =
