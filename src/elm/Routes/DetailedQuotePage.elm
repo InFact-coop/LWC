@@ -10,8 +10,12 @@ import Types exposing (..)
 detailedQuotePage : Model -> Html Msg
 detailedQuotePage model =
     div [ class "ma4 ml5-ns mr5-ns" ]
-        [ div [ class "gray f3 b" ] [ text "Women like you" ]
-        , div [ class "gray fw1 mt3 mb3 mb4-ns w-50-l" ] [ text "Below is a real story from someone we've helped. We provide all the services that they used. If you think something they've used would help you as well or if you're still not sure please get in touch with us." ]
+        [ div [ class "gray f2 b" ] [ text "Real Stories" ]
+        , div [ class "gray fw1 mt3 mb3 mb4-ns w-50-l" ]
+            [ text "Below is a real story from someone we've helped. We provide all the services that they used. If you think something they've used would help you as well or if you're still not sure please get in touch with us."
+            , div [ class "mt2" ] []
+            , text "These stories are real but we've changes the names and images to respect people's identities"
+            ]
         , div [ class "purple-line mb4" ] []
         , retrieveTestimonial model
         , div [ class "dn-l" ] [ purpleButton "See our services" "services" ]
