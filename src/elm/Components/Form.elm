@@ -150,9 +150,9 @@ basicInput field fieldName fieldType fieldValue errors wrapperClass errClass tit
 buttonItem : Bool -> FormField -> String -> Html Types.Msg
 buttonItem state field textValue =
     div [ class "pa2 flex" ]
-        [ button [ type_ "button", class " tl bn bg-white items-start ", onClick <| SetField field "" ]
+        [ button [ type_ "button", class "tl bn bg-white items-start ", onClick <| SetField field "" ]
             [ div [ class "ma0 pa0 h1 w1 ba b--gray br2 dib v-mid", classList [ ( "purple-tick bn", state ) ] ] []
-            , p [ class "ma0 pa0 gray f5  lh-copy ph2 v-mid di" ] [ text textValue ]
+            , p [ class "ma0 pa0 gray f5 lh-copy ph2 v-mid di" ] [ text textValue ]
             ]
         ]
 
@@ -165,7 +165,7 @@ formErrors : String -> List ValError -> ( Html msg, Bool )
 formErrors field errors =
     ( errors
         |> List.filter (\error -> error.field == field)
-        |> List.map (\error -> div [] (List.map (\errMess -> div [ class "purple f5" ] [ text errMess ]) error.messages))
+        |> List.map (\error -> div [] (List.map (\errMess -> div [ class "red f6 f5-ns fw1" ] [ text errMess ]) error.messages))
         |> div []
     , errors
         |> List.filter (\error -> error.field == field)
@@ -225,7 +225,7 @@ wrapperClass_text =
 
 
 errClass_text =
-    "b--purple bw2"
+    "b--red"
 
 
 titleClass_text =
