@@ -105,7 +105,14 @@ update msg model =
                     ( { model | validationErrors = [], formSent = Pending }, sendFormCmd model )
 
                 errors ->
-                    ( { model | validationErrors = errors, formSent = FailureValidation }, Task.attempt (always NoOp) (toTop "container") )
+                    let
+                        ( cmd, formStatus ) =
+                            if (List.length errors == 1) && (List.head errors == Just { field = "GDPR", messages = [ "Please agree to the storage terms to submit your data" ] }) then
+                                ( Cmd.none, FailureGDPR )
+                            else
+                                ( Task.attempt (always NoOp) (toTop "container"), FailureValidation )
+                    in
+                    ( { model | validationErrors = errors, formSent = formStatus }, cmd )
 
         OnFormSent (Ok result) ->
             case result.success of
@@ -189,6 +196,8 @@ validate form =
             >> Validate.ifBlank { field = "Contact Number", messages = [ "Please enter a Contact number" ] }
         , .postcode
             >> Validate.ifBlank { field = "Postcode", messages = [ "Please enter a Postcode" ] }
+        , .gdpr
+            >> Validate.ifInvalid (\n -> not n) { field = "GDPR", messages = [ "Please agree to the storage terms to submit your data" ] }
         ]
         form
 
