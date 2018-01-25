@@ -4,7 +4,6 @@ import Commands exposing (..)
 import Data.Quotes exposing (..)
 import Data.Services exposing (..)
 import Data.Testimonials exposing (..)
-import Debug
 import Delay
 import Dom.Scroll exposing (..)
 import Http exposing (..)
@@ -189,7 +188,7 @@ setField model oldForm field value =
                     { oldForm | name = value }
 
                 Dob ->
-                    { oldForm | dob = Debug.log "date" value }
+                    { oldForm | dob = value }
 
                 ContactNumber ->
                     { oldForm | contactNumber = value }
