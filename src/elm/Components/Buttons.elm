@@ -12,7 +12,7 @@ clearWhiteButton name route =
 
 whiteButton : String -> String -> Html Msg
 whiteButton name route =
-    genericButton "ma3" "purple bg-white-80 tracked pa4 dim br2 db tc w-80 w-80-l m0-auto mw6-m" " mt4 no-underline" name route
+    genericButton "ma3" "purple bg-white-80 tracked pa4 dim br2 db tc w-80 w-80-l m0-auto mw6-m" "no-underline" name route
 
 
 purpleButton : String -> String -> Html Msg
