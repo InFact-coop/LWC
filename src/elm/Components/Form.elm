@@ -143,18 +143,6 @@ basicInput field fieldName fieldType fieldValue errors wrapperClass errClass tit
         ]
 
 
-
---Make Checkbox inputs
--- buttonItem : Bool -> FormField -> String -> Html Types.Msg
--- buttonItem state field textValue =
---     div [ class "pv2 " ]
---         [ button [ type_ "button", class "  bn bg-white ", onClick <| SetField field "" ]
---             [ div [ class "ma0 pa0 h1 w1 ba bw1 b--gray br1 dib  br2   fl", classList [ ( "purple-tick bn", state ) ] ] []
---             , p [ class "ma0 pa0 gray f5  lh-copy pl2  dib " ] [ text textValue ]
---             ]
---         ]
-
-
 buttonItem : Bool -> FormField -> String -> Html Types.Msg
 buttonItem state field textValue =
     div [ class "pa2 flex" ]
