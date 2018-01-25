@@ -4,9 +4,15 @@ import Commands exposing (..)
 import Data.Quotes exposing (..)
 import Data.Services exposing (..)
 import Data.Testimonials exposing (..)
+import Delay
 import Dom.Scroll exposing (..)
+import Http exposing (..)
+import Json.Decode as Decode
+import Navigation exposing (..)
 import Task exposing (..)
+import Time
 import Types exposing (..)
+import Validate exposing (..)
 
 
 -- MODEL
@@ -21,8 +27,14 @@ initModel =
     , currentTestimonial = 1
     , quotes = quotesList
     , burgerVisible = True
-    , newHelpForm = HelpForm "" "" "" "" ""
+    , validationErrors = []
+    , newHelpForm = resetHelpForm
     }
+
+
+resetHelpForm : HelpForm
+resetHelpForm =
+    HelpForm "" "" "" "" "" False False False False False False "" False False
 
 
 
@@ -87,51 +99,131 @@ update msg model =
         ToggleBurgerMenu ->
             ( { model | burgerVisible = not model.burgerVisible }, Cmd.none )
 
-        ChangeFormName helpForm name ->
-            let
-                newHelpForm =
-                    { helpForm | name = name }
-            in
-            ( { model | newHelpForm = newHelpForm }, Cmd.none )
-
-        ChangeFormDOB helpForm dob ->
-            let
-                newHelpForm =
-                    { helpForm | dob = dob }
-            in
-            ( { model | newHelpForm = newHelpForm }, Cmd.none )
-
-        ChangeFormNumber helpForm number ->
-            let
-                newHelpForm =
-                    { helpForm | contactNumber = number }
-            in
-            ( { model | newHelpForm = newHelpForm }, Cmd.none )
-
-        ChangeFormEmail helpForm email ->
-            let
-                newHelpForm =
-                    { helpForm | email = email }
-            in
-            ( { model | newHelpForm = newHelpForm }, Cmd.none )
-
-        ChangeFormPostcode helpForm postcode ->
-            let
-                newHelpForm =
-                    { helpForm | postcode = postcode }
-            in
-            ( { model | newHelpForm = newHelpForm }, Cmd.none )
-
         SendHelpForm ->
-            ( { model | newHelpForm = HelpForm "" "" "" "" "", formSent = Pending }, sendFormCmd model.newHelpForm )
+            case validate model.newHelpForm of
+                [] ->
+                    ( { model | validationErrors = [], formSent = Pending }, sendFormCmd model )
+
+                errors ->
+                    ( { model | validationErrors = errors, formSent = FailureValidation }, Task.attempt (always NoOp) (toTop "container") )
 
         OnFormSent (Ok result) ->
             case result.success of
                 True ->
-                    ( { model | formSent = Success }, Cmd.none )
+                    ( { model
+                        | newHelpForm = resetHelpForm
+                        , formSent = Success
+                        , route = ThankYouRoute
+                      }
+                    , Cmd.batch [ Delay.after 3000 Time.millisecond GoHome, Task.attempt (always NoOp) (toTop "container") ]
+                    )
 
                 False ->
-                    ( { model | formSent = Failure }, Cmd.none )
+                    ( { model | formSent = FailureServer }, Cmd.none )
 
-        OnFormSent (Err result) ->
-            ( { model | formSent = Failure }, Cmd.none )
+        OnFormSent (Err (BadStatus response)) ->
+            handleBadStatusResponse response model
+
+        OnFormSent (Err _) ->
+            ( { model | formSent = FailureServer }, Cmd.none )
+
+        SetField field value ->
+            ( setField model model.newHelpForm field value, Cmd.none )
+
+        GoHome ->
+            { model | route = LandingRoute }
+                ! [ Navigation.newUrl "#home"
+                  ]
+
+
+handleBadStatusResponse : Response String -> Model -> ( Model, Cmd Msg )
+handleBadStatusResponse response model =
+    case response.status.code of
+        400 ->
+            getValErrors response.body model
+
+        _ ->
+            ( { model | formSent = FailureServer }, Cmd.none )
+
+
+getValErrors : String -> Model -> ( Model, Cmd Msg )
+getValErrors body model =
+    let
+        decodedResponse =
+            Decode.decodeString validationResponseDecoder body
+    in
+    case decodedResponse of
+        Ok errorList ->
+            ( { model | formSent = FailureValidation, validationErrors = errorList }, Cmd.none )
+
+        _ ->
+            ( { model | formSent = FailureValidation }, Cmd.none )
+
+
+validate : HelpForm -> List ValError
+validate form =
+    Validate.all
+        [ .name
+            >> Validate.ifBlank { field = "Name", messages = [ "Please enter a name" ] }
+        , .dob
+            >> Validate.ifBlank { field = "Date Of Birth", messages = [ "Please enter a date of birth" ] }
+        , .email
+            >> Validate.ifBlank { field = "Email", messages = [ "Please enter an email address" ] }
+        , .email
+            >> Validate.ifInvalidEmail { field = "Email", messages = [ "Please enter a valid email address" ] }
+        , .contactNumber
+            >> Validate.ifBlank { field = "Contact Number", messages = [ "Please enter a Contact number" ] }
+        , .postcode
+            >> Validate.ifBlank { field = "Postcode", messages = [ "Please enter a Postcode" ] }
+        ]
+        form
+
+
+setField : Model -> HelpForm -> FormField -> String -> Model
+setField model oldForm field value =
+    let
+        newForm =
+            case field of
+                Name ->
+                    { oldForm | name = value }
+
+                Dob ->
+                    { oldForm | dob = value }
+
+                ContactNumber ->
+                    { oldForm | contactNumber = value }
+
+                Email ->
+                    { oldForm | email = value }
+
+                Postcode ->
+                    { oldForm | postcode = value }
+
+                EmotionalWellbeing ->
+                    { oldForm | emotionalWellbeing = not oldForm.emotionalWellbeing }
+
+                Personal ->
+                    { oldForm | personal = not oldForm.personal }
+
+                Employment ->
+                    { oldForm | employment = not oldForm.employment }
+
+                Money ->
+                    { oldForm | money = not oldForm.money }
+
+                Volunteering ->
+                    { oldForm | volunteering = not oldForm.volunteering }
+
+                Meeting ->
+                    { oldForm | meeting = not oldForm.meeting }
+
+                MoreInfo ->
+                    { oldForm | moreInfo = value }
+
+                Gdpr ->
+                    { oldForm | gdpr = not oldForm.gdpr }
+
+                ContactMe ->
+                    { oldForm | contactMe = not oldForm.contactMe }
+    in
+    { model | newHelpForm = newForm }

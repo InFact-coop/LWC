@@ -27,6 +27,7 @@ type alias Model =
     , currentTestimonial : Int
     , burgerVisible : Bool
     , newHelpForm : HelpForm
+    , validationErrors : List ValError
     }
 
 
@@ -36,6 +37,15 @@ type alias HelpForm =
     , contactNumber : String
     , email : String
     , postcode : String
+    , emotionalWellbeing : Bool
+    , personal : Bool
+    , employment : Bool
+    , money : Bool
+    , volunteering : Bool
+    , meeting : Bool
+    , moreInfo : String
+    , gdpr : Bool
+    , contactMe : Bool
     }
 
 
@@ -71,7 +81,8 @@ type alias FormResponse =
 
 type FormSent
     = Success
-    | Failure
+    | FailureValidation
+    | FailureServer
     | Pending
     | NotSent
 
@@ -80,6 +91,29 @@ type alias Button =
     { name : String
     , route : String
     }
+
+
+type alias ValError =
+    { field : String
+    , messages : List String
+    }
+
+
+type FormField
+    = Name
+    | Dob
+    | ContactNumber
+    | Email
+    | Postcode
+    | EmotionalWellbeing
+    | Personal
+    | Employment
+    | Money
+    | Volunteering
+    | Meeting
+    | MoreInfo
+    | Gdpr
+    | ContactMe
 
 
 
@@ -92,11 +126,7 @@ type Msg
     | ToggleServiceListItem Int
     | SelectTestimonial Int
     | ToggleBurgerMenu
-    | ChangeFormName HelpForm String
-    | ChangeFormDOB HelpForm String
-    | ChangeFormNumber HelpForm String
-    | ChangeFormEmail HelpForm String
-    | ChangeFormPostcode HelpForm String
     | SendHelpForm
     | OnFormSent (Result Http.Error FormResponse)
-
+    | SetField FormField String
+    | GoHome
