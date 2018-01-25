@@ -24,7 +24,7 @@ detailsForm model =
         -- choice of services
         , div [ class "ba br1 flex w-100 flex-wrap pa1 b--silver  pb3 pt1" ]
             [ h4 [ class "purple fw1 mt1 w-100" ] [ text "Which services are you interested in?" ]
-            , section [ class "pl3 w-100" ]
+            , section [ class "pl3-ns pl0 w-100" ]
                 [ formBuilder model EmotionalWellbeing
                 , formBuilder model Personal
                 , formBuilder model Employment
@@ -145,14 +145,22 @@ basicInput field fieldName fieldType fieldValue errors wrapperClass errClass tit
 
 
 --Make Checkbox inputs
+-- buttonItem : Bool -> FormField -> String -> Html Types.Msg
+-- buttonItem state field textValue =
+--     div [ class "pv2 " ]
+--         [ button [ type_ "button", class "  bn bg-white ", onClick <| SetField field "" ]
+--             [ div [ class "ma0 pa0 h1 w1 ba bw1 b--gray br1 dib  br2   fl", classList [ ( "purple-tick bn", state ) ] ] []
+--             , p [ class "ma0 pa0 gray f5  lh-copy pl2  dib " ] [ text textValue ]
+--             ]
+--         ]
 
 
 buttonItem : Bool -> FormField -> String -> Html Types.Msg
 buttonItem state field textValue =
     div [ class "pa2 flex" ]
         [ button [ type_ "button", class " tr bn bg-white items-start", onClick <| SetField field "" ]
-            [ div [ class "ma0 pa0 h1 w1 ba bw1 b--purple br1 dib v-mid", classList [ ( "bg-purple", state ) ] ] []
-            , p [ class "ma0 pa0 purple f5  lh-copy ph2 v-mid dib" ] [ text textValue ]
+            [ div [ class "ma0 pa0 h1 w1 ba b--gray br2 dib v-mid ", classList [ ( "purple-tick bn", state ) ] ] []
+            , p [ class "ma0 pa0 gray f5  lh-copy ph2 v-mid dib" ] [ text textValue ]
             ]
         ]
 

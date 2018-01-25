@@ -20,7 +20,7 @@ import Validate exposing (..)
 
 initModel : Model
 initModel =
-    { route = LandingRoute
+    { route = FormRoute
     , formSent = NotSent
     , services = servicesList
     , testimonials = testimonialsList

@@ -102,3 +102,10 @@ margin: 0 auto;
 #container {
   -webkit-overflow-scrolling: touch;
 }
+
+.purple-tick {
+  background-image: url("./assets/purpleTick.png");
+  height: 1rem;
+  background-position: center;
+  background-size: cover;
+}
