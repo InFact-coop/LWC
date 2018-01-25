@@ -24,7 +24,7 @@ detailsForm model =
         -- choice of services
         , div [ class "ba br1 flex w-100 flex-wrap pa1 b--silver  pb3 pt1" ]
             [ h4 [ class "purple fw1 mt1 w-100" ] [ text "Which services are you interested in?" ]
-            , section [ class "pl3 w-100" ]
+            , section [ class "pl3-ns pl0 w-100" ]
                 [ formBuilder model EmotionalWellbeing
                 , formBuilder model Personal
                 , formBuilder model Employment
@@ -38,7 +38,7 @@ detailsForm model =
         , formBuilder model MoreInfo
 
         -- Legal Stuff
-        , div []
+        , div [ class "pa2-ns pa1 mt3 fw2" ]
             [ div []
                 [ text "Lancashire Women's Centres (LWC) want you to understand how our service works and how we store your data. Please state that you have read and agree to these terms before you continue"
                 ]
@@ -48,7 +48,7 @@ detailsForm model =
                 [ text "https://womenscentre.org/terms-conditions" ]
             ]
         , formBuilder model Gdpr
-        , div [] [ div [] [ text "LWC like to keep in touch with people to tell you about the vital work we do, our fundraising events and opportunities to support or work for us." ] ]
+        , div [ class "pa2-ns pa1 fw2 " ] [ div [ class "di" ] [ text "LWC like to keep in touch with people to tell you about the vital work we do, our fundraising events and opportunities to support or work for us." ] ]
         , formBuilder model ContactMe
 
         -- same as before
@@ -60,7 +60,8 @@ detailsForm model =
                     [ ( "bg-light-purple", not model.newHelpForm.gdpr )
                     , ( "pointer", model.newHelpForm.gdpr )
                     ]
-                , disabled <| not model.newHelpForm.gdpr
+
+                -- , disabled <| not model.newHelpForm.gdpr
                 ]
                 [ text "Submit" ]
             ]
@@ -115,7 +116,7 @@ formBuilder model field =
             buttonItem model.newHelpForm.gdpr field "I agree to the data storage terms"
 
         ContactMe ->
-            buttonItem model.newHelpForm.contactMe field "Please indicate if you would like to go on our mailing list."
+            buttonItem model.newHelpForm.contactMe field "Would you like to join our mailing list?"
 
 
 
@@ -146,16 +147,12 @@ basicInput field fieldName fieldType fieldValue errors wrapperClass errClass tit
         ]
 
 
-
---Make Checkbox inputs
-
-
 buttonItem : Bool -> FormField -> String -> Html Types.Msg
 buttonItem state field textValue =
     div [ class "pa2 flex" ]
-        [ button [ type_ "button", class " tr bn bg-white items-start", onClick <| SetField field "" ]
-            [ div [ class "ma0 pa0 h1 w1 ba bw1 b--purple br1 dib v-mid", classList [ ( "bg-purple", state ) ] ] []
-            , p [ class "ma0 pa0 purple f5  lh-copy ph2 v-mid dib" ] [ text textValue ]
+        [ button [ type_ "button", class "tl bn bg-white items-start ", onClick <| SetField field "" ]
+            [ div [ class "ma0 pa0 h1 w1 ba b--gray br2 dib v-mid", classList [ ( "purple-tick bn", state ) ] ] []
+            , p [ class "ma0 pa0 gray f5 lh-copy ph2 v-mid di" ] [ text textValue ]
             ]
         ]
 
@@ -168,7 +165,7 @@ formErrors : String -> List ValError -> ( Html msg, Bool )
 formErrors field errors =
     ( errors
         |> List.filter (\error -> error.field == field)
-        |> List.map (\error -> div [] (List.map (\errMess -> div [ class "purple f5" ] [ text errMess ]) error.messages))
+        |> List.map (\error -> div [] (List.map (\errMess -> div [ class "red f6 f5-ns fw1" ] [ text errMess ]) error.messages))
         |> div []
     , errors
         |> List.filter (\error -> error.field == field)
@@ -187,7 +184,7 @@ textAreaInput val field =
         [ div [ class "ba br1 flex w-100 flex-wrap pa1 b--silver mt3" ]
             [ div [ class "purple fw1 pb2" ] [ text "Is there anything else you would like to tell us?" ]
             , textarea
-                [ class "sans-serif w-100 mh3 h4 f5 gray fw1 bn"
+                [ class "sans-serif w-100 ma3-ns ma1 h4 f5 pa1 pa2-ns gray fw1 ba-ns b--moon-gray br2"
                 , name "additionalInfo"
                 , attribute "rows" "5"
                 , placeholder "Please let us know here"
@@ -228,7 +225,7 @@ wrapperClass_text =
 
 
 errClass_text =
-    "b--purple bw2"
+    "b--red"
 
 
 titleClass_text =
