@@ -242,4 +242,4 @@ titleClass_text =
 
 
 inputClass_text =
-    "w-100 f4 gray fw1 bn"
+    "w-100 f4 gray fw1 bn sans-serif"
