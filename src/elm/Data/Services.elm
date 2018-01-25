@@ -185,7 +185,7 @@ servicesList =
                     , emphasis "action planning"
                     , text " to help a successful outcome."
                     ]
-                , a [ href "http://womenscentre.org/how-you-can-help/volunteer", class "no-underline tc flex justify-center" ]
+                , a [ href "http://womenscentre.org/how-you-can-help/volunteer", target "blank", class "no-underline tc flex justify-center" ]
                     [ p [ class "tc no-underline w-30-l w-60 pt2 pb2 pl3 pr3 bg-purple br1 white dim br2" ] [ text "Find out more" ]
                     ]
                 ]

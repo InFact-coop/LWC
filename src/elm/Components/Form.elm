@@ -44,6 +44,7 @@ detailsForm model =
                 ]
             , a
                 [ href "https://womenscentre.org/terms-conditions"
+                , target "blank"
                 ]
                 [ text "https://womenscentre.org/terms-conditions" ]
             ]
