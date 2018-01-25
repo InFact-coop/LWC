@@ -22,8 +22,10 @@ purpleButton name route =
 
 genericButton : String -> String -> String -> String -> String -> Html Msg
 genericButton divClass buttonClass linkClass name route =
-    div [ class divClass ]
-        [ div [ class buttonClass ]
-            [ a [ href ("#" ++ route), class linkClass ] [ text name ]
+    a [ href ("#" ++ route), class "no-underline" ]
+        [ div [ class divClass ]
+            [ div [ class buttonClass ]
+                [ div [ class linkClass ] [ text name ]
+                ]
             ]
         ]

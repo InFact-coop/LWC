@@ -33,8 +33,8 @@ servicesList =
                     , emphasis "Talking Therapies: "
                     , text "enable you to improve your mood, build confidence and self esteem and feel better about your emotional and physical health and have better relationships with others. "
                     ]
-                , a [ href "#talk-to-us", class "no-underline tc flex justify-center" ]
-                    [ p [ class "tc no-underline w-50 pt2 pb2 pl3 pr3 bg-purple br1 white dim" ] [ text "Contact us" ]
+                , a [ href "#talk-to-us", class "no-underline tc flex justify-center br1 center" ]
+                    [ p [ class "tc no-underline pt2 pb2 pl3 pr3 bg-purple br2 white dim w-30-l w-60" ] [ text "Contact us" ]
                     ]
                 ]
       }
@@ -65,7 +65,7 @@ servicesList =
                     , text "which adds the final touches and polishes new skills to achieve lasting positive changes."
                     ]
                 , a [ href "#talk-to-us", class "no-underline tc flex justify-center" ]
-                    [ p [ class "tc no-underline w-50 pt2 pb2 pl3 pr3 bg-purple br1 white dim" ] [ text "Contact us" ]
+                    [ p [ class "tc no-underline w-30-l w-60 pt2 pb2 pl3 pr3 bg-purple br1 white dim br2" ] [ text "Contact us" ]
                     ]
                 ]
       }
@@ -110,7 +110,7 @@ servicesList =
                     , text "We work with a number of local solicitors who provide free legal clinics at our centres."
                     ]
                 , a [ href "#talk-to-us", class "no-underline tc flex justify-center" ]
-                    [ p [ class "tc no-underline w-50 pt2 pb2 pl3 pr3 bg-purple br1 white dim" ] [ text "Contact us" ]
+                    [ p [ class "tc no-underline w-30-l w-60 pt2 pb2 pl3 pr3 bg-purple br1 white dim br2" ] [ text "Contact us" ]
                     ]
                 ]
       }
@@ -145,7 +145,7 @@ servicesList =
                     , text " to those in need."
                     ]
                 , a [ href "#talk-to-us", class "no-underline tc flex justify-center" ]
-                    [ p [ class "tc no-underline w-50 pt2 pb2 pl3 pr3 bg-purple br1 white dim" ] [ text "Contact us" ]
+                    [ p [ class "tc no-underline w-30-l w-60 pt2 pb2 pl3 pr3 bg-purple br1 white dim br2" ] [ text "Contact us" ]
                     ]
                 ]
       }
@@ -186,7 +186,7 @@ servicesList =
                     , text " to help a successful outcome."
                     ]
                 , a [ href "http://womenscentre.org/how-you-can-help/volunteer", class "no-underline tc flex justify-center" ]
-                    [ p [ class "tc no-underline w-50 pt2 pb2 pl3 pr3 bg-purple br1 white dim" ] [ text "Find out more" ]
+                    [ p [ class "tc no-underline w-30-l w-60 pt2 pb2 pl3 pr3 bg-purple br1 white dim br2" ] [ text "Find out more" ]
                     ]
                 ]
       }
@@ -205,7 +205,7 @@ servicesList =
                     , text " for a brew & chat"
                     ]
                 , a [ href "#talk-to-us", class "no-underline tc flex justify-center" ]
-                    [ p [ class "tc no-underline w-50 pt2 pb2 pl3 pr3 bg-purple br1 white dim" ] [ text "Contact us" ]
+                    [ p [ class "tc no-underline w-30-l w-60 pt2 pb2 pl3 pr3 bg-purple br1 white dim br2" ] [ text "Contact us" ]
                     ]
                 ]
       }
