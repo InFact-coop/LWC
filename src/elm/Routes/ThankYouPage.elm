@@ -14,7 +14,7 @@ thankYouPage model =
                 [ div [ class "white b f2 tc pl3 pr3 pt5 tracked f1-l" ]
                     [ text "Thank you" ]
                 , div [ class "white-line pb4" ] []
-                , div [ class "white tracked tc fw1 mt4 f3-l" ] [ text "We'll be in touch within 72 hours" ]
+                , div [ class "white tracked tc fw1 mt4 f3-l" ] [ text "We'll be in touch shortly" ]
                 ]
             ]
         ]
