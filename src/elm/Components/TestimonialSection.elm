@@ -9,7 +9,7 @@ import Types exposing (..)
 
 testimonialSection : Testimonial -> Html Msg
 testimonialSection { name, age, imgsrc, therapy, description } =
-    section [ class "testimonial ma3 ma0-l ba b--solid b--silver br3 mw7-m mw8-l m0-auto w-95 pa4-l" ]
+    section [ class "testimonial ma3 ma0-l ba b--solid b--silver br3 mw7-m mw8-l m0-auto w-95 pa4-l w-90" ]
         [ header [ class "mb3 dib pl3 pt3" ]
             [ img [ class "dib h4 w4 v-btm", src imgsrc, alt name ]
                 []
