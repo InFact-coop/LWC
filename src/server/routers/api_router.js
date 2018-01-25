@@ -11,7 +11,8 @@ Airtable.configure({
 
 const postController = (req, res, next) => {
   const { GDPR, ...filteredData } = Object.assign(req.body, {
-    DOB: new Date(req.body.DOB)
+    DOB: new Date(req.body.DOB),
+    "Add To Mailing List": req.body["Add To Mailing List"] ? "Yes" : "No"
   });
 
   if (!GDPR) {

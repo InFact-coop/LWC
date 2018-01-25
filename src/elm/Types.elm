@@ -45,6 +45,7 @@ type alias HelpForm =
     , meeting : Bool
     , moreInfo : String
     , gdpr : Bool
+    , contactMe : Bool
     }
 
 
@@ -80,7 +81,8 @@ type alias FormResponse =
 
 type FormSent
     = Success
-    | Failure
+    | FailureValidation
+    | FailureServer
     | Pending
     | NotSent
 
@@ -111,6 +113,7 @@ type FormField
     | Meeting
     | MoreInfo
     | Gdpr
+    | ContactMe
 
 
 
@@ -126,3 +129,4 @@ type Msg
     | SendHelpForm
     | OnFormSent (Result Http.Error FormResponse)
     | SetField FormField String
+    | GoHome
