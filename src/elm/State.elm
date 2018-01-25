@@ -22,7 +22,7 @@ initModel =
     , formSent = NotSent
     , services = servicesList
     , testimonials = testimonialsList
-    , currentTestimonial = 1
+    , currentTestimonial = "1"
     , quotes = quotesList
     , burgerVisible = True
     , validationErrors = []
@@ -129,10 +129,10 @@ update msg model =
 
         OnFetchTestimonials (Ok result) ->
             let
-                testqs =
-                    Debug.log "testimonials" result
+                ( testimonials, quotes ) =
+                    testqConvertor result
             in
-            ( model, Cmd.none )
+            ( { model | testimonials = testimonials, quotes = quotes }, Cmd.none )
 
         OnFetchTestimonials (Err result) ->
             let
@@ -238,3 +238,10 @@ setField model oldForm field value =
                     { oldForm | gdpr = not oldForm.gdpr }
     in
     { model | newHelpForm = newForm }
+
+
+testqConvertor : List TestimonialQuote -> ( List Testimonial, List Quote )
+testqConvertor testqlist =
+    testqlist
+        |> List.map (\item -> ( testimonialMaker item.id item.name item.age item.imgsrc item.therapy item.long1 item.long2, quoteMaker item.id item.imgsrc item.quote ))
+        |> List.unzip

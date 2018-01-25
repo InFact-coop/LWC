@@ -24,7 +24,7 @@ type alias Model =
     , services : List Service
     , quotes : List Quote
     , testimonials : List Testimonial
-    , currentTestimonial : Int
+    , currentTestimonial : String
     , burgerVisible : Bool
     , newHelpForm : HelpForm
     , validationErrors : List ValError
@@ -57,14 +57,14 @@ type alias Service =
 
 
 type alias Quote =
-    { id : Int
+    { id : String
     , imgsrc : String
     , quote : String
     }
 
 
 type alias Testimonial =
-    { id : Int
+    { id : String
     , name : String
     , age : String
     , imgsrc : String
@@ -133,7 +133,7 @@ type Msg
     = NoOp
     | UrlChange Navigation.Location
     | ToggleServiceListItem Int
-    | SelectTestimonial Int
+    | SelectTestimonial String
     | ToggleBurgerMenu
     | SendHelpForm
     | OnFormSent (Result Http.Error FormResponse)
