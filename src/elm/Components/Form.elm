@@ -38,7 +38,7 @@ detailsForm model =
         , formBuilder model MoreInfo
 
         -- Legal Stuff
-        , div []
+        , div [ class "pa2-ns pa1 mt3 fw2" ]
             [ div []
                 [ text "Lancashire Women's Centres (LWC) want you to understand how our service works and how we store your data. Please state that you have read and agree to these terms before you continue"
                 ]
@@ -48,16 +48,20 @@ detailsForm model =
                 [ text "https://womenscentre.org/terms-conditions" ]
             ]
         , formBuilder model Gdpr
-        , div [] [ div [] [ text "LWC like to keep in touch with people to tell you about the vital work we do, our fundraising events and opportunities to support or work for us." ] ]
+        , div [ class "pa2-ns pa1 fw2 " ] [ div [ class "di" ] [ text "LWC like to keep in touch with people to tell you about the vital work we do, our fundraising events and opportunities to support or work for us." ] ]
         , formBuilder model ContactMe
 
         -- same as before
         , div [ class "tc" ]
             [ button
                 [ type_ "submit"
-                , class "pointer f5 ba br1 w-80 w-40-l br2 pa3 tc bg-purple white mt3 br1 dim"
-                , classList [ ( "bg-light-purple", not model.newHelpForm.gdpr ) ]
-                , disabled <| not model.newHelpForm.gdpr
+                , class "f5 ba br1 w-80 w-40-l br2 pa3 tc bg-purple white mt3 br1"
+                , classList
+                    [ ( "bg-light-purple", not model.newHelpForm.gdpr )
+                    , ( "pointer", model.newHelpForm.gdpr )
+                    ]
+
+                -- , disabled <| not model.newHelpForm.gdpr
                 ]
                 [ text "Submit" ]
             ]
@@ -112,7 +116,7 @@ formBuilder model field =
             buttonItem model.newHelpForm.gdpr field "I agree to the data storage terms"
 
         ContactMe ->
-            buttonItem model.newHelpForm.contactMe field "Please indicate if you would like to go on our mailing list."
+            buttonItem model.newHelpForm.contactMe field "Would you like to join our mailing list?"
 
 
 
@@ -146,9 +150,9 @@ basicInput field fieldName fieldType fieldValue errors wrapperClass errClass tit
 buttonItem : Bool -> FormField -> String -> Html Types.Msg
 buttonItem state field textValue =
     div [ class "pa2 flex" ]
-        [ button [ type_ "button", class " tr bn bg-white items-start", onClick <| SetField field "" ]
-            [ div [ class "ma0 pa0 h1 w1 ba b--gray br2 dib v-mid ", classList [ ( "purple-tick bn", state ) ] ] []
-            , p [ class "ma0 pa0 gray f5  lh-copy ph2 v-mid dib" ] [ text textValue ]
+        [ button [ type_ "button", class " tl bn bg-white items-start ", onClick <| SetField field "" ]
+            [ div [ class "ma0 pa0 h1 w1 ba b--gray br2 dib v-mid", classList [ ( "purple-tick bn", state ) ] ] []
+            , p [ class "ma0 pa0 gray f5  lh-copy ph2 v-mid di" ] [ text textValue ]
             ]
         ]
 

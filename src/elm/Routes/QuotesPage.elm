@@ -27,7 +27,7 @@ quotesPage model =
                     quotesListItem
                     model.quotes
                 )
-            , div [] [ purpleButton "See our services" "services" ]
-            , div [] [ purpleButton "Contact us" "talk-to-us" ]
+            , purpleButton "Our services" "services"
+            , purpleButton "Contact us" "talk-to-us"
             ]
         ]
