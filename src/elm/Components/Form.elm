@@ -184,7 +184,7 @@ textAreaInput val field =
         [ div [ class "ba br1 flex w-100 flex-wrap pa1 b--silver mt3" ]
             [ div [ class "purple fw1 pb2" ] [ text "Is there anything else you would like to tell us?" ]
             , textarea
-                [ class "sans-serif w-100 mh3 h4 f5 gray fw1 bn"
+                [ class "sans-serif w-100 ma3-ns ma1 h4 f5 pa1 pa2-ns gray fw1 ba-ns b--moon-gray br2"
                 , name "additionalInfo"
                 , attribute "rows" "5"
                 , placeholder "Please let us know here"
