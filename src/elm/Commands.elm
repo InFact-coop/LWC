@@ -97,6 +97,38 @@ sendFormCmd model =
         |> Http.send OnFormSent
 
 
+testimonialQuotesDecoder : Decode.Decoder (List TestimonialQuote)
+testimonialQuotesDecoder =
+    Decode.list testimonialQuoteDecoder
+
+
+testimonialQuoteDecoder : Decode.Decoder TestimonialQuote
+testimonialQuoteDecoder =
+    decode TestimonialQuote
+        |> required "id" Decode.string
+        |> required "Name" Decode.string
+        |> required "Age" Decode.string
+        |> required "Image source" Decode.string
+        |> required "Therapy" Decode.string
+        |> required "Short Quote" Decode.string
+        |> required "Long Quote Part One" Decode.string
+        |> required "Long Quote Part Two" Decode.string
+
+
+testimonialsUrl =
+    "https://lwcapp.herokuapp.com/api/v1/testimonials"
+
+
+
+-- "http://localhost:4000/api/v1/testimonials"
+
+
+fetchTestimonialQuotes : Cmd Msg
+fetchTestimonialQuotes =
+    Http.get testimonialsUrl testimonialQuotesDecoder
+        |> Http.send OnFetchTestimonials
+
+
 validationResponseDecoder : Decode.Decoder (List ValError)
 validationResponseDecoder =
     decode ValError

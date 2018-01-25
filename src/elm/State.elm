@@ -20,11 +20,11 @@ import Validate exposing (..)
 
 initModel : Model
 initModel =
-    { route = FormRoute
+    { route = LandingRoute
     , formSent = NotSent
     , services = servicesList
     , testimonials = testimonialsList
-    , currentTestimonial = 1
+    , currentTestimonial = "1"
     , quotes = quotesList
     , burgerVisible = True
     , validationErrors = []
@@ -130,6 +130,20 @@ update msg model =
         SetField field value ->
             ( setField model model.newHelpForm field value, Cmd.none )
 
+        OnFetchTestimonials (Ok result) ->
+            let
+                ( testimonials, quotes ) =
+                    testqConvertor result
+            in
+            ( { model | testimonials = testimonials, quotes = quotes }, Cmd.none )
+
+        OnFetchTestimonials (Err result) ->
+            let
+                testqs =
+                    Debug.log "testimonials" result
+            in
+            ( model, Cmd.none )
+
         GoHome ->
             { model | route = LandingRoute }
                 ! [ Navigation.newUrl "#home"
@@ -227,3 +241,10 @@ setField model oldForm field value =
                     { oldForm | contactMe = not oldForm.contactMe }
     in
     { model | newHelpForm = newForm }
+
+
+testqConvertor : List TestimonialQuote -> ( List Testimonial, List Quote )
+testqConvertor testqlist =
+    testqlist
+        |> List.map (\item -> ( testimonialMaker item.id item.name item.age item.imgsrc item.therapy item.long1 item.long2, quoteMaker item.id item.imgsrc item.quote ))
+        |> List.unzip

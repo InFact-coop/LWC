@@ -24,7 +24,7 @@ type alias Model =
     , services : List Service
     , quotes : List Quote
     , testimonials : List Testimonial
-    , currentTestimonial : Int
+    , currentTestimonial : String
     , burgerVisible : Bool
     , newHelpForm : HelpForm
     , validationErrors : List ValError
@@ -58,19 +58,31 @@ type alias Service =
 
 
 type alias Quote =
-    { id : Int
+    { id : String
     , imgsrc : String
     , quote : String
     }
 
 
 type alias Testimonial =
-    { id : Int
+    { id : String
     , name : String
     , age : String
     , imgsrc : String
     , therapy : String
     , description : Html Msg
+    }
+
+
+type alias TestimonialQuote =
+    { id : String
+    , name : String
+    , age : String
+    , imgsrc : String
+    , therapy : String
+    , quote : String
+    , long1 : String
+    , long2 : String
     }
 
 
@@ -124,9 +136,10 @@ type Msg
     = NoOp
     | UrlChange Navigation.Location
     | ToggleServiceListItem Int
-    | SelectTestimonial Int
+    | SelectTestimonial String
     | ToggleBurgerMenu
     | SendHelpForm
     | OnFormSent (Result Http.Error FormResponse)
+    | OnFetchTestimonials (Result Http.Error (List TestimonialQuote))
     | SetField FormField String
     | GoHome
