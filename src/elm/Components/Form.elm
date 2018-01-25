@@ -60,8 +60,6 @@ detailsForm model =
                     [ ( "bg-light-purple", not model.newHelpForm.gdpr )
                     , ( "pointer", model.newHelpForm.gdpr )
                     ]
-
-                -- , disabled <| not model.newHelpForm.gdpr
                 ]
                 [ text "Submit" ]
             ]
@@ -92,31 +90,38 @@ formBuilder model field =
             basicInput field "Postcode" "text" model.newHelpForm.postcode model.validationErrors wrapperClass_text errClass_text titleClass_text inputClass_text
 
         EmotionalWellbeing ->
-            buttonItem model.newHelpForm.emotionalWellbeing field "Emotional Wellbeing"
+            buttonItem model.newHelpForm.emotionalWellbeing field "Emotional Wellbeing" "gray"
 
         Personal ->
-            buttonItem model.newHelpForm.personal field "Personal Development"
+            buttonItem model.newHelpForm.personal field "Personal Development" "gray"
 
         Employment ->
-            buttonItem model.newHelpForm.employment field "Employment Support"
+            buttonItem model.newHelpForm.employment field "Employment Support" "gray"
 
         Money ->
-            buttonItem model.newHelpForm.money field "Money, Debt and Benefit Advice"
+            buttonItem model.newHelpForm.money field "Money, Debt and Benefit Advice" "gray"
 
         Volunteering ->
-            buttonItem model.newHelpForm.volunteering field "Volunteering and Mentoring"
+            buttonItem model.newHelpForm.volunteering field "Volunteering and Mentoring" "gray"
 
         Meeting ->
-            buttonItem model.newHelpForm.meeting field "Meeting Others"
+            buttonItem model.newHelpForm.meeting field "Meeting Others" "gray"
 
         MoreInfo ->
             textAreaInput model.newHelpForm.moreInfo field
 
         Gdpr ->
-            buttonItem model.newHelpForm.gdpr field "I agree to the data storage terms"
+            let
+                colour =
+                    if model.formSent == FailureGDPR then
+                        "red"
+                    else
+                        "gray"
+            in
+            buttonItem model.newHelpForm.gdpr field "I agree to the data storage terms" colour
 
         ContactMe ->
-            buttonItem model.newHelpForm.contactMe field "Would you like to join our mailing list?"
+            buttonItem model.newHelpForm.contactMe field "Would you like to join our mailing list?" "gray"
 
 
 
@@ -147,12 +152,12 @@ basicInput field fieldName fieldType fieldValue errors wrapperClass errClass tit
         ]
 
 
-buttonItem : Bool -> FormField -> String -> Html Types.Msg
-buttonItem state field textValue =
+buttonItem : Bool -> FormField -> String -> String -> Html Types.Msg
+buttonItem state field textValue textColour =
     div [ class "pa2 flex" ]
         [ button [ type_ "button", class "tl bn bg-white items-start ", onClick <| SetField field "" ]
             [ div [ class "ma0 pa0 h1 w1 ba b--gray br2 dib v-mid", classList [ ( "purple-tick bn", state ) ] ] []
-            , p [ class "ma0 pa0 gray f5 lh-copy ph2 v-mid di" ] [ text textValue ]
+            , p [ class <| "ma0 pa0 f5 lh-copy ph2 v-mid di " ++ textColour ] [ text textValue ]
             ]
         ]
 
@@ -208,6 +213,9 @@ sendingMsg status =
 
         FailureValidation ->
             div [ class "tc pt2 w-100 purple" ] [ text "Sorry, some of the data you've sent isn't quite right, see above" ]
+
+        FailureGDPR ->
+            div [ class "tc pt2 w-100 purple" ] [ text "Please agree to the storage terms to submit your data" ]
 
         FailureServer ->
             div [ class "tc pt2 w-100 red" ] [ text "Sorry, something went wrong with our server. You might have to call us, or try again later." ]

@@ -94,6 +94,7 @@ type alias FormResponse =
 type FormSent
     = Success
     | FailureValidation
+    | FailureGDPR
     | FailureServer
     | Pending
     | NotSent
