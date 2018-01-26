@@ -175,10 +175,10 @@ getValErrors body model =
     in
     case decodedResponse of
         Ok errorList ->
-            ( { model | formSent = FailureValidation, validationErrors = errorList }, Cmd.none )
+            ( { model | formSent = FailureValidation, validationErrors = errorList }, Task.attempt (always NoOp) (toTop "container")  )
 
         _ ->
-            ( { model | formSent = FailureValidation }, Cmd.none )
+            ( { model | formSent = FailureServer }, Cmd.none )
 
 
 validate : HelpForm -> List ValError
