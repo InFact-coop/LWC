@@ -65,9 +65,9 @@ helpFormEncoder model =
 
 
 baseUrl : String
-baseUrl = "http://localhost:4000/api/v1/help_form"
-    -- "https://womenscentre.herokuapp.com/api/v1/help_form"
-
+baseUrl = 
+    "https://womenscentre.herokuapp.com/api/v1/help_form"
+-- "http://localhost:4000/api/v1/help_form"
 
 methodRequest : String -> String -> Encode.Value -> Decode.Decoder a -> Http.Request a
 methodRequest method url encodedBody decoder =
@@ -112,8 +112,8 @@ testimonialQuoteDecoder =
 
 
 testimonialsUrl =
-    -- "https://womenscentre.herokuapp.com/api/v1/testimonials"
-    "http://localhost:4000/api/v1/testimonials"
+    "https://womenscentre.herokuapp.com/api/v1/testimonials"
+    -- "http://localhost:4000/api/v1/testimonials"
 
 
 fetchTestimonialQuotes : Cmd Msg

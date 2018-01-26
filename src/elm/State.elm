@@ -188,10 +188,6 @@ validate form =
             >> Validate.ifBlank { field = "Name", messages = [ "Please enter a name" ] }
         , .dob
             >> Validate.ifBlank { field = "Date Of Birth", messages = [ "Please enter a date of birth" ] }
-        , .email
-            >> Validate.ifBlank { field = "Email", messages = [ "Please enter an email address" ] }
-        , .email
-            >> Validate.ifInvalidEmail { field = "Email", messages = [ "Please enter a valid email address" ] }
         , .contactNumber
             >> Validate.ifBlank { field = "Contact Number", messages = [ "Please enter a Contact number" ] }
         , .postcode
