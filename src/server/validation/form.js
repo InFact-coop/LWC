@@ -12,8 +12,8 @@ module.exports = {
     GDPR: Joi.any().valid(true),
     "Areas of Interest": Joi.array().items(
       Joi.string().valid([
-        "Emotional Wellbeing",
-        "Personal Development",
+        "Therapy",
+        "Courses & Wellbeing",
         "Employment Support",
         "Money, Debt and Benefit Advice",
         "Volunteering and Mentoring",
