@@ -27,3 +27,12 @@ We focused our solution on __helping women to discover the services on offer in 
 * To make the app **sensitive**, **warm**, and **easy to use** for what can be an emotional stage in our users' lives
 
 ## How we did it :zap:
+
+
+## Take a look :eyes:
+
+__Phone__ :iphone:
+![](https://files.gitter.im/Jen-Harris/E7Ho/LWCgif2.gif)
+
+__Tablet/Desktop__ :computer:
+![](https://files.gitter.im/Jen-Harris/1f8w/LWCgif2tablet.gif)
