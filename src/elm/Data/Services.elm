@@ -9,7 +9,7 @@ import Types exposing (Service)
 servicesList : List Service
 servicesList =
     [ { id = 1
-      , name = "Emotional Wellbeing"
+      , name = "Therapy"
       , isVisible = False
       , description =
             section [ class "description-service pa3 gray" ]
@@ -39,7 +39,7 @@ servicesList =
                 ]
       }
     , { id = 2
-      , name = "Personal Development"
+      , name = "Courses & Wellbeing"
       , isVisible = False
       , description =
             section [ class "description-service pa3 gray" ]

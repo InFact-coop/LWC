@@ -13,7 +13,7 @@ import Types exposing (..)
 servicesPage : Model -> Html Msg
 servicesPage model =
     div [ class "mh5-ns" ]
-        [ div [ class "gray f2 b ma4" ] [ text "Real Stories" ]
+        [ div [ class "gray f2 b ma4" ] [ text "Our Services" ]
         , div [ class "gray fw1 mv3 mb4-ns w-50-l mh4" ]
             [ text "A list of our most used services."
             ]
