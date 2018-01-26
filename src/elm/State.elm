@@ -222,11 +222,11 @@ setField model oldForm field value =
                 Postcode ->
                     { oldForm | postcode = value }
 
-                EmotionalWellbeing ->
-                    { oldForm | emotionalWellbeing = not oldForm.emotionalWellbeing }
+                Therapy ->
+                    { oldForm | therapy = not oldForm.therapy }
 
-                Personal ->
-                    { oldForm | personal = not oldForm.personal }
+                Courses ->
+                    { oldForm | courses = not oldForm.courses }
 
                 Employment ->
                     { oldForm | employment = not oldForm.employment }

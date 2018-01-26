@@ -25,8 +25,8 @@ detailsForm model =
         , div [ class "ba br1 flex w-100 flex-wrap pa1 b--silver  pb3 pt1" ]
             [ h4 [ class "purple fw1 mt1 w-100" ] [ text "Which services are you interested in?" ]
             , section [ class "pl3-ns pl0 w-100" ]
-                [ formBuilder model EmotionalWellbeing
-                , formBuilder model Personal
+                [ formBuilder model Therapy
+                , formBuilder model Courses
                 , formBuilder model Employment
                 , formBuilder model Money
                 , formBuilder model Volunteering
@@ -90,11 +90,11 @@ formBuilder model field =
         Postcode ->
             basicInput field "Postcode" "text" model.newHelpForm.postcode model.validationErrors wrapperClass_text errClass_text titleClass_text inputClass_text
 
-        EmotionalWellbeing ->
-            buttonItem model.newHelpForm.emotionalWellbeing field "Emotional Wellbeing" "gray"
+        Therapy ->
+            buttonItem model.newHelpForm.therapy field "Therapy" "gray"
 
-        Personal ->
-            buttonItem model.newHelpForm.personal field "Personal Development" "gray"
+        Courses ->
+            buttonItem model.newHelpForm.courses field "Courses & Development" "gray"
 
         Employment ->
             buttonItem model.newHelpForm.employment field "Employment Support" "gray"

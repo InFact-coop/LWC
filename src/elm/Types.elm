@@ -37,8 +37,8 @@ type alias HelpForm =
     , contactNumber : String
     , email : String
     , postcode : String
-    , emotionalWellbeing : Bool
-    , personal : Bool
+    , therapy : Bool
+    , courses : Bool
     , employment : Bool
     , money : Bool
     , volunteering : Bool
@@ -118,8 +118,8 @@ type FormField
     | ContactNumber
     | Email
     | Postcode
-    | EmotionalWellbeing
-    | Personal
+    | Therapy
+    | Courses
     | Employment
     | Money
     | Volunteering
