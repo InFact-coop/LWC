@@ -66,7 +66,7 @@ helpFormEncoder model =
 
 baseUrl : String
 baseUrl =
-    "https://womanscentre.herokuapp.com/api/v1/help_form"
+    "https://womenscentre.herokuapp.com/api/v1/help_form"
 
 
 
@@ -116,7 +116,7 @@ testimonialQuoteDecoder =
 
 
 testimonialsUrl =
-    "https://womanscentre.herokuapp.com/api/v1/testimonials"
+    "https://womenscentre.herokuapp.com/api/v1/testimonials"
 
 
 
