@@ -42,4 +42,4 @@ We focused our solution on __helping women to discover the services on offer in 
   
 ### Website :collision:
 
-![Have a look!!](https://womenscentre.herokuapp.com)
+[Have a look!!](https://womenscentre.herokuapp.com)
