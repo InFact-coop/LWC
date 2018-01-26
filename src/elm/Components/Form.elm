@@ -216,7 +216,7 @@ sendingMsg status =
             div [ class "tc pt2 w-100 purple" ] [ text "Sorry, some of the data you've sent isn't quite right, see above" ]
 
         FailureGDPR ->
-            div [ class "tc pt2 w-100 purple" ] [ text "Please agree to the storage terms to submit your data" ]
+            div [ class "tc pt2 w-100 purple" ] [ text "If you do not agree to our privacy policy, your information cannot be stored. Please tick the box above, or contact your local centre by phone/in person." ]
 
         FailureServer ->
             div [ class "tc pt2 w-100 red" ] [ text "Sorry, something went wrong with our server. You might have to call us, or try again later." ]
