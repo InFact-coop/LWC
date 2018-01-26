@@ -1,5 +1,5 @@
 # Lancashire Women's Centre :womens:
-See LWCS' **Service Searcher** _*[here](https://womenscentre.herokuapp.com)*_
+See the LWC **Service Searcher** _*[here](https://womenscentre.herokuapp.com)*_
 
 ## The Challenge :two_women_holding_hands: 
 
