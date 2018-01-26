@@ -25,3 +25,5 @@ We focused our solution on __helping women to discover the services on offer in 
 * To create a feeling of **trust** between the women and LWC
 * To guide women to contact LWC in the way that is **right for them**
 * To make the app **sensitive**, **warm**, and **easy to use** for what can be an emotional stage in our users' lives
+
+## How we did it :zap:
