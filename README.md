@@ -31,8 +31,15 @@ We focused our solution on __helping women to discover the services on offer in 
 
 ## Take a look :eyes:
 
-__Phone__ :iphone:
-![](https://files.gitter.im/Jen-Harris/E7Ho/LWCgif2.gif)
+### Phone :iphone:
 
-__Tablet/Desktop__ :computer:
+![](https://files.gitter.im/Jen-Harris/E7Ho/LWCgif2.gif)
+  
+
+### Tablet/Desktop :computer:
+ 
 ![](https://files.gitter.im/Jen-Harris/1f8w/LWCgif2tablet.gif)
+  
+### Website :collision:
+
+![Have a look!!](https://womenscentre.herokuapp.com)
