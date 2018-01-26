@@ -175,10 +175,10 @@ getValErrors body model =
     in
     case decodedResponse of
         Ok errorList ->
-            ( { model | formSent = FailureValidation, validationErrors = errorList }, Cmd.none )
+            ( { model | formSent = FailureValidation, validationErrors = errorList }, Task.attempt (always NoOp) (toTop "container")  )
 
         _ ->
-            ( { model | formSent = FailureValidation }, Cmd.none )
+            ( { model | formSent = FailureServer }, Cmd.none )
 
 
 validate : HelpForm -> List ValError
@@ -188,10 +188,6 @@ validate form =
             >> Validate.ifBlank { field = "Name", messages = [ "Please enter a name" ] }
         , .dob
             >> Validate.ifBlank { field = "Date Of Birth", messages = [ "Please enter a date of birth" ] }
-        , .email
-            >> Validate.ifBlank { field = "Email", messages = [ "Please enter an email address" ] }
-        , .email
-            >> Validate.ifInvalidEmail { field = "Email", messages = [ "Please enter a valid email address" ] }
         , .contactNumber
             >> Validate.ifBlank { field = "Contact Number", messages = [ "Please enter a Contact number" ] }
         , .postcode
@@ -222,11 +218,11 @@ setField model oldForm field value =
                 Postcode ->
                     { oldForm | postcode = value }
 
-                EmotionalWellbeing ->
-                    { oldForm | emotionalWellbeing = not oldForm.emotionalWellbeing }
+                Therapy ->
+                    { oldForm | therapy = not oldForm.therapy }
 
-                Personal ->
-                    { oldForm | personal = not oldForm.personal }
+                Courses ->
+                    { oldForm | courses = not oldForm.courses }
 
                 Employment ->
                     { oldForm | employment = not oldForm.employment }

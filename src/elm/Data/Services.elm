@@ -79,7 +79,7 @@ servicesList =
                     , emphasis "individually tailored service "
                     , text "for any person looking to gain employment, go into education, volunteering or job searching."
                     , br [] []
-                    , text "Our experienced staff will work with you on a one to one basis to develop your own personal action plan and support you to achieve your goals."
+                    , text "Our experienced staff will work with you on a one to one basis to develop your own Courses action plan and support you to achieve your goals."
                     ]
                 , p []
                     [ text "Our package of support includes:"
@@ -180,7 +180,7 @@ servicesList =
                     [ text " Mentoring offers you the opportunity to develop a "
                     , emphasis "relationship that is based on trust"
                     , text ", confidentiality and mutual involvement to set goals and decide achievements. Your sessions will involve "
-                    , emphasis "setting personal goals, guidance"
+                    , emphasis "setting Courses goals, guidance"
                     , text " and "
                     , emphasis "action planning"
                     , text " to help a successful outcome."

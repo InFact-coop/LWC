@@ -62,7 +62,7 @@ describe("API testing", () => {
           }
           expect(res.statusCode).to.equal(400);
           const response = JSON.parse(res.text);
-          const errors = response.errors;
+          const errors = response;
           errors.length.should.equal(5);
           errors[0].messages[0].should.equal('"Name" is required');
           errors[1].messages[0].should.equal('"DOB" is required');
@@ -83,9 +83,7 @@ describe("API testing", () => {
           }
           expect(res.statusCode).to.equal(400);
           const response = JSON.parse(res.text);
-          response.errors[0].messages[0].should.equal(
-            '"GDPR" must be one of [true]'
-          );
+          response[0].messages[0].should.equal('"GDPR" must be one of [true]');
           done();
         });
     });
@@ -102,9 +100,9 @@ describe("API testing", () => {
           }
           expect(res.statusCode).to.equal(400);
           const response = JSON.parse(res.text);
-          response.errors[0].field.should.deep.equal(["Areas of Interest", 0]);
-          response.errors[0].messages[0].should.equal(
-            '"0" must be one of [Emotional Wellbeing, Personal Development, Employment Support, Money, Debt and Benefit Advice, Volunteering and Mentoring, Meeting Others]'
+          response[0].field.should.deep.equal("Areas of Interest");
+          response[0].messages[0].should.equal(
+            '"0" must be one of [Therapy, Courses & Wellbeing, Employment Support, Money, Debt and Benefit Advice, Volunteering and Mentoring, Meeting Others]'
           );
           done();
         });

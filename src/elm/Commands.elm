@@ -15,11 +15,11 @@ formResponseDecoder =
 
 areas : Model -> List ( String, Bool )
 areas model =
-    [ ( "Emotional Wellbeing"
-      , model.newHelpForm.emotionalWellbeing
+    [ ( "Therapy"
+      , model.newHelpForm.therapy
       )
-    , ( "Personal Development"
-      , model.newHelpForm.personal
+    , ( "Courses & Wellbeing"
+      , model.newHelpForm.courses
       )
     , ( "Employment Support"
       , model.newHelpForm.employment
@@ -65,13 +65,9 @@ helpFormEncoder model =
 
 
 baseUrl : String
-baseUrl =
+baseUrl = 
     "https://womenscentre.herokuapp.com/api/v1/help_form"
-
-
-
 -- "http://localhost:4000/api/v1/help_form"
-
 
 methodRequest : String -> String -> Encode.Value -> Decode.Decoder a -> Http.Request a
 methodRequest method url encodedBody decoder =
@@ -117,10 +113,7 @@ testimonialQuoteDecoder =
 
 testimonialsUrl =
     "https://womenscentre.herokuapp.com/api/v1/testimonials"
-
-
-
--- "http://localhost:4000/api/v1/testimonials"
+    -- "http://localhost:4000/api/v1/testimonials"
 
 
 fetchTestimonialQuotes : Cmd Msg

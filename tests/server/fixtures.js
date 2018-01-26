@@ -5,7 +5,7 @@ module.exports = {
     "Contact Number": "34567890",
     Email: "email@gmail.com",
     Postcode: "SN13 9SY",
-    "Areas of Interest": ["Personal Development", "Employment Support"],
+    "Areas of Interest": ["Therapy", "Employment Support"],
     "More Info": "Some things",
     GDPR: true
   },
@@ -15,7 +15,7 @@ module.exports = {
     "Contact Number": "34567890",
     Email: "email@gmail.com",
     Postcode: "SN13 9SY",
-    "Areas of Interest": ["Personal Development", "Employment Support"],
+    "Areas of Interest": ["Therapy", "Employment Support"],
     "More Info": "Some things",
     GDPR: false
   },
@@ -25,7 +25,7 @@ module.exports = {
     "Contact Number": "34567890",
     Email: "email@gmail.com",
     Postcode: "SN13 9SY",
-    "Areas of Interest": ["Personal", "Employment Support"],
+    "Areas of Interest": ["Courses", "Employment Support"],
     "More Info": "Some things",
     GDPR: true
   }
