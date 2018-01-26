@@ -7,7 +7,7 @@ module.exports = {
     "Contact Number": Joi.string().required(),
     Email: Joi.string()
       .email()
-      .required(),
+      .allow(""),
     Postcode: Joi.string().required(),
     GDPR: Joi.any().valid(true),
     "Areas of Interest": Joi.array().items(
