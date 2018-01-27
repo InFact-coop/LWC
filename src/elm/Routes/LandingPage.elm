@@ -11,7 +11,7 @@ landingPage model =
     div []
         [ div [ class "hands group" ]
             [ div [ class "purple-background w-100 h-100 " ]
-                [ div [ class "white b f2 f1-l tc pl3 pr3 pt5 tracked w-70-l m0-auto" ]
+                [ div [ class "white b f2  f1-l tc ph3-ns ph2 pt5-ns pt4 tracked w-70-l m0-auto" ]
                     [ text "We are here to help." ]
                 , div [ class "white-line pb4" ] []
                 , div [ class "tc-l" ]
