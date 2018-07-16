@@ -69,7 +69,7 @@ getRoute hash =
             LandingRoute
 
 
-toggleServiceListItem : Int -> Service -> Service
+toggleServiceListItem : String -> Service -> Service
 toggleServiceListItem serviceId service =
     let
         mappedId =

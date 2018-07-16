@@ -32,4 +32,4 @@ fetchTestimonialQuotes =
 
 testimonialsUrl : String
 testimonialsUrl =
-    "https://womenscentre.herokuapp.com/api/v1/testimonials"
+    "http://localhost:4000/api/v1/testimonials"

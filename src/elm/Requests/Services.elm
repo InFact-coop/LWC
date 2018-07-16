@@ -1,8 +1,9 @@
 module Requests.Services exposing (..)
 
 import Http exposing (..)
+import Html exposing (..)
 import Json.Decode as Decode
-import Json.Decode.Pipeline exposing (decode, required)
+import Json.Decode.Pipeline exposing (decode, required, hardcoded)
 import Types exposing (..)
 
 
@@ -10,13 +11,20 @@ serviceDecoder : Decode.Decoder Service
 serviceDecoder =
     decode Service
         |> required "id" Decode.string
-        |> required "Name" Decode.string
-        |> required "Age" Decode.string
-        |> required "Image source" Decode.string
-        |> required "Therapy" Decode.string
-        |> required "Short " Decode.string
-        |> required "Long  Part One" Decode.string
-        |> required "Long  Part Two" Decode.string
+        |> required "Service Name" Decode.string
+        |> hardcoded False
+        |> required "Paragraph 1" htmlMsgDecoder
+
+
+htmlMsgDecoder : Decode.Decoder (Html Msg)
+htmlMsgDecoder =
+    Decode.string
+        |> Decode.andThen stringToHtmlMsg
+
+
+stringToHtmlMsg : String -> Decode.Decoder (Html Msg)
+stringToHtmlMsg str =
+    Decode.succeed <| div [] [ text str ]
 
 
 servicesDecoder : Decode.Decoder (List Service)
@@ -32,4 +40,4 @@ fetchServices =
 
 servicesUrl : String
 servicesUrl =
-    "https://womenscentre.herokuapp.com/api/v1/services"
+    "http://localhost:4000/api/v1/services"
