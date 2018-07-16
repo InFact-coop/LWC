@@ -142,5 +142,6 @@ type Msg
     | SendHelpForm
     | OnFormSent (Result Http.Error FormResponse)
     | OnFetchTestimonials (Result Http.Error (List TestimonialQuote))
+    | OnFetchServices (Result Http.Error (List Service))
     | SetField FormField String
     | GoHome

@@ -1,8 +1,6 @@
 module Main exposing (..)
 
--- My Elm Files
-
-import Commands exposing (..)
+import Requests.Testimonials exposing (fetchTestimonialQuotes)
 import Navigation
 import State exposing (..)
 import Types exposing (..)

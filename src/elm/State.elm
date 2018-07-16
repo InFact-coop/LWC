@@ -75,10 +75,10 @@ toggleServiceListItem serviceId service =
         mappedId =
             service.id
     in
-    if serviceId == mappedId then
-        { service | isVisible = not service.isVisible }
-    else
-        { service | isVisible = False }
+        if serviceId == mappedId then
+            { service | isVisible = not service.isVisible }
+        else
+            { service | isVisible = False }
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -112,7 +112,7 @@ update msg model =
                             else
                                 ( Task.attempt (always NoOp) (toTop "container"), FailureValidation )
                     in
-                    ( { model | validationErrors = errors, formSent = formStatus }, cmd )
+                        ( { model | validationErrors = errors, formSent = formStatus }, cmd )
 
         OnFormSent (Ok result) ->
             case result.success of
@@ -142,14 +142,24 @@ update msg model =
                 ( testimonials, quotes ) =
                     testqConvertor result
             in
-            ( { model | testimonials = testimonials, quotes = quotes }, Cmd.none )
+                ( { model | testimonials = testimonials, quotes = quotes }, Cmd.none )
 
         OnFetchTestimonials (Err result) ->
             let
                 testqs =
                     Debug.log "testimonials" result
             in
-            ( model, Cmd.none )
+                ( model, Cmd.none )
+
+        OnFetchServices (Ok result) ->
+            ( { model | services = result }, Cmd.none )
+
+        OnFetchServices (Err result) ->
+            let
+                services =
+                    Debug.log "Error retrieving services: " result
+            in
+                ( model, Cmd.none )
 
         GoHome ->
             { model | route = LandingRoute }
@@ -173,12 +183,12 @@ getValErrors body model =
         decodedResponse =
             Decode.decodeString validationResponseDecoder body
     in
-    case decodedResponse of
-        Ok errorList ->
-            ( { model | formSent = FailureValidation, validationErrors = errorList }, Task.attempt (always NoOp) (toTop "container")  )
+        case decodedResponse of
+            Ok errorList ->
+                ( { model | formSent = FailureValidation, validationErrors = errorList }, Task.attempt (always NoOp) (toTop "container") )
 
-        _ ->
-            ( { model | formSent = FailureServer }, Cmd.none )
+            _ ->
+                ( { model | formSent = FailureServer }, Cmd.none )
 
 
 validate : HelpForm -> List ValError
@@ -245,7 +255,7 @@ setField model oldForm field value =
                 ContactMe ->
                     { oldForm | contactMe = not oldForm.contactMe }
     in
-    { model | newHelpForm = newForm }
+        { model | newHelpForm = newForm }
 
 
 testqConvertor : List TestimonialQuote -> ( List Testimonial, List Quote )

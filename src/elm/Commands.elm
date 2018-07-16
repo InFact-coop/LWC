@@ -4,6 +4,7 @@ import Http exposing (..)
 import Json.Decode as Decode
 import Json.Decode.Pipeline exposing (decode, required)
 import Json.Encode as Encode
+import Utils exposing (..)
 import Types exposing (..)
 
 
@@ -61,25 +62,16 @@ helpFormEncoder model =
         areasList =
             areasEncoder <| areas model
     in
-    Encode.object attributes
+        Encode.object attributes
 
 
 baseUrl : String
-baseUrl = 
+baseUrl =
     "https://womenscentre.herokuapp.com/api/v1/help_form"
--- "http://localhost:4000/api/v1/help_form"
 
-methodRequest : String -> String -> Encode.Value -> Decode.Decoder a -> Http.Request a
-methodRequest method url encodedBody decoder =
-    Http.request
-        { body = encodedBody |> Http.jsonBody
-        , expect = Http.expectJson decoder
-        , headers = []
-        , method = method
-        , timeout = Nothing
-        , url = url
-        , withCredentials = False
-        }
+
+
+-- "http://localhost:4000/api/v1/help_form"
 
 
 postFormRequest : Model -> Http.Request FormResponse
@@ -91,35 +83,6 @@ sendFormCmd : Model -> Cmd Msg
 sendFormCmd model =
     postFormRequest model
         |> Http.send OnFormSent
-
-
-testimonialQuotesDecoder : Decode.Decoder (List TestimonialQuote)
-testimonialQuotesDecoder =
-    Decode.list testimonialQuoteDecoder
-
-
-testimonialQuoteDecoder : Decode.Decoder TestimonialQuote
-testimonialQuoteDecoder =
-    decode TestimonialQuote
-        |> required "id" Decode.string
-        |> required "Name" Decode.string
-        |> required "Age" Decode.string
-        |> required "Image source" Decode.string
-        |> required "Therapy" Decode.string
-        |> required "Short Quote" Decode.string
-        |> required "Long Quote Part One" Decode.string
-        |> required "Long Quote Part Two" Decode.string
-
-
-testimonialsUrl =
-    "https://womenscentre.herokuapp.com/api/v1/testimonials"
-    -- "http://localhost:4000/api/v1/testimonials"
-
-
-fetchTestimonialQuotes : Cmd Msg
-fetchTestimonialQuotes =
-    Http.get testimonialsUrl testimonialQuotesDecoder
-        |> Http.send OnFetchTestimonials
 
 
 validationResponseDecoder : Decode.Decoder (List ValError)
