@@ -2,8 +2,10 @@ module Requests.Services exposing (..)
 
 import Http exposing (..)
 import Html exposing (..)
+import Html.Attributes exposing (class)
 import Json.Decode as Decode
 import Json.Decode.Pipeline exposing (decode, required, hardcoded)
+import Utils exposing (..)
 import Types exposing (..)
 
 
@@ -13,7 +15,7 @@ serviceDecoder =
         |> required "id" Decode.string
         |> required "Service Name" Decode.string
         |> hardcoded False
-        |> required "Paragraph 1" htmlMsgDecoder
+        |> required "Description" htmlMsgDecoder
 
 
 htmlMsgDecoder : Decode.Decoder (Html Msg)
@@ -24,7 +26,7 @@ htmlMsgDecoder =
 
 stringToHtmlMsg : String -> Decode.Decoder (Html Msg)
 stringToHtmlMsg str =
-    Decode.succeed <| div [] [ text str ]
+    section [ class "description-service pa3 gray" ] (extractFromMarkdown str) |> Decode.succeed
 
 
 servicesDecoder : Decode.Decoder (List Service)
