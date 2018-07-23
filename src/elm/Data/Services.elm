@@ -8,7 +8,7 @@ import Types exposing (Service)
 
 servicesList : List Service
 servicesList =
-    [ { id = 1
+    [ { id = "1"
       , name = "Therapy"
       , isVisible = False
       , description =
@@ -38,7 +38,7 @@ servicesList =
                     ]
                 ]
       }
-    , { id = 2
+    , { id = "2"
       , name = "Courses & Wellbeing"
       , isVisible = False
       , description =
@@ -69,7 +69,7 @@ servicesList =
                     ]
                 ]
       }
-    , { id = 3
+    , { id = "3"
       , name = "Employment Support"
       , isVisible = False
       , description =
@@ -114,7 +114,7 @@ servicesList =
                     ]
                 ]
       }
-    , { id = 4
+    , { id = "4"
       , name = "Money, Debt & Benefit Advice"
       , isVisible = False
       , description =
@@ -149,7 +149,7 @@ servicesList =
                     ]
                 ]
       }
-    , { id = 5
+    , { id = "5"
       , name = "Volunteering & Mentoring"
       , isVisible = False
       , description =
@@ -190,7 +190,7 @@ servicesList =
                     ]
                 ]
       }
-    , { id = 6
+    , { id = "6"
       , name = "Meeting Others"
       , isVisible = False
       , description =

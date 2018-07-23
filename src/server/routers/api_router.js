@@ -45,12 +45,37 @@ const getTestimonials = (req, res, next) => {
         if (err) {
           return next(err);
         }
+
+        console.log("Testimonials", testimonials);
         return res.json(testimonials[0]);
+      }
+    );
+};
+
+const getServices = (req, res, next) => {
+  let services = [];
+  base(process.env.AIRTABLE_TABLE_SERVICES)
+    .select({ view: "Grid view" })
+    .eachPage(
+      (records, fetchNextPage) => {
+        const newService = records.map(record => {
+          return Object.assign(record.fields, { id: record.id });
+        });
+        services = [...services, newService];
+        fetchNextPage();
+      },
+      err => {
+        if (err) {
+          return next(err);
+        }
+        console.log("Services", services);
+        return res.json(services[0]);
       }
     );
 };
 
 router.route("/help_form").post(validate(formValidator), postController);
 router.route("/testimonials").get(getTestimonials);
+router.route("/services").get(getServices);
 
 module.exports = router;
