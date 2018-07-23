@@ -17,17 +17,21 @@ burgerNavBar model =
 
 burgerNavBarVisible : Html Msg
 burgerNavBarVisible =
-    div [ class "dn-l " ]
-        [ a [ href "/#", class "ml4" ] [ img [ src "./assets/logo.jpg", class "h3" ] [] ]
-        , img [ src "./assets/burger.png", class "fr ma3", onClick ToggleBurgerMenu ] []
+    div [ class "dn-l ph3" ]
+        [ div [ class "flex items-center justify-between" ]
+            [ a [ href "/#", class "no-underline" ] [ h1 [ class "heading black f3 ttu mw5 mv2 dib" ] [ text "Lancashire Women" ] ]
+            , img [ src "./assets/burger.png", class "fr", onClick ToggleBurgerMenu ] []
+            ]
         ]
 
 
 burgerNavBarHidden : Html Msg
 burgerNavBarHidden =
-    div [ class "dn-l bb b--purple" ] <|
-        [ a [ href "/#", class "ml4" ] [ img [ src "./assets/logo.jpg", class "h3" ] [] ]
-        , img [ src "./assets/purplecross.png", class "fr ma3", onClick ToggleBurgerMenu ] []
+    div [ class "dn-l bb b--black ph3" ] <|
+        [ div [ class "flex items-center justify-between" ]
+            [ a [ href "/#", class "no-underline" ] [ h1 [ class "heading black f3 ttu mw5 mv2 dib" ] [ text "Lancashire Women" ] ]
+            , img [ src "./assets/blackcross.svg", class "fr", onClick ToggleBurgerMenu ] []
+            ]
         ]
             ++ navbarContent
 

@@ -4,6 +4,7 @@ import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
 import Types exposing (..)
+import Utils exposing (routeToColour)
 
 
 --Form itself
@@ -23,7 +24,7 @@ detailsForm model =
 
         -- choice of services
         , div [ class "ba br1 flex w-100 flex-wrap pa1 b--silver  pb3 pt1" ]
-            [ h4 [ class "purple fw1 mt1 w-100" ] [ text "Which services are you interested in?" ]
+            [ h4 [ class "black fw1 mt1 w-100" ] [ text "Which services are you interested in?" ]
             , section [ class "pl3-ns pl0 w-100" ]
                 [ formBuilder model Therapy
                 , formBuilder model Courses
@@ -56,9 +57,9 @@ detailsForm model =
         , div [ class "tc" ]
             [ button
                 [ type_ "submit"
-                , class "f5 ba br1 w-80 w-40-l br2 pa3 tc bg-purple white mt3 br1"
+                , class <| "f5 pointer ba br1 w-80 w-40-l br2 pa3 tc bg-" ++ routeToColour model.route ++ " white mt3 br1 bg-white-hover " ++ routeToColour model.route ++ "-hover b--" ++ routeToColour model.route
                 , classList
-                    [ ( "bg-light-purple", not model.newHelpForm.gdpr )
+                    [ ( "bg-light-black", not model.newHelpForm.gdpr )
                     , ( "pointer", model.newHelpForm.gdpr )
                     ]
                 ]
@@ -119,7 +120,7 @@ formBuilder model field =
                     else
                         "gray"
             in
-            buttonItem model.newHelpForm.gdpr field "I agree to the data storage terms" colour
+                buttonItem model.newHelpForm.gdpr field "I agree to the data storage terms" colour
 
         ContactMe ->
             buttonItem model.newHelpForm.contactMe field "Would you like to join our mailing list?" "gray"
@@ -135,29 +136,29 @@ basicInput field fieldName fieldType fieldValue errors wrapperClass errClass tit
         ( errHtml, errExists ) =
             formErrors fieldName errors
     in
-    div []
-        [ div [ class wrapperClass, classList [ ( errClass, errExists ) ] ]
-            [ div [ class titleClass ] [ text fieldName ]
-            , label [ for fieldName ]
-                []
-            , input
-                [ value fieldValue
-                , type_ fieldType
-                , class inputClass
-                , onInput <| SetField field
-                , name fieldName
+        div []
+            [ div [ class wrapperClass, classList [ ( errClass, errExists ) ] ]
+                [ div [ class titleClass ] [ text fieldName ]
+                , label [ for fieldName ]
+                    []
+                , input
+                    [ value fieldValue
+                    , type_ fieldType
+                    , class inputClass
+                    , onInput <| SetField field
+                    , name fieldName
+                    ]
+                    []
                 ]
-                []
+            , errHtml
             ]
-        , errHtml
-        ]
 
 
 buttonItem : Bool -> FormField -> String -> String -> Html Types.Msg
 buttonItem state field textValue textColour =
     div [ class "pa2 flex" ]
         [ button [ type_ "button", class "tl bn bg-white items-start ", onClick <| SetField field "" ]
-            [ div [ class "ma0 pa0 h1 w1 ba b--gray br2 dib v-mid", classList [ ( "purple-tick bn", state ) ] ] []
+            [ div [ class "ma0 pa0 h1 w1 ba b--gray br2 dib v-mid", classList [ ( "black-tick bn", state ) ] ] []
             , p [ class <| "ma0 pa0 f5 lh-copy ph2 v-mid di " ++ textColour ] [ text textValue ]
             ]
         ]
@@ -188,7 +189,7 @@ textAreaInput : String -> FormField -> Html Msg
 textAreaInput val field =
     div []
         [ div [ class "ba br1 flex w-100 flex-wrap pa1 b--silver mt3" ]
-            [ div [ class "purple fw1 pb2" ] [ text "Is there anything else you would like to tell us?" ]
+            [ div [ class "black fw1 pb2" ] [ text "Is there anything else you would like to tell us?" ]
             , textarea
                 [ class "sans-serif w-100 ma3-ns ma1 h4 f5 pa1 pa2-ns gray fw1 ba-ns b--moon-gray br2"
                 , name "additionalInfo"
@@ -213,10 +214,10 @@ sendingMsg status =
             div [ class "tc pt2 w-100 grey" ] [ text "Sending Data..." ]
 
         FailureValidation ->
-            div [ class "tc pt2 w-100 purple" ] [ text "Sorry, some of the data you've sent isn't quite right, see above" ]
+            div [ class "tc pt2 w-100 black" ] [ text "Sorry, some of the data you've sent isn't quite right, see above" ]
 
         FailureGDPR ->
-            div [ class "tc pt2 w-100 purple" ] [ text "If you do not agree to our privacy policy, your information cannot be stored. Please tick the box above, or contact your local centre by phone/in person." ]
+            div [ class "tc pt2 w-100 black" ] [ text "If you do not agree to our privacy policy, your information cannot be stored. Please tick the box above, or contact your local centre by phone/in person." ]
 
         FailureServer ->
             div [ class "tc pt2 w-100 red" ] [ text "Sorry, something went wrong with our server. You might have to call us, or try again later." ]
@@ -238,7 +239,7 @@ errClass_text =
 
 
 titleClass_text =
-    "purple fw1"
+    "black fw1"
 
 
 inputClass_text =
