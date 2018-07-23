@@ -4,6 +4,7 @@ import Http exposing (..)
 import Json.Decode as Decode
 import Json.Decode.Pipeline exposing (decode, required)
 import Json.Encode as Encode
+import Utils exposing (..)
 import Types exposing (..)
 
 
@@ -61,25 +62,16 @@ helpFormEncoder model =
         areasList =
             areasEncoder <| areas model
     in
-    Encode.object attributes
+        Encode.object attributes
 
 
 baseUrl : String
-baseUrl = 
+baseUrl =
     "https://womenscentre.herokuapp.com/api/v1/help_form"
--- "http://localhost:4000/api/v1/help_form"
 
-methodRequest : String -> String -> Encode.Value -> Decode.Decoder a -> Http.Request a
-methodRequest method url encodedBody decoder =
-    Http.request
-        { body = encodedBody |> Http.jsonBody
-        , expect = Http.expectJson decoder
-        , headers = []
-        , method = method
-        , timeout = Nothing
-        , url = url
-        , withCredentials = False
-        }
+
+
+-- "http://localhost:4000/api/v1/help_form"
 
 
 postFormRequest : Model -> Http.Request FormResponse
@@ -111,9 +103,13 @@ testimonialQuoteDecoder =
         |> required "Long Quote Part Two" Decode.string
 
 
+testimonialsUrl : String
 testimonialsUrl =
     "https://womenscentre.herokuapp.com/api/v1/testimonials"
-    -- "http://localhost:4000/api/v1/testimonials"
+
+
+
+-- "http://localhost:4000/api/v1/testimonials"
 
 
 fetchTestimonialQuotes : Cmd Msg

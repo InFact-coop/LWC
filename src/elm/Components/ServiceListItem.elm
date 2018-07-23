@@ -14,10 +14,10 @@ serviceListItem { id, name, isVisible, description } =
         serviceListItemHidden id name
 
 
-serviceListItemHidden : Int -> String -> Html Msg
+serviceListItemHidden : String -> String -> Html Msg
 serviceListItemHidden id name =
     li [ class "container db mb3 " ]
-        [ div [ class "ba b--solid b--purple br3 pa3 bg-white mw7-l", onClick (ToggleServiceListItem id) ]
+        [ div [ class "ba b--solid b--purple br3 pa3 bg-white mw7-l pointer", onClick (ToggleServiceListItem id) ]
             [ span [ class "b purple v-mid" ]
                 [ text name ]
             , div [ class "dib chevron-purple v-mid right-2" ] []
@@ -25,10 +25,10 @@ serviceListItemHidden id name =
         ]
 
 
-serviceListItemVisible : Int -> String -> Html Msg -> Html Msg
+serviceListItemVisible : String -> String -> Html Msg -> Html Msg
 serviceListItemVisible id name description =
     li [ class "container db ba b--solid b--purple br3 mb3 mw7-l" ]
-        [ div [ class "ba b--solid br--top b--purple pa3 br2 bg-purple", onClick (ToggleServiceListItem id) ]
+        [ div [ class "ba b--solid br--top b--purple pa3 br2 bg-purple pointer", onClick (ToggleServiceListItem id) ]
             [ span [ class "b v-mid white" ]
                 [ text name ]
             , div [ class "dib v-mid  right-2 chevron-white" ] []

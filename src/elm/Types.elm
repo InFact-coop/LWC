@@ -50,7 +50,7 @@ type alias HelpForm =
 
 
 type alias Service =
-    { id : Int
+    { id : String
     , name : String
     , isVisible : Bool
     , description : Html Msg
@@ -136,11 +136,12 @@ type FormField
 type Msg
     = NoOp
     | UrlChange Navigation.Location
-    | ToggleServiceListItem Int
+    | ToggleServiceListItem String
     | SelectTestimonial String
     | ToggleBurgerMenu
     | SendHelpForm
     | OnFormSent (Result Http.Error FormResponse)
     | OnFetchTestimonials (Result Http.Error (List TestimonialQuote))
+    | OnFetchServices (Result Http.Error (List Service))
     | SetField FormField String
     | GoHome
