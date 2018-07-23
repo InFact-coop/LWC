@@ -42,4 +42,5 @@ fetchServices =
 
 servicesUrl : String
 servicesUrl =
-    "http://localhost:4000/api/v1/services"
+    -- "http://localhost:4000/api/v1/services"
+    "https://womenscentre.herokuapp.com/api/v1/services"
