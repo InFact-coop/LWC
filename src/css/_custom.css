@@ -9,48 +9,60 @@ body {
   color: var(--gray);
   margin: 0;
   letter-spacing: 0.04rem;
-  line-height: 1.3;
+  line-height: 1.8;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-
 }
 
-p {
-  font-weight: 300;
-  line-height: 1.5;
+@font-face {
+  font-family: "KG-HAPPY-Solid";
+  src: url("assets/KG-HAPPY-Solid.ttf.woff") format("woff"),
+    url("assets/KG-HAPPY-Solid.ttf.svg#KG-HAPPY-Solid") format("svg"),
+    url("assets/KG-HAPPY-Solid.ttf.eot"),
+    url("assets/KG-HAPPY-Solid.ttf.eot?#iefix") format("embedded-opentype");
+  font-weight: normal;
+  font-style: normal;
 }
 
-h1, h2 {
-  font-weight: 500;
+.heading {
+  font-family: var(--heading);
 }
 button {
   font-family: var(--sans-serif);
 }
-
-.chevron-purple {
-  background-image: url('./assets/purple-chevron.svg');
+.chevron-black {
+  background-image: url("./assets/black-chevron.svg");
   background-size: 90%;
   background-position: center;
   background-repeat: no-repeat;
   height: 1.5rem;
   width: 1.5rem;
   float: right;
+}
+.bg-purple-hover:hover .chevron-white-hover {
+  background-image: url("./assets/white-chevron-down.svg");
+  background-size: 90%;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 1.5rem;
+  width: 1.5rem;
+  float: right;
+  transition: 0.3s;
 }
 
 .chevron-white {
-  background-image: url('./assets/white-chevron.svg');
+  background-image: url("./assets/white-chevron.svg");
   background-size: 90%;
   background-position: center;
   background-repeat: no-repeat;
   height: 1.5rem;
   width: 1.5rem;
   float: right;
-
 }
 
 .hands {
-  background: url('./assets/hands.jpg');
+  background: url("./assets/hands.jpg");
   width: 100vw;
   height: 100vh;
   background-size: cover;
@@ -58,53 +70,87 @@ button {
   background-repeat: no-repeat;
 }
 @media (--breakpoint-large) {
-.group {
-  background: url('./assets/lwcGroup.png');
-  width: 100vw;
-  height: 100vh;
-  background-size: cover;
-   background-position: center;
-  background-repeat: no-repeat;
-}}
+  .group {
+    background: url("./assets/lwcGroup.png");
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
 
-.purple-background {
-  background-color: rgba(112, 39, 125, 0.6);
+.black-background {
+  background-color: rgba(1, 1, 1, 0.4);
 }
 
 .white-line {
-border-bottom: 4px solid #FFFFFF;
-width: 30vw;
-margin: 0 auto;
+  border-bottom: 4px solid #ffffff;
+  width: 30vw;
+  margin: 0 auto;
 }
 
 .m0-auto {
   margin: 0 auto;
 }
+.bg-purple-hover:hover {
+  background: var(--purple);
+  transition: 0.3s;
+}
+
+.bg-purple-hover:hover .white-hover {
+  color: white;
+  transition: 0.3s;
+}
+.bg-white-hover:hover {
+  background: white;
+  transition: 0.3s;
+}
+.bg-white-hover:hover .black-hover {
+  color: black;
+  transition: 0.3s;
+}
+
+.bg-white-hover:hover .pink-hover {
+  color: var(--hot-pink);
+  transition: 0.3s;
+}
+.light-blue-hover:hover {
+  color: var(--light-blue);
+  transition: 0.3s;
+}
+
+.pink-hover:hover {
+  transition: 0.3s;
+  color: var(--hot-pink);
+}
+.purple-hover:hover {
+  transition: 0.3s;
+  color: var(--purple);
+}
 
 .burger {
-  background: url('./assets/burger.svg');
+  background: url("./assets/burger.svg");
   background-size: 90%;
   background-repeat: no-repeat;
   background-position: center;
 }
 
-
-.purple-line{
-  border-bottom: 4px solid #70277D;
+.black-line {
+  border-bottom: 4px solid var(--black);
   width: 30vw;
 }
 
 .pa-25 {
   padding-top: 20vh;
-
 }
 
 #container {
   -webkit-overflow-scrolling: touch;
 }
 
-.purple-tick {
-  background-image: url("./assets/purpleTick.png");
+.black-tick {
+  background-image: url("./assets/blackTick.svg");
   height: 1rem;
   background-position: center;
   background-size: cover;

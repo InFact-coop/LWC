@@ -10,10 +10,10 @@ landingPage : Model -> Html Msg
 landingPage model =
     div []
         [ div [ class "hands group" ]
-            [ div [ class "purple-background w-100 h-100 " ]
-                [ div [ class "white b f2  f1-l tc ph3-ns ph2 pt5-ns pt4 tracked w-70-l m0-auto" ]
+            [ div [ class "black-background w-100 h-100 " ]
+                [ div [ class "white b f2 tc ph3-ns ph2 pt5-ns pt4 tracked heading w-70-l m0-auto" ]
                     [ text "We are here to help." ]
-                , div [ class "white-line pb4" ] []
+                , div [ class "pink-line pb4" ] []
                 , div [ class "tc-l" ]
                     [ div [ class "pt5-l w-50-l tc-l dib-l " ] [ whiteButton "READ REAL STORIES" "quotes" ]
                     ]

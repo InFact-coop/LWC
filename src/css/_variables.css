@@ -9,7 +9,9 @@
 @custom-media --breakpoint-large screen and (min-width: 60em);
 
 :root {
-  --sans-serif: "Quicksand", "helvetica neue", helvetica, arial, sans-serif;
+  --sans-serif: "Montserrat", "helvetica neue", helvetica, arial, sans-serif;
+  --heading: "KG-Happy-Solid", "Montserrat", "helvetica neue", helvetica, arial,
+    sans-serif;
   --serif: georgia, serif;
   --handwriting: Caveat;
   --code: consolas, monaco, monospace;
@@ -90,14 +92,15 @@
 
   /* ~ LWC Brand Colours ~ */
 
+  --hot-pink: #e51f6b;
   --gray: #464646;
   --silver: #bcbcbc;
-  --purple: #70277d;
-  --light-purple: #a469ae;
+  --black: #000;
+  --purple: #5b2078;
+  --light-blue: #139d93;
 
   /* ~ ~ ~ E N D ~ ~ ~ */
 
-  --black: #000;
   --near-black: #111;
   --dark-gray: #333;
   --mid-gray: #555;
@@ -142,8 +145,8 @@
   --gold: #ffb700;
   --yellow: #ffd700;
   --light-yellow: #fbf1a9;
+  --light-purple: #a469ae;
   --dark-pink: #d5008f;
-  --hot-pink: #ff41b4;
   --pink: #ff80cc;
   --light-pink: #ffa3d7;
   --dark-green: #007459;
@@ -152,7 +155,6 @@
   --navy: #001b44;
   --dark-blue: #2d6b8e;
   --blue: #357edd;
-  --light-blue: #96ccff;
   --lightest-blue: #cdecff;
   --washed-blue: #f6fffe;
   --washed-green: #e1f8ea;
@@ -165,7 +167,7 @@
 :root:before {
   content: url("./assets/hands.jpg") url("./assets/burger.svg")
     url("./assets/logo.jpg") url("./assets/person.png")
-    url("./assets/phone.png") url("./assets/purple-chevron.svg")
+    url("./assets/phone.png") url("./assets/black-chevron.svg")
     url("./assets/quote.svg") url("./assets/white-chevron.svg")
     url("./assets/woman1.png") url("./assets/woman2.png")
     url("./assets/woman3.png") url("./assets/woman4.png")

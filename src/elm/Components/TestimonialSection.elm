@@ -14,11 +14,11 @@ testimonialSection { name, age, imgsrc, therapy, description } =
             [ img [ class "dib h4 w4 v-btm", src imgsrc, alt name ]
                 []
             , div [ class "dib ml3" ]
-                [ h1 [ class "dib purple f3 ma0" ]
+                [ h1 [ class "dib hot-pink f3 ma0" ]
                     [ text <| name ++ ", " ++ age ]
                 , h2 [ class "f4 gray mt1 mb3" ]
                     [ text therapy ]
-                , rule "purple" "70%"
+                , rule "black" "70%"
                 ]
             ]
         , description
